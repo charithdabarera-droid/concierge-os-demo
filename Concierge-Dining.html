@@ -525,6 +525,15 @@ body[data-layout="compact"] .stat-card .num { font-size: 1.7rem; }
 body[data-layout="compact"] .panel { padding: 14px; }
 .auth-card label small { text-transform: none; font-weight: 400; letter-spacing: 0; }
 
+/* ---- Accessibility (WCAG 2.1 AA) ---- */
+.skip-link { position: absolute; left: 8px; top: -60px; z-index: 1000; background: #111; color: #fff; padding: 10px 16px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.skip-link:focus { top: 8px; }
+:focus-visible { outline: 3px solid #1a5fd0; outline-offset: 2px; }
+button:focus-visible, a:focus-visible, [role=button]:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #1a5fd0; outline-offset: 2px; box-shadow: 0 0 0 5px rgba(255,255,255,.85); }
+.phrase { background: #eef6ee; border: 1px solid #9cc79c; color: #1d4a1d; padding: 8px 12px; border-radius: 8px; margin: 6px 0; font-size: .9rem; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+@media (forced-colors: active) { .btn, .ftable, .status-pill, .pill { border: 1px solid CanvasText; } }
+
 </style>
   <style>
 body.dining-app { --accent: #3a2c4a; }
@@ -828,11 +837,67 @@ body.role-server [data-action="res-new"], body.role-server [data-action="wl-new"
 })(typeof window !== "undefined" ? window : globalThis);
 
 ;
+/* Concierge OS — accessibility helpers (WCAG 2.1 AA): skip link, label wiring, accessible names,
+   keyboard access for clickable non-buttons, dialog focus management. Loaded by all three apps. */
+(function () {
+  if (window.COS_A11Y) return; window.COS_A11Y = true;
+  let uid = 0; const nid = (p) => "a11y-" + p + "-" + (++uid);
+  const FOCUSABLE = "a[href],button:not([disabled]),input:not([disabled]):not([type=hidden]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex='-1'])";
+  function skip() {
+    if (document.querySelector(".skip-link")) return;
+    const a = document.createElement("a"); a.className = "skip-link"; a.href = "#main-content"; a.textContent = "Skip to main content";
+    a.addEventListener("click", (e) => { const m = document.getElementById("main-content") || document.querySelector("main,[role=main]"); if (m) { e.preventDefault(); m.setAttribute("tabindex", "-1"); m.focus(); } });
+    document.body.insertBefore(a, document.body.firstChild);
+  }
+  function fix(root) {
+    const main = document.querySelector("main") || document.getElementById("dev-app");
+    if (main && !document.getElementById("main-content")) main.id = main.id || "main-content";
+    if (main && main.id !== "main-content") { const sk = document.querySelector(".skip-link"); if (sk) sk.setAttribute("href", "#" + main.id); }
+    root.querySelectorAll("label:not([for])").forEach((l) => {
+      if (l.querySelector("input,select,textarea")) return;
+      let c = l.nextElementSibling; if (c && !/^(INPUT|SELECT|TEXTAREA)$/.test(c.tagName)) c = c.querySelector && c.querySelector("input,select,textarea");
+      if (!c && l.parentNode) c = l.parentNode.querySelector("input,select,textarea");
+      if (c && !c.labels?.length) { if (!c.id) c.id = nid("f"); l.htmlFor = c.id; }
+    });
+    root.querySelectorAll("input:not([type=hidden]),select,textarea").forEach((c) => {
+      if ((c.labels && c.labels.length) || c.getAttribute("aria-label") || c.getAttribute("aria-labelledby")) return;
+      const n = c.getAttribute("placeholder") || c.getAttribute("title") || c.getAttribute("name") || c.id; if (n) c.setAttribute("aria-label", n.replace(/[-_]/g, " ").replace(/…$/, ""));
+    });
+    root.querySelectorAll("button,a[href]").forEach((b) => {
+      if (b.getAttribute("aria-label")) return; const t = (b.textContent || "").trim();
+      if (!t || /^[×✕✖x⋯…☰+−-]$/.test(t)) { const n = b.getAttribute("title") || (/^[×✕✖x]$/.test(t) ? "Close" : t === "☰" ? "Menu" : t === "+" ? "Add" : (b.querySelector("img") || {}).alt || b.dataset.action); if (n) b.setAttribute("aria-label", String(n).replace(/-/g, " ")); }
+    });
+    root.querySelectorAll("[data-action]:not(button):not(a):not(input):not(select):not(option):not(form)").forEach((el) => {
+      if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "0"); if (!el.getAttribute("role")) el.setAttribute("role", "button");
+    });
+    root.querySelectorAll(".modal:not([data-a11y])").forEach((m) => {
+      m.setAttribute("data-a11y", "1"); m.setAttribute("role", "dialog"); m.setAttribute("aria-modal", "true");
+      const h = m.querySelector("h1,h2,h3"); if (h) { if (!h.id) h.id = nid("dlg"); m.setAttribute("aria-labelledby", h.id); }
+      if (!m.contains(document.activeElement)) { lastFocus = document.activeElement; const f = m.querySelector("input:not([type=hidden]),select,textarea") || m.querySelector(FOCUSABLE); if (f) setTimeout(() => { if (!m.contains(document.activeElement)) f.focus(); }, 40); }
+    });
+    root.querySelectorAll("table:not([data-a11y])").forEach((t) => { t.setAttribute("data-a11y", "1"); t.querySelectorAll("thead th").forEach((th) => th.setAttribute("scope", "col")); });
+  }
+  let lastFocus = null, pending = false;
+  const run = () => { pending = false; try { fix(document); } catch (e) {} if (lastFocus && !document.querySelector(".modal") && document.activeElement === document.body && document.contains(lastFocus)) { try { lastFocus.focus(); } catch (e) {} lastFocus = null; } };
+  const mo = new MutationObserver(() => { if (!pending) { pending = true; requestAnimationFrame(run); } });
+  document.addEventListener("keydown", (e) => {
+    const el = e.target;
+    if ((e.key === "Enter" || e.key === " ") && el.matches && el.matches("[role=button]:not(button)")) { e.preventDefault(); el.click(); }
+    if (e.key === "Tab") { const m = document.querySelector(".modal"); if (!m) return; const f = [...m.querySelectorAll(FOCUSABLE)].filter((x) => x.offsetParent !== null); if (!f.length) return;
+      if (!m.contains(document.activeElement)) { e.preventDefault(); f[0].focus(); }
+      else if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); } }
+  });
+  const start = () => { skip(); fix(document); mo.observe(document.body, { childList: true, subtree: true }); };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+})();
+
+;
 window.COS_EXT = { views: {} };
 ;
 /* Concierge OS v2 — Dining: outlets, shifts, reservations, live floor plan, waitlist, diner profiles. */
 (function () {
-  const EXT = window.COS_EXT, SH = window.COS_SHARED;
+  const EXT = window.COS_EXT = window.COS_EXT || { views: {} }, SH = window.COS_SHARED;
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const $ = (s) => document.querySelector(s);
   const ACTIVE = ["booked", "confirmed", "seated"];
@@ -878,7 +943,7 @@ window.COS_EXT = { views: {} };
       "<div class=\"view-head\"><div><h1>Dining</h1><p class=\"lede\">Reservations, floor and waitlist · " + esc(o.name) + " · " + esc(o.kind) + "</p></div>" +
       "<div class=\"create-cluster\"><button type=\"button\" class=\"btn btn-primary\" data-action=\"res-new\">+ Reservation</button><button type=\"button\" class=\"btn\" data-action=\"wl-new\">+ Waitlist</button></div></div>" +
       "<div class=\"toolbar dine-bar\"><div class=\"seg\">" + st.outlets.map((x) => "<button type=\"button\" class=\"" + (x.id === o.id ? "active" : "") + "\" data-action=\"dine-outlet\" data-id=\"" + x.id + "\">" + esc(x.name) + "</button>").join("") + "</div>" +
-      "<input type=\"date\" id=\"dine-date\" value=\"" + d.date + "\" />" +
+      "<label class=\"sr-only\" for=\"dine-date\">Service date</label><input type=\"date\" id=\"dine-date\" value=\"" + d.date + "\" />" +
       "<div class=\"seg\"><button type=\"button\" class=\"" + (d.shift === "all" ? "active" : "") + "\" data-action=\"dine-shift\" data-id=\"all\">All shifts</button>" + o.shifts.map((s) => "<button type=\"button\" class=\"" + (d.shift === s.id ? "active" : "") + "\" data-action=\"dine-shift\" data-id=\"" + s.id + "\">" + esc(s.name) + " <small>" + s.start + "–" + s.end + "</small></button>").join("") + "</div></div>" +
       "<div class=\"stat-grid\">" +
         "<div class=\"stat-card\"><div class=\"label\">Covers booked</div><div class=\"num\">" + cv.booked + "</div><div class=\"muted\">" + cv.count + " parties</div></div>" +
@@ -914,7 +979,7 @@ window.COS_EXT = { views: {} };
     const tablesHtml = tables.map((t) => {
       const ts = tableStatus(t); counts[ts.s] = (counts[ts.s] || 0) + 1;
       const who = ts.r ? (diner(ts.r.dinerId) || { name: ts.r.name || "Walk-in" }).name.split(" ").slice(-1)[0] : "";
-      return "<button type=\"button\" class=\"ftable " + t.shape + " st-" + ts.s + " seats-" + Math.min(t.seats, 8) + "\" style=\"left:" + t.x + "%;top:" + t.y + "%" + (t.w ? ";width:" + t.w + "px;height:" + t.h + "px" : "") + "\" data-action=\"table-open\" data-id=\"" + t.id + "\" title=\"" + esc(t.name + " · " + t.seats + " seats · " + ts.s) + "\">" +
+      return "<button type=\"button\" class=\"ftable " + t.shape + " st-" + ts.s + " seats-" + Math.min(t.seats, 8) + "\" style=\"left:" + t.x + "%;top:" + t.y + "%" + (t.w ? ";width:" + t.w + "px;height:" + t.h + "px" : "") + "\" data-action=\"table-open\" data-id=\"" + t.id + "\" aria-label=\"" + esc("Table " + t.name + ", " + t.seats + " seats, " + ts.s + (ts.r ? ", " + (diner(ts.r.dinerId) || { name: ts.r.name || "walk-in" }).name + " " + ts.r.time : "")) + "\">" +
         "<b>" + esc(t.name) + "</b><small>" + (ts.r ? esc(who) + " · " + (ts.s === "reserved" ? ts.r.time : ts.r.partySize + "p") : t.seats + " seats") + "</small></button>";
     }).join("");
     const legend = ["available", "reserved", "seated", "dirty", "blocked"].map((s) => "<span class=\"lg st-" + s + "\"><i></i>" + s[0].toUpperCase() + s.slice(1) + " " + (counts[s] || 0) + "</span>").join("");
@@ -942,7 +1007,7 @@ window.COS_EXT = { views: {} };
   function renderProfiles() {
     const q = d.q.toLowerCase();
     const list = st.diners.filter((x) => !q || [x.name, x.phone, x.email, (x.tags || []).join(" "), x.allergies, x.prefs].join(" ").toLowerCase().includes(q));
-    return "<div class=\"panel\"><div class=\"view-head\" style=\"margin-bottom:10px\"><h2>Guest dining profiles</h2><div style=\"display:flex;gap:8px\"><input type=\"search\" id=\"diner-search\" placeholder=\"Search name, tag, allergy…\" value=\"" + esc(d.q) + "\" /><button type=\"button\" class=\"btn\" data-action=\"diner-new\">+ Profile</button></div></div>" +
+    return "<div class=\"panel\"><div class=\"view-head\" style=\"margin-bottom:10px\"><h2>Guest dining profiles</h2><div style=\"display:flex;gap:8px\"><label class=\"sr-only\" for=\"diner-search\">Search guest profiles</label><input type=\"search\" id=\"diner-search\" placeholder=\"Search name, tag, allergy…\" value=\"" + esc(d.q) + "\" /><button type=\"button\" class=\"btn\" data-action=\"diner-new\">+ Profile</button></div></div>" +
       "<table class=\"data-table\"><thead><tr><th>Guest</th><th>Tags</th><th>Allergies</th><th>Visits</th><th>Spend (AED)</th><th>Loyalty</th><th>Last visit</th></tr></thead><tbody>" +
       list.map((x) => { const s = dinerStats(x); const g = x.guestId && st.guests.find((y) => y.id === x.guestId);
         return "<tr data-action=\"diner-open\" data-id=\"" + x.id + "\" class=\"click\"><td><strong>" + esc(x.name) + "</strong><div class=\"muted\">" + (g ? "In-house · Room " + esc(g.room) : "Outside guest") + "</div></td><td>" + (x.tags || []).map((t) => "<span class=\"tag\">" + esc(t) + "</span>").join(" ") + "</td><td>" + (x.allergies ? "<span class=\"tag allergy\">" + esc(x.allergies) + "</span>" : "—") + "</td><td>" + s.n + "</td><td>" + s.spend.toLocaleString() + "</td><td>" + s.points.toLocaleString() + " pts · " + esc(s.tier) + "</td><td>" + (s.last ? esc(s.last) : "—") + "</td></tr>"; }).join("") +
@@ -1050,10 +1115,16 @@ window.COS_EXT = { views: {} };
     else if (a === "res-edit") { core.closeDrawer(); resModal(st.reservations.find((r) => r.id === id)); }
     else if (a === "res-seat") { const r = st.reservations.find((x) => x.id === id); if (seat(r)) { core.closeModal(); save(); } }
     else if (a === "res-complete") {
-      const r = st.reservations.find((x) => x.id === id); r.status = "completed"; r.completedAt = new Date().toISOString();
+      const r = st.reservations.find((x) => x.id === id);
+      core.openModal("Finish table · " + (diner(r.dinerId) || { name: r.name || "Walk-in" }).name, "<form id=\"complete-form\"><input type=\"hidden\" name=\"id\" value=\"" + esc(r.id) + "\" /><div class=\"field\"><label for=\"spend-in\">Bill total (AED)</label><input id=\"spend-in\" name=\"spend\" type=\"number\" min=\"0\" step=\"1\" inputmode=\"decimal\" placeholder=\"e.g. 640\" /><small class=\"muted\">Adds to the guest's visit history and loyalty points. Leave empty if unknown.</small></div></form>",
+        "<button type=\"submit\" form=\"complete-form\" class=\"btn btn-primary\">Finish &amp; clear table</button><button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Cancel</button>");
+      setTimeout(() => { const i = document.getElementById("spend-in"); if (i) i.focus(); }, 30);
+    }
+    else if (a === "res-complete-do") {
+      const r = st.reservations.find((x) => x.id === id); r.status = "completed"; r.completedAt = new Date().toISOString(); const spend = Math.max(0, Math.round(Number(el.dataset.spend) || 0)); r.spend = spend;
       const ts = tids(r).map(tbl).filter(Boolean); ts.forEach((t) => { t.state = "dirty"; }); const t = ts.length ? { name: ts.map((x) => x.name).join("+") } : null;
-      const x = diner(r.dinerId); if (x) { x.visits = x.visits || []; x.visits.push({ date: r.date, outletId: r.outletId, covers: r.partySize, spend: 0 }); }
-      core.closeModal(); save(); core.toast("Table " + (t ? t.name : "") + " marked for clearing");
+      const x = diner(r.dinerId); if (x) { x.visits = x.visits || []; x.visits.push({ date: r.date, outletId: r.outletId, covers: r.partySize, spend }); }
+      core.closeModal(); save(); core.toast("Table " + (t ? t.name : "") + " marked for clearing" + (spend ? " · AED " + spend + " recorded" : ""));
     }
     else if (a === "res-cancel" || a === "res-noshow") { const r = st.reservations.find((x) => x.id === id); r.status = a === "res-cancel" ? "cancelled" : "noshow"; core.closeModal(); save(); core.toast(STATUS_LABEL[r.status]); }
     else if (a === "table-open") tableModal(tbl(id));
@@ -1067,7 +1138,8 @@ window.COS_EXT = { views: {} };
       core.openModal("Add to waitlist · " + outlet(d.outlet).name, "<form id=\"wl-form\"><div class=\"form-grid\"><div class=\"field span-2\"><label>Name</label><input name=\"name\" required /></div><div class=\"field\"><label>Mobile</label><input name=\"phone\" placeholder=\"+971 50 010 …\" /></div><div class=\"field\"><label>Party size</label><input type=\"number\" name=\"partySize\" min=\"1\" value=\"2\" required /></div><div class=\"field\"><label>Quoted wait (min)</label><input type=\"number\" name=\"quotedMins\" min=\"0\" value=\"15\" /></div><div class=\"field\"><label>Notes</label><input name=\"notes\" /></div></div></form>",
         "<button type=\"submit\" form=\"wl-form\" class=\"btn btn-primary\">Add</button><button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Cancel</button>");
     }
-    else if (a === "wl-notify") { const w = st.waitlist.find((x) => x.id === id); w.status = "notified"; w.notifiedAt = new Date().toISOString(); save(); core.toast("Marked notified — text " + w.phone + " (SMS needs a provider)"); }
+    else if (a === "wl-notify") { const w = st.waitlist.find((x) => x.id === id); w.status = "notified"; w.notifiedAt = new Date().toISOString(); save();
+      if (EXT.notifyGuest) EXT.notifyGuest(w).then(() => core.toast("Table-ready text queued for " + w.name + " (stub — connect an SMS provider to send)")).catch((err) => core.toast(err.message)); else core.toast("Marked notified — sending texts needs an SMS provider (stub)"); }
     else if (a === "wl-remove") { const w = st.waitlist.find((x) => x.id === id); w.status = "removed"; save(); }
     else if (a === "wl-seat") {
       const w = st.waitlist.find((x) => x.id === id);
@@ -1082,7 +1154,9 @@ window.COS_EXT = { views: {} };
     return true;
   };
   EXT.onSubmitDining = function (e) {
-    const f = e.target, fid = f.getAttribute("id"); if (!["res-form", "wl-form", "diner-form"].includes(fid)) return false;
+    const f = e.target, fid = f.getAttribute("id");
+    if (fid === "complete-form") { e.preventDefault(); const fd = new FormData(f); EXT.onClickDining("res-complete-do", { dataset: { id: fd.get("id"), spend: fd.get("spend") } }); return true; }
+    if (!["res-form", "wl-form", "diner-form"].includes(fid)) return false;
     core = EXT.core; st = core.getState();
     e.preventDefault(); const fd = Object.fromEntries(new FormData(f));
     if (fid === "res-form") {
@@ -1146,13 +1220,14 @@ window.COS_EXT = { views: {} };
     async function call(p, method, b) {
       const r = await fetch("/api/dining/" + p, { method: method || "GET", headers: { "Content-Type": "application/json", "X-Client-Tz": Intl.DateTimeFormat().resolvedOptions().timeZone || "", Authorization: "Bearer " + tok() }, body: b ? JSON.stringify(b) : undefined });
       const j = await r.json().catch(() => ({}));
-      if (!r.ok) { const e = new Error(j.error || "Request failed"); e.status = r.status; e.mustChange = j.mustChange; e.timeout = j.timeout; throw e; }
+      if (!r.ok) { const e = new Error(j.error || "Request failed"); e.status = r.status; e.mustChange = j.mustChange; e.timeout = j.timeout; e.totpRequired = j.totpRequired; throw e; }
       return j;
     }
     return {
       login: (b) => call("login", "POST", b), me: () => call("me"), logout: () => call("logout", "POST", {}), password: (b) => call("password", "POST", b),
       state: () => call("state"), sync: (b) => call("sync", "POST", b), feedback: (b) => call("feedback", "POST", b),
       accounts: () => call("accounts"), create: (b) => call("accounts", "POST", b), patch: (id, b) => call("accounts/" + id, "PATCH", b),
+      notify: (b) => call("notify", "POST", b), revokeAll: () => call("revoke-all", "POST", {}), settings: (b) => call("settings", "POST", b), tfa: (step, b) => call("2fa/" + step, "POST", b), phrase: (b) => fetch("/api/auth/phrase", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ app: "dining" }, b)) }).then((r) => r.json()),
       reset: (id, b) => call("accounts/" + id + "/reset", "POST", b), unlock: (id) => call("accounts/" + id + "/unlock", "POST", {}), del: (id) => call("accounts/" + id, "DELETE"), audit: () => call("audit"),
       listen(cb) {
         try {
@@ -1267,18 +1342,22 @@ window.COS_EXT = { views: {} };
     r.innerHTML = "<div class=\"auth-wrap\"><div class=\"auth-brand\"><img src=\"" + (window.COS_EXT_ICON || "../favicon.svg") + "\" width=\"40\" height=\"40\" alt=\"\" /><div><strong>Concierge Dining</strong><span>Restaurant team access" + (LOCAL ? " · offline demo" : "") + "</span></div></div><div class=\"auth-card\">" + inner + "</div><p class=\"auth-foot\"><button type=\"button\" class=\"text-btn\" data-action=\"install\">Install the dining app</button></p></div>";
     const f = r.querySelector("input"); if (f) setTimeout(() => f.focus(), 30);
   }
+  let loginState = {};
   function loginScreen(msg) {
-    authShell("<h1>Team sign in</h1><p class=\"lede\">Use the email and password issued by your company.</p>" + (msg ? "<div class=\"auth-error\">" + esc(msg) + "</div>" : "") +
-      "<form id=\"dn-login\"><label>Company email<input name=\"email\" type=\"email\" required autocomplete=\"username\" /></label><label>Password<input name=\"password\" type=\"password\" required autocomplete=\"current-password\" /></label><button class=\"btn btn-primary wide\" type=\"submit\">Sign in</button></form>" +
+    const ph = loginState.phrase === undefined ? "" : "<p class=\"phrase\" role=\"status\">" + (loginState.phrase ? "Your security phrase: <b>“" + esc(loginState.phrase) + "”</b>. Only continue if it's correct." : (loginState.known ? "No security phrase set yet — add one under Me after you sign in." : "First sign-in on this browser — your security phrase will appear here next time. Check the address bar shows your company's official address.")) + "</p>";
+    authShell("<h1>Team sign in</h1><p class=\"lede\">Use the email and password issued by your company.</p>" + (msg ? "<div class=\"auth-error\" role=\"alert\">" + esc(msg) + "</div>" : "") +
+      "<form id=\"dn-login\"><label>Company email<input name=\"email\" id=\"dn-email\" type=\"email\" required autocomplete=\"username\" value=\"" + esc(loginState.email || "") + "\" /></label>" + ph + "<label>Password<input name=\"password\" type=\"password\" required autocomplete=\"current-password\" /></label>" + (loginState.needTotp ? "<label>Authenticator code<input name=\"totp\" inputmode=\"numeric\" maxlength=\"6\" required autocomplete=\"one-time-code\" /></label>" : "") + "<button class=\"btn btn-primary wide\" type=\"submit\">Sign in</button></form>" +
       "<p class=\"lock-note\">There is no public sign-up. Accounts are created by your dining admin. After 5 wrong passwords the account locks; sessions end after " + idleMin + " minutes without activity.</p>" +
       "<p class=\"auth-demo\">Demo (fictional): <b>dining.admin@aurora.example.com</b>, <b>lina.host@aurora.example.com</b> or <b>theo.server@aurora.example.com</b>, password <b>Dining#2026</b>. First-login example: <b>new.hire@aurora.example.com</b> / <b>Temp#1234</b>." + (LOCAL ? "" : " Second hotel: <b>dining.admin@harbor.example.com</b>.") + "</p>");
   }
   function changeScreen(msg) {
     authShell("<h1>Set your own password</h1><p class=\"lede\">You signed in with a temporary password. Choose a new one to continue.</p>" + (msg ? "<div class=\"auth-error\">" + esc(msg) + "</div>" : "") +
-      "<form id=\"dn-change\"><label>Temporary password<input name=\"current\" type=\"password\" required autocomplete=\"current-password\" /></label><label>New password<input name=\"next\" type=\"password\" minlength=\"8\" required autocomplete=\"new-password\" /></label><label>Repeat new password<input name=\"again\" type=\"password\" minlength=\"8\" required autocomplete=\"new-password\" /></label><button class=\"btn btn-primary wide\" type=\"submit\">Save &amp; continue</button></form><p class=\"lock-note\">At least 8 characters, with letters and numbers.</p>");
+      "<form id=\"dn-change\"><label>Temporary password<input name=\"current\" type=\"password\" required autocomplete=\"current-password\" /></label><label>New password<input name=\"next\" type=\"password\" minlength=\"10\" required autocomplete=\"new-password\" aria-describedby=\"dn-rule\" /></label><label>Repeat new password<input name=\"again\" type=\"password\" minlength=\"10\" required autocomplete=\"new-password\" /></label><button class=\"btn btn-primary wide\" type=\"submit\">Save &amp; continue</button></form><p class=\"lock-note\" id=\"dn-rule\">At least 10 characters with letters and numbers. Common or leaked passwords are refused.</p>");
   }
   async function enter(r) {
     me = r.account; if (r.idleMinutes) idleMin = r.idleMinutes; if (r.tenant) setTenant(r.tenant);
+    if (!api.local && !r.csrf) { try { r = Object.assign(r, await api.me()); } catch (e) {} }
+    if (r.csrf) localStorage.setItem(LS_TOKEN, r.csrf); sec = { notices: r.notices || [], has2fa: !!r.has2fa, phraseSet: !!r.phraseSet };
     if (me.mustChange) return changeScreen();
     const s = await api.state(); state = {}; for (const c of COLLS) state[c] = s.data[c] || []; if (s.tenant) setTenant(s.tenant); if (s.announcements) showAnnouncements(s.announcements); snap();
     const ar = $("#auth-root"); if (ar) ar.hidden = true; document.body.classList.remove("auth-open"); document.body.classList.add("ready");
@@ -1295,7 +1374,8 @@ window.COS_EXT = { views: {} };
     if (id === "dn-login" || id === "dn-change" || id === "dn-create" || id === "dn-pw" || id === "dn-feedback") e.preventDefault(); else return;
     const fd = Object.fromEntries(new FormData(e.target)); const btn = e.target.querySelector("[type=submit]"); if (btn) btn.disabled = true;
     try {
-      if (id === "dn-login") { const r = await api.login(fd); localStorage.setItem(LS_TOKEN, r.token); await enter(r); }
+      if (id === "dn-login") { let r; try { r = await api.login(fd); } catch (err) { if (err.totpRequired) { loginState.email = fd.email; loginState.needTotp = true; loginScreen(err.message); const p = document.querySelector("#dn-login [name=password]"); if (p) p.value = fd.password; const t = document.querySelector("#dn-login [name=totp]"); if (t) t.focus(); return; } throw err; }
+        localStorage.setItem(LS_TOKEN, r.token); loginState = {}; if (r.newDevice) setTimeout(() => toast("New device sign-in recorded on your account"), 1200); await enter(r); }
       else if (id === "dn-change" || id === "dn-pw") {
         if (fd.next !== fd.again) throw new Error("New passwords don't match");
         const r = await api.password({ current: fd.current, next: fd.next }); toast("Password updated");
@@ -1305,7 +1385,7 @@ window.COS_EXT = { views: {} };
         render();
       } else if (id === "dn-feedback") { await api.feedback(fd); e.target.reset(); toast("Thanks — sent to the developer"); }
     } catch (err) {
-      if (id === "dn-login") loginScreen(err.message); else if (id === "dn-change") changeScreen(err.message); else if (err.status === 401) handleErr(err); else toast(err.message);
+      if (id === "dn-login") { loginState.email = fd.email; loginScreen(err.message); } else if (id === "dn-change") changeScreen(err.message); else if (err.status === 401) handleErr(err); else toast(err.message);
     } finally { if (btn) btn.disabled = false; }
   });
 
@@ -1446,12 +1526,33 @@ window.COS_EXT = { views: {} };
       "<div class=\"panel\"><table class=\"data-table audit-table\"><thead><tr><th>Time (Dubai)</th><th>Who</th><th>App</th><th>Action</th><th>Detail</th><th>IP</th></tr></thead><tbody>" +
       r.entries.map((x) => "<tr><td>" + esc(new Date(x.at).toLocaleString("en-GB", { timeZone: "Asia/Dubai", dateStyle: "short", timeStyle: "medium" })) + "</td><td>" + esc(x.actor) + "</td><td>" + esc(x.app) + "</td><td><b>" + esc(x.action.replace(/_/g, " ")) + "</b></td><td>" + esc(x.detail) + "</td><td>" + esc(x.ip) + "</td></tr>").join("") + "</tbody></table></div>";
   }
+  let sec = {};
+  EXT.notifyGuest = (w) => api.local ? Promise.resolve({ ok: true }) : api.notify({ waitlistId: w.id });
+  document.addEventListener("change", async (e) => {
+    if (e.target.id !== "dn-email" || api.local) return; const v = e.target.value.trim(); if (!v) return;
+    try { const r = await api.phrase({ identifier: v }); loginState.email = v; loginState.phrase = r.phrase; loginState.known = r.knownDevice; const pw = document.querySelector("#dn-login [name=password]"), keep = pw && pw.value; loginScreen(); const p2 = document.querySelector("#dn-login [name=password]"); if (p2) { p2.value = keep || ""; p2.focus(); } } catch (err) {}
+  });
+  function secPanel() {
+    const admin = me.role === "dining_admin";
+    return "<div class=\"panel\" style=\"grid-column:1/-1\"><h2>Security</h2><div class=\"form-grid\"><form id=\"dn-phrase\" class=\"field\"><label for=\"dn-phrase-in\">Anti-phishing phrase</label><input id=\"dn-phrase-in\" name=\"phrase\" maxlength=\"60\" placeholder=\"" + (sec.phraseSet ? "Phrase is set — type to change" : "e.g. copper lantern 42") + "\" /><small class=\"muted\">Shown on the real sign-in page after you type your email. Missing or wrong? Don't enter your password.</small><button class=\"btn btn-sm\" type=\"submit\">Save phrase</button></form>" +
+      "<div class=\"field\"><label>Two-factor sign-in</label>" + (admin ? (sec.has2fa ? "<p>On ✓</p><button type=\"button\" class=\"btn btn-sm\" data-action=\"dn-tfa-off\">Turn off…</button>" : "<p class=\"muted\">Recommended for dining admins.</p><button type=\"button\" class=\"btn btn-sm btn-primary\" data-action=\"dn-tfa-setup\">Set up authenticator</button>") : "<p class=\"muted\">For dining admins.</p>") + "<div id=\"dn-tfa-box\"></div></div>" +
+      "<div class=\"field span-2\"><button type=\"button\" class=\"btn btn-sm btn-danger\" data-action=\"dn-revoke\">Sign out everywhere</button></div>" +
+      ((sec.notices || []).length ? "<div class=\"field span-2\"><label>Recent security notices</label><ul>" + sec.notices.slice().reverse().map((n) => "<li class=\"muted\">" + esc(new Date(n.at).toLocaleString("en-GB", { timeZone: "Asia/Dubai" })) + " — " + esc(n.text) + "</li>").join("") + "</ul></div>" : "") + "</div></div>";
+  }
+  document.addEventListener("submit", async (e) => {
+    const id = e.target.getAttribute("id"); if (id !== "dn-phrase" && id !== "dn-tfa") return; e.preventDefault();
+    const fd = Object.fromEntries(new FormData(e.target));
+    try {
+      if (id === "dn-phrase") { await api.settings({ phrase: fd.phrase }); sec.phraseSet = !!fd.phrase.trim(); toast("Security phrase saved"); }
+      else { const off = e.target.dataset.mode === "off"; await api.tfa(off ? "disable" : "enable", { code: fd.code }); sec.has2fa = !off; toast(off ? "Two-factor sign-in is off" : "Two-factor sign-in is on"); render(); }
+    } catch (err) { toast(err.message); }
+  });
   function renderMe() {
     const os = /iPhone|iPad/.test(navigator.userAgent) ? "Safari → Share → Add to Home Screen" : /Android/.test(navigator.userAgent) ? "Chrome → ⋮ → Install app" : "Chrome/Edge → install icon in the address bar · Mac Safari → File → Add to Dock";
     $("#view-me").innerHTML = "<div class=\"view-head\"><div><h1>" + esc(me.name) + "</h1><p class=\"lede\">" + esc(me.email) + " · <span class=\"pill open\">" + esc(ROLE_LABEL[me.role]) + "</span></p></div><button type=\"button\" class=\"btn\" data-action=\"dn-signout\">Sign out</button></div>" +
-      "<div class=\"dash-grid\"><div class=\"panel\"><h2>Change password</h2><form id=\"dn-pw\" class=\"props\"><div class=\"field\"><label>Current password</label><input type=\"password\" name=\"current\" required /></div><div class=\"field\"><label>New password</label><input type=\"password\" name=\"next\" minlength=\"8\" required /></div><div class=\"field\"><label>Repeat</label><input type=\"password\" name=\"again\" minlength=\"8\" required /></div><button class=\"btn btn-primary\" type=\"submit\">Update password</button></form></div>" +
+      "<div class=\"dash-grid\"><div class=\"panel\"><h2>Change password</h2><form id=\"dn-pw\" class=\"props\"><div class=\"field\"><label>Current password</label><input type=\"password\" name=\"current\" required /></div><div class=\"field\"><label>New password</label><input type=\"password\" name=\"next\" minlength=\"10\" required /></div><div class=\"field\"><label>Repeat</label><input type=\"password\" name=\"again\" minlength=\"10\" required /></div><button class=\"btn btn-primary\" type=\"submit\">Update password</button></form></div>" +
       "<div class=\"panel\"><h2>Install this app</h2><p>The dining app installs separately from the hotel app, in its own window.</p><p class=\"muted\" style=\"margin:8px 0\">On this device: " + esc(os) + "</p><button type=\"button\" class=\"btn btn-primary\" data-action=\"install\">Install Concierge Dining</button><p class=\"muted\" style=\"margin-top:10px\">Security: sessions end after " + idleMin + " minutes idle (12 hours max); 5 wrong passwords lock the account.</p></div>" +
-      (api.local ? "" : "<div class=\"panel\" style=\"grid-column:1/-1\"><h2>Report an issue or idea</h2><form id=\"dn-feedback\" class=\"form-grid\"><div class=\"field\"><label>Type</label><select name=\"kind\"><option value=\"bug\">Problem / bug</option><option value=\"idea\">Idea</option><option value=\"question\">Question</option></select></div><div class=\"field\"><label>Where</label><input name=\"page\" placeholder=\"e.g. Floor editor\" /></div><div class=\"field span-2\"><label>Details</label><textarea name=\"message\" required></textarea></div><div><button class=\"btn btn-primary\" type=\"submit\">Send to developer</button></div></form></div>") + "</div>";
+      (api.local ? "" : secPanel()) + (api.local ? "" : "<div class=\"panel\" style=\"grid-column:1/-1\"><h2>Report an issue or idea</h2><form id=\"dn-feedback\" class=\"form-grid\"><div class=\"field\"><label>Type</label><select name=\"kind\"><option value=\"bug\">Problem / bug</option><option value=\"idea\">Idea</option><option value=\"question\">Question</option></select></div><div class=\"field\"><label>Where</label><input name=\"page\" placeholder=\"e.g. Floor editor\" /></div><div class=\"field span-2\"><label>Details</label><textarea name=\"message\" required></textarea></div><div><button class=\"btn btn-primary\" type=\"submit\">Send to developer</button></div></form></div>") + "</div>";
   }
 
   // ---------------- events ----------------
@@ -1467,6 +1568,9 @@ window.COS_EXT = { views: {} };
       else if (a === "close-drawer") closeDrawer();
       else if (a === "install") { if (deferred) { deferred.prompt(); deferred = null; } else openModal("Install Concierge Dining", LOCAL ? "<p class=\"notice\">This is the offline file. To install, open the hosted address /dining/ in your browser.</p>" : "<p><b>iPhone/iPad:</b> Safari → Share → Add to Home Screen.<br /><b>Android:</b> Chrome → ⋮ → Install app.<br /><b>Windows/Linux:</b> Chrome or Edge → install icon in the address bar.<br /><b>Mac:</b> Chrome/Edge install icon, or Safari → File → Add to Dock.</p><p class=\"muted\" style=\"margin-top:8px\">It installs as its own app, separate from the hotel app.</p>", ""); }
       else if (a === "dn-nav") { view = el.dataset.view; closeDrawer(); render(); window.scrollTo(0, 0); }
+      else if (a === "dn-revoke") { if (!confirm("Sign out of Concierge Dining on every device, including this one?")) return; await api.revokeAll().catch(() => {}); localStorage.removeItem(LS_TOKEN); location.reload(); }
+      else if (a === "dn-tfa-setup") { const r = await api.tfa("setup", {}); $("#dn-tfa-box").innerHTML = "<p class=\"muted\" style=\"margin-top:8px\">Add this key to your authenticator app:</p><p><code style=\"word-break:break-all\">" + esc(r.secret) + "</code></p><form id=\"dn-tfa\" data-mode=\"on\"><label for=\"dn-tfa-code\">6-digit code</label><input id=\"dn-tfa-code\" name=\"code\" inputmode=\"numeric\" maxlength=\"6\" required autocomplete=\"one-time-code\" /><button class=\"btn btn-sm btn-primary\" type=\"submit\">Turn on</button></form>"; $("#dn-tfa-code").focus(); }
+      else if (a === "dn-tfa-off") { $("#dn-tfa-box").innerHTML = "<form id=\"dn-tfa\" data-mode=\"off\"><label for=\"dn-tfa-code\">Current 6-digit code</label><input id=\"dn-tfa-code\" name=\"code\" inputmode=\"numeric\" maxlength=\"6\" required /><button class=\"btn btn-sm\" type=\"submit\">Turn off</button></form>"; $("#dn-tfa-code").focus(); }
       else if (a === "dn-signout") { await api.logout().catch(() => {}); localStorage.removeItem(LS_TOKEN); location.reload(); }
       else if (a === "ed-section") { ed.section = id; ed.sel = null; render(); }
       else if (a.startsWith("ed-")) edAction(a);
