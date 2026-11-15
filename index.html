@@ -1,0 +1,2477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2c4a42" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Concierge OS" />
+  <meta name="description" content="Hotel operations and dining — guest requests, tickets, reservations, floor plan and waitlist." />
+  <title>Concierge OS — offline demo</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzJjNGE0MiIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iNi42IiByPSIxLjMiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSIxNS40IiB5PSI2LjYiIHdpZHRoPSIxLjIiIGhlaWdodD0iMy4yIiBmaWxsPSIjZDRiNDgzIi8+CiAgPHBhdGggZD0iTTguOCAxNi4yYzAtNiAzLjItOS4yIDcuMi05LjJzNy4yIDMuMiA3LjIgOS4ySDguOHoiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSI3LjIiIHk9IjE2IiB3aWR0aD0iMTcuNiIgaGVpZ2h0PSIzLjIiIHJ4PSIxLjQiIGZpbGw9IiNiODk0NjAiLz4KICA8cmVjdCB4PSI4LjQiIHk9IjE2LjUiIHdpZHRoPSIxNS4yIiBoZWlnaHQ9IjIuMiIgcng9IjEiIGZpbGw9IiNkNGI0ODMiLz4KPC9zdmc+Cg==" type="image/svg+xml" />
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFEElEQVR4nO3aO24UQRRG4RrLy0AIiRAvgBRLJPYGWAMxyyBmDWwAJ5ZM6gXYIRJC7MMEePxo93TX41bXrb/OF/KYKdrHl+vu2QUHTs5O71qfAeVuLq52rc/Q5AAEPIYWgW/2hkQ8tq3irvomRIw5NeOu8sKEjBg1wj6yfkFiRqwarZh9hxAySlhNa5MJTcwoZdVQ0XcFIaOGkmmdPaGJGbWUtJUVNDGjttzGkoMmZmwlp7WkoIkZW0ttLjpoYkYrKe1FBU3MaC22wdWgiRlexLRo/ugbaGkxaKYzvFlr8mDQxAyvltpk5YCU2aCZzvDuUKMvgiZm9GKuVVYOSHkWNNMZvZk2y4SGFIKGlIegWTfQq6ftMqEhhaAh5SgE1g30b98wExpSjlsfQNn3zx9mf/3Tt58bn2QcBF3BoZCnv0/Y9nbsz7bWYp4ialvs0IZSY879OziMoI2UhEnUdggaUgjagMWEZUrbIGhIIWhIIWhIIWhIIWgDFg9HeMBig6AhhaCNlExYprMdgjaUEyYx2yJoYymBErM9gq4gJlRiroOgIYWgIYUP+BvK/YAR64cdgi5Q6xNyBJ6PoBNt/TFP4k5D0BG8fFaZuNcR9AIvIU8R9mEEPcNryFOE/RJBP9FLyFOE/Yj70Pd6jTmEvs9ujaCDRhAK/wYLQ68cqhGMvIIMO6FVYw5B+9+2ZsgJXfML/u79xx8pf/72+vK81llGnNTDBW0dc2rAa6wDHy3qoYK2inkp4tQgLV/rkJGiHiZoi5jn4rOeqLXeY5Sohwi6NOZpZDX33prvO0LUw97liPU0qtvry/OtYp57P+t9XZH8hM6dztOQzQ5UwOJM6lNaekIrxRzC87PkTmv1e9TSQefwGvMeK8gy2aBzJpH3mPdKo1ae0rJBl/Ac814PZ2xBMuiS6dxTKPuzMqUfSQaNccndtlOdPLWo3cZjQkMKQUOKVNCsG+nUrplU0ABBQwpBQ4pM0Gq74JaUrp1M0EAIBA0xBA0pBA0pBA0pBA0pBA0pBA0pXXwe+uvZ69ZHwL0vF39aH2GR66AJ2S+vYbtdOYjZN69fH5dBe71YeM7j1+m49QFyvXrztvUR5P39/av1EZK5m9Ax3/XEvI2Y6+xtSrsLeg0xb6u3691V0L1dXBU9XfeuggbWEDSkEDSkEDSkuAt66ZFqj/dFFSxdd2+PwN0FvYaot9VTzCE4DXrtQhH1Nnq8znzaDsk8TuY910HvEbYfnmMOoZOggVgud2ggF0FDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDytHNxdWu9SEACzcXVzsmNKQQNKQQNKQchfB/92h9EKDEvmEmNKQQNKQ8BM3agV49bZcJDSkEDSnPgmbtQG+mzTKhIeVF0Exp9GKu1dkJTdTw7lCjrByQcjBopjS8WmpzcUITNbxZa5KVA1JWg2ZKw4uYFqMmNFGjtdgGo1cOokYrKe0l7dBEja2lNpf8QyFRYys5rWXd5SBq1JbbWPZtO6JGLSVtmUR5cnZ6Z/E6GJvFkDR5sMK0RimrhsxDZFojhfUwNH/0zbRGrBqtVI2PaY05NYfeZtOUuMe21f/cTdYD4h5Di/XTxb5L4Bo8/Pz0D41bzJxsfGkpAAAAAElFTkSuQmCC" type="image/png" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFEElEQVR4nO3aO24UQRRG4RrLy0AIiRAvgBRLJPYGWAMxyyBmDWwAJ5ZM6gXYIRJC7MMEePxo93TX41bXrb/OF/KYKdrHl+vu2QUHTs5O71qfAeVuLq52rc/Q5AAEPIYWgW/2hkQ8tq3irvomRIw5NeOu8sKEjBg1wj6yfkFiRqwarZh9hxAySlhNa5MJTcwoZdVQ0XcFIaOGkmmdPaGJGbWUtJUVNDGjttzGkoMmZmwlp7WkoIkZW0ttLjpoYkYrKe1FBU3MaC22wdWgiRlexLRo/ugbaGkxaKYzvFlr8mDQxAyvltpk5YCU2aCZzvDuUKMvgiZm9GKuVVYOSHkWNNMZvZk2y4SGFIKGlIegWTfQq6ftMqEhhaAh5SgE1g30b98wExpSjlsfQNn3zx9mf/3Tt58bn2QcBF3BoZCnv0/Y9nbsz7bWYp4ialvs0IZSY879OziMoI2UhEnUdggaUgjagMWEZUrbIGhIIWhIIWhIIWhIIWgDFg9HeMBig6AhhaCNlExYprMdgjaUEyYx2yJoYymBErM9gq4gJlRiroOgIYWgIYUP+BvK/YAR64cdgi5Q6xNyBJ6PoBNt/TFP4k5D0BG8fFaZuNcR9AIvIU8R9mEEPcNryFOE/RJBP9FLyFOE/Yj70Pd6jTmEvs9ujaCDRhAK/wYLQ68cqhGMvIIMO6FVYw5B+9+2ZsgJXfML/u79xx8pf/72+vK81llGnNTDBW0dc2rAa6wDHy3qoYK2inkp4tQgLV/rkJGiHiZoi5jn4rOeqLXeY5Sohwi6NOZpZDX33prvO0LUw97liPU0qtvry/OtYp57P+t9XZH8hM6dztOQzQ5UwOJM6lNaekIrxRzC87PkTmv1e9TSQefwGvMeK8gy2aBzJpH3mPdKo1ae0rJBl/Ac814PZ2xBMuiS6dxTKPuzMqUfSQaNccndtlOdPLWo3cZjQkMKQUOKVNCsG+nUrplU0ABBQwpBQ4pM0Gq74JaUrp1M0EAIBA0xBA0pBA0pBA0pBA0pBA0pBA0pXXwe+uvZ69ZHwL0vF39aH2GR66AJ2S+vYbtdOYjZN69fH5dBe71YeM7j1+m49QFyvXrztvUR5P39/av1EZK5m9Ax3/XEvI2Y6+xtSrsLeg0xb6u3691V0L1dXBU9XfeuggbWEDSkEDSkEDSkuAt66ZFqj/dFFSxdd2+PwN0FvYaot9VTzCE4DXrtQhH1Nnq8znzaDsk8TuY910HvEbYfnmMOoZOggVgud2ggF0FDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDytHNxdWu9SEACzcXVzsmNKQQNKQQNKQchfB/92h9EKDEvmEmNKQQNKQ8BM3agV49bZcJDSkEDSnPgmbtQG+mzTKhIeVF0Exp9GKu1dkJTdTw7lCjrByQcjBopjS8WmpzcUITNbxZa5KVA1JWg2ZKw4uYFqMmNFGjtdgGo1cOokYrKe0l7dBEja2lNpf8QyFRYys5rWXd5SBq1JbbWPZtO6JGLSVtmUR5cnZ6Z/E6GJvFkDR5sMK0RimrhsxDZFojhfUwNH/0zbRGrBqtVI2PaY05NYfeZtOUuMe21f/cTdYD4h5Di/XTxb5L4Bo8/Pz0D41bzJxsfGkpAAAAAElFTkSuQmCC" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #f4efe6;
+  --bg-2: #ece5d8;
+  --surface: #fffdf8;
+  --surface-2: #f8f3ea;
+  --ink: #1c1915;
+  --muted: #6b645a;
+  --line: #e3d9c8;
+  --line-strong: #cfc3ad;
+  --accent: #2c4a42;
+  --accent-ink: #f4efe6;
+  --gold: #8a6a3a;
+  --gold-soft: #d4b483;
+  --overdue: #9c3a2c;
+  --overdue-bg: #f8e8e4;
+  --ok: #2c6e4f;
+  --ok-bg: #e4f0e9;
+  --progress: #8a6a3a;
+  --progress-bg: #f3ead8;
+  --closed: #6b645a;
+  --shadow: 0 10px 30px rgba(28, 25, 21, 0.08);
+  --shadow-lg: 0 24px 60px rgba(28, 25, 21, 0.16);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --font: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --serif: "Fraunces", "Palatino Linotype", Palatino, Georgia, serif;
+  --topbar: 64px;
+  --bottom: 0px;
+  --sidebar: 268px;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --bg: #161412;
+  --bg-2: #1e1b18;
+  --surface: #221f1b;
+  --surface-2: #2a2621;
+  --ink: #f3eee6;
+  --muted: #a89f92;
+  --line: #3a342c;
+  --line-strong: #52493d;
+  --accent: #c9a46a;
+  --accent-ink: #1c1915;
+  --gold: #d4b483;
+  --gold-soft: #8a6a3a;
+  --overdue: #f0a398;
+  --overdue-bg: #3a221f;
+  --ok: #8fcead;
+  --ok-bg: #1d3228;
+  --progress: #e2c48a;
+  --progress-bg: #3a3120;
+  --closed: #a89f92;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+[data-theme="dark"] .icon-sun { display: none; }
+[data-theme="light"] .icon-moon, :root:not([data-theme="dark"]) .icon-moon { display: none; }
+[data-theme="dark"] .icon-moon { display: block; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.02em; margin: 0; }
+h1 { font-size: 1.85rem; }
+h2 { font-size: 1.05rem; }
+h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-family: var(--font); font-weight: 600; }
+p { margin: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+#app { min-height: 100%; display: flex; flex-direction: column; }
+#main { flex: 1; padding-bottom: var(--bottom); }
+
+/* Top bar */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  height: var(--topbar);
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 16px 0 18px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 10px; min-width: 180px; }
+.brand-mark { border-radius: 7px; display: block; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text strong { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; }
+.brand-text span { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.04em; }
+.main-nav { display: flex; gap: 2px; flex: 1; justify-content: center; }
+.main-nav button, .bottom-nav button {
+  border: 0; background: transparent; color: var(--muted);
+  padding: 8px 14px; border-radius: 999px; font-weight: 500;
+}
+.main-nav button:hover, .bottom-nav button:hover { background: var(--bg-2); color: var(--ink); }
+.main-nav button.active, .bottom-nav button.active { background: var(--accent); color: var(--accent-ink); }
+.top-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.icon-btn {
+  width: 36px; height: 36px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface);
+  display: inline-flex; align-items: center; justify-content: center; color: var(--ink);
+}
+.icon-btn:hover { border-color: var(--line-strong); background: var(--bg-2); }
+.menu-btn { display: none; }
+.punch-btn {
+  border: 1px solid var(--line); background: var(--surface);
+  border-radius: 999px; padding: 6px 12px; font-size: 0.8rem; font-weight: 500;
+}
+.punch-btn.on { background: var(--ok-bg); color: var(--ok); border-color: transparent; }
+.user-switcher select {
+  border: 1px solid var(--line); background: var(--surface);
+  border-radius: 999px; padding: 6px 28px 6px 12px; appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%236b645a' d='M1 1l5 5 5-5'/></svg>");
+  background-repeat: no-repeat; background-position: right 10px center; max-width: 180px;
+}
+
+/* Buttons */
+.btn {
+  border: 1px solid var(--line-strong); background: var(--surface);
+  border-radius: 10px; padding: 8px 13px; font-weight: 500; white-space: nowrap;
+}
+.btn:hover { background: var(--bg-2); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-danger { background: var(--overdue); color: #fff; border-color: transparent; }
+.btn-ghost { border-color: transparent; background: transparent; color: var(--muted); }
+.btn-ghost:hover { background: var(--bg-2); color: var(--ink); }
+.text-btn { border: 0; background: none; color: var(--gold); font-size: 0.75rem; font-weight: 600; padding: 0; }
+.split-btn { position: relative; display: inline-flex; }
+.split-btn .btn { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.split-btn .btn-caret {
+  border-top-left-radius: 0; border-bottom-left-radius: 0;
+  border-left: 1px solid color-mix(in srgb, var(--accent-ink) 25%, transparent);
+  padding-left: 8px; padding-right: 8px; min-width: 32px;
+}
+.split-btn .btn:not(.btn-primary) + .btn-caret { border-left-color: var(--line-strong); }
+.fav-menu {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 30;
+  min-width: 260px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); padding: 6px;
+}
+.fav-menu button {
+  display: block; width: 100%; text-align: left; border: 0; background: transparent;
+  padding: 8px 10px; border-radius: 6px; font-size: 0.9rem;
+}
+.fav-menu button:hover { background: var(--bg-2); }
+.fav-menu .fav-meta { display: block; font-size: 0.7rem; color: var(--muted); }
+
+/* Views */
+.view { padding: 20px 24px 40px; }
+.view-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.lede { color: var(--muted); margin-top: 4px; }
+
+/* Dashboard */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+.stat-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 18px 16px; box-shadow: var(--shadow);
+}
+.stat-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; }
+.stat-card .num { font-family: var(--serif); font-size: 2.2rem; margin-top: 6px; line-height: 1; }
+.stat-card.overdue .num { color: var(--overdue); }
+.stat-card.open .num { color: var(--ok); }
+.dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px; box-shadow: var(--shadow);
+}
+.panel h2 { margin-bottom: 14px; }
+.dept-row { display: grid; grid-template-columns: 120px 1fr 28px; gap: 10px; align-items: center; margin-bottom: 8px; font-size: 0.88rem; }
+.bar { height: 8px; background: var(--bg-2); border-radius: 99px; overflow: hidden; }
+.bar > span { display: block; height: 100%; border-radius: 99px; }
+.list-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--line); cursor: pointer;
+}
+.list-row:last-child { border-bottom: 0; }
+.list-row:hover { color: var(--accent); }
+.dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.muted { color: var(--muted); font-size: 0.82rem; }
+.empty { color: var(--muted); padding: 28px 8px; text-align: center; }
+
+/* Tickets layout */
+.tickets-view { display: grid; grid-template-columns: var(--sidebar) 1fr; gap: 20px; padding: 16px 16px 40px 12px; align-items: start; }
+.sidebar {
+  position: sticky; top: calc(var(--topbar) + 16px);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px; box-shadow: var(--shadow);
+}
+.sidebar-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.close-sidebar { display: none; }
+.sidebar-block { margin-top: 18px; }
+.block-title { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.filter-list, .quick-links { display: flex; flex-direction: column; gap: 2px; }
+.filter-list button, .quick-links button, .chip {
+  border: 0; background: transparent; text-align: left; padding: 7px 8px; border-radius: 8px; color: var(--ink);
+}
+.filter-list button:hover, .quick-links button:hover, .chip:hover { background: var(--bg-2); }
+.filter-list button.active { background: color-mix(in srgb, var(--accent) 14%, var(--surface)); color: var(--accent); font-weight: 600; }
+.filter-list .count, .chip .count { float: right; color: var(--muted); font-size: 0.75rem; }
+.quick-links button { font-size: 0.86rem; }
+
+/* Calendar */
+.cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.cal-head strong { font-family: var(--serif); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; }
+.cal-grid .dow { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em; padding: 4px 0; text-transform: uppercase; }
+.cal-grid button {
+  border: 0; background: transparent; border-radius: 8px; height: 32px; position: relative; font-size: 0.8rem;
+}
+.cal-grid button:hover { background: var(--bg-2); }
+.cal-grid button.today { box-shadow: inset 0 0 0 1px var(--gold); }
+.cal-grid button.selected { background: var(--accent); color: var(--accent-ink); }
+.cal-grid button.outside { color: var(--line-strong); }
+.cal-grid button.has-tickets::after {
+  content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--gold);
+  position: absolute; left: 50%; bottom: 3px; transform: translateX(-50%);
+}
+.cal-grid button.selected.has-tickets::after { background: var(--accent-ink); }
+
+/* Toolbar */
+.tickets-main { min-width: 0; }
+.toolbar { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }
+.create-cluster, .toolbar-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: transparent; padding: 6px 12px; color: var(--muted); font-size: 0.82rem; font-weight: 500; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.active { background: var(--ink); color: var(--bg); }
+.search-field { flex: 1; min-width: 180px; }
+.search-field.wide { min-width: 260px; max-width: 420px; }
+.search-field input, .field input, .field select, .field textarea {
+  width: 100%; border: 1px solid var(--line); background: var(--surface);
+  border-radius: 10px; padding: 8px 12px; outline: none;
+}
+.search-field input:focus, .field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+.chip-bar { display: flex; flex-wrap: wrap; gap: 6px; min-height: 8px; margin-bottom: 12px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1px solid var(--line) !important; border-radius: 999px; padding: 4px 8px 4px 10px; font-size: 0.78rem;
+}
+.chip .x { border: 0; background: none; color: var(--muted); padding: 0 2px; font-size: 1rem; line-height: 1; }
+
+/* Timeline */
+.tickets-board { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.board-meta { padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.82rem; display: flex; justify-content: space-between; }
+.hour-block { display: grid; grid-template-columns: 64px 1fr; border-bottom: 1px solid var(--line); }
+.hour-block:last-child { border-bottom: 0; }
+.hour-block.empty { opacity: 0.55; }
+.hour-label {
+  padding: 10px 8px 10px 14px; font-size: 0.75rem; font-weight: 600; color: var(--muted);
+  border-right: 1px solid var(--line); background: var(--surface-2);
+}
+.hour-tickets { padding: 6px; display: flex; flex-direction: column; gap: 6px; min-height: 20px; }
+.ticket-row {
+  display: grid; grid-template-columns: 64px 1fr auto auto; gap: 10px; align-items: center;
+  padding: 8px 10px; border-radius: 10px; background: var(--bg);
+  border: 1px solid transparent; border-left: 4px solid var(--dept, var(--gold));
+  cursor: pointer; text-align: left;
+}
+.ticket-row:hover { border-color: var(--line-strong); border-left-color: var(--dept, var(--gold)); }
+.ticket-row.overdue { background: var(--overdue-bg); }
+.ticket-row.closed { opacity: 0.62; }
+.ticket-row .time { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.82rem; }
+.ticket-row .sum { min-width: 0; }
+.ticket-row .sum strong { display: block; font-weight: 550; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ticket-row .sum span { color: var(--muted); font-size: 0.75rem; }
+.pill {
+  display: inline-flex; align-items: center; border-radius: 999px; padding: 2px 8px;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  background: var(--bg-2); color: var(--muted); white-space: nowrap;
+}
+.pill.open { background: var(--ok-bg); color: var(--ok); }
+.pill.in_progress { background: var(--progress-bg); color: var(--progress); }
+.pill.closed { background: var(--bg-2); color: var(--closed); }
+.pill.overdue { background: var(--overdue); color: #fff; }
+.pill.guest { background: #e7eef2; color: #3b6e8a; }
+.pill.internal { background: #f1eadf; color: #8a6a3a; }
+[data-theme="dark"] .pill.guest { background: #1e2c34; color: #8eb6c8; }
+[data-theme="dark"] .pill.internal { background: #32291c; color: #d4b483; }
+.assignee { font-size: 0.75rem; color: var(--muted); max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Ticket cards (mobile / all-time list) */
+.ticket-list { display: flex; flex-direction: column; }
+.ticket-card {
+  display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--line);
+  background: transparent; padding: 14px 16px; border-left: 4px solid var(--dept, var(--gold));
+  cursor: pointer;
+}
+.ticket-card:hover { background: var(--bg); }
+.ticket-card.overdue { background: var(--overdue-bg); }
+.ticket-card .card-top { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.ticket-card h4 { font-family: var(--font); font-size: 0.95rem; font-weight: 550; margin: 0; }
+.ticket-card .meta { color: var(--muted); font-size: 0.78rem; display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Guests */
+.table-wrap { overflow: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; background: var(--surface-2); }
+tr { cursor: pointer; }
+tr:hover td { background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+
+/* Staff / tasks */
+.staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.staff-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px; box-shadow: var(--shadow); display: flex; gap: 12px; align-items: flex-start;
+}
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: var(--accent-ink);
+  display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; font-size: 0.85rem;
+}
+.staff-card.current { outline: 2px solid var(--gold); }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; background: var(--line-strong); }
+.status-dot.on { background: var(--ok); }
+
+/* Drawer + modal */
+.drawer-backdrop, .modal-backdrop, .sidebar-backdrop {
+  position: fixed; inset: 0; background: rgba(28, 25, 21, 0.4); z-index: 50;
+}
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100%);
+  background: var(--surface); z-index: 60; box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; animation: slide 0.22s ease;
+}
+@keyframes slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.drawer-head, .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 18px 18px 12px; border-bottom: 1px solid var(--line); }
+.drawer-body, .modal-body { padding: 16px 18px; overflow: auto; flex: 1; }
+.drawer-actions, .modal-foot { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 18px; border-top: 1px solid var(--line); }
+.detail-kv { display: grid; grid-template-columns: 110px 1fr; gap: 8px 12px; font-size: 0.9rem; margin-bottom: 16px; }
+.detail-kv dt { color: var(--muted); }
+.checklist { list-style: none; margin: 0; padding: 0; }
+.checklist li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.checklist li:last-child { border-bottom: 0; }
+.checklist li.done span { text-decoration: line-through; color: var(--muted); }
+.checklist input { margin-top: 3px; accent-color: var(--accent); width: 16px; height: 16px; }
+
+.modal-backdrop { display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 70; }
+.modal {
+  width: min(560px, 100%); max-height: min(92vh, 820px); overflow: auto;
+  background: var(--surface); border-radius: 16px; box-shadow: var(--shadow-lg);
+  animation: pop 0.18s ease;
+}
+@keyframes pop { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field.span-2 { grid-column: span 2; }
+.field label { font-size: 0.75rem; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.field textarea { min-height: 72px; resize: vertical; }
+
+.toast-root { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 80; display: flex; flex-direction: column; gap: 8px; }
+.toast { background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-size: 0.85rem; box-shadow: var(--shadow-lg); }
+
+.bottom-nav { display: none; }
+.progress-mini { font-size: 0.72rem; color: var(--muted); }
+
+@media (max-width: 980px) {
+  .stat-grid, .dash-grid { grid-template-columns: 1fr 1fr; }
+  .menu-btn { display: inline-flex; }
+  .tickets-view { grid-template-columns: 1fr; padding: 12px; }
+  .sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0; z-index: 55; width: min(320px, 90vw);
+    border-radius: 0; transform: translateX(-105%); transition: transform 0.2s ease; overflow: auto;
+  }
+  body.sidebar-open .sidebar { transform: none; }
+  .close-sidebar { display: inline-flex; }
+  .main-nav { display: none; }
+  .brand-text span { display: none; }
+  .ticket-row { grid-template-columns: 52px 1fr; }
+  .ticket-row .assignee, .ticket-row .pills-end { grid-column: 2; }
+}
+@media (max-width: 720px) {
+  :root { --bottom: 64px; --topbar: 58px; }
+  .view { padding: 14px 12px 24px; }
+  .stat-grid, .dash-grid, .form-grid { grid-template-columns: 1fr; }
+  .field.span-2 { grid-column: span 1; }
+  .user-switcher select { max-width: 120px; }
+  .punch-btn { display: none; }
+  .create-cluster { width: 100%; }
+  .split-btn { flex: 1; }
+  .split-btn .btn:first-child { flex: 1; }
+  .bottom-nav {
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    height: calc(56px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter: blur(16px); border-top: 1px solid var(--line);
+  }
+  .bottom-nav button { flex: 1; border-radius: 0; font-size: 0.68rem; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px; }
+  .drawer { width: 100%; }
+  th:nth-child(n+5), td:nth-child(n+5) { display: none; }
+}
+
+/* ===== v2: auth, account, install, dining ===== */
+body:not(.ready) #app { visibility: hidden; }
+body.auth-open #app { display: none; }
+#auth-root { position: fixed; inset: 0; z-index: 90; overflow: auto; background: radial-gradient(1200px 600px at 10% -10%, var(--bg-2), var(--bg)); }
+.auth-wrap { max-width: 440px; margin: 0 auto; padding: 48px 20px 32px; }
+.auth-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 22px; }
+.auth-brand strong { font-family: var(--serif); font-size: 1.4rem; display: block; }
+.auth-brand span { color: var(--muted); font-size: 0.85rem; }
+.auth-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; box-shadow: var(--shadow-lg); }
+.auth-card h1 { font-size: 1.6rem; }
+.auth-card form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.auth-card label { display: flex; flex-direction: column; gap: 5px; font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.auth-card input, .auth-card select { font: inherit; font-size: 1rem; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 11px 12px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-2); }
+.auth-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.auth-card .otp { font-size: 1.6rem; letter-spacing: 0.4em; text-align: center; font-family: ui-monospace, monospace; }
+.btn.wide { width: 100%; justify-content: center; padding: 12px; font-size: 1rem; }
+.auth-links { display: flex; justify-content: space-between; margin-top: 14px; flex-wrap: wrap; gap: 8px; }
+.auth-error { background: var(--overdue-bg); color: var(--overdue); padding: 9px 12px; border-radius: var(--radius-sm); margin-top: 12px; font-size: 0.9rem; }
+.auth-dev { background: var(--progress-bg); color: var(--progress); padding: 10px 12px; border-radius: var(--radius-sm); margin-top: 12px; font-size: 0.9rem; border: 1px dashed var(--gold-soft); }
+.auth-dev b { font-family: ui-monospace, monospace; font-size: 1.15rem; letter-spacing: 0.15em; }
+.auth-demo { margin-top: 18px; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; line-height: 1.5; }
+.auth-foot { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+.btn-sm { padding: 5px 10px; font-size: 0.8rem; }
+.account-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px 10px 3px 3px; color: var(--ink); }
+.acct-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 0.75rem; font-weight: 600; }
+.acct-meta { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+.acct-meta small { color: var(--muted); font-size: 0.7rem; text-transform: capitalize; }
+.live-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); display: inline-block; }
+.live-dot.live { background: #2fa36b; box-shadow: 0 0 0 4px rgba(47, 163, 107, 0.18); }
+.live-dot.reconnecting, .live-dot.connecting, .live-dot.polling { background: #d79a2b; }
+.notice { background: var(--progress-bg); color: var(--progress); padding: 10px 12px; border-radius: var(--radius-sm); margin-bottom: 10px; }
+.install-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.install-item { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px; background: var(--surface-2); }
+.install-item.here { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.install-item p { margin-top: 6px; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.data-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px; border-bottom: 1px solid var(--line); }
+.data-table td { padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table tr.click { cursor: pointer; } .data-table tr.click:hover { background: var(--surface-2); }
+.dine-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+.dine-bar input[type=date] { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; }
+.seg small { opacity: 0.7; font-size: 0.7rem; }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 18px 0 16px; }
+.tabs button { border: 0; background: none; padding: 10px 14px; color: var(--muted); font: inherit; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tabs button.active { color: var(--ink); border-bottom-color: var(--accent); }
+.dine-grid { display: grid; grid-template-columns: minmax(320px, 1fr) 1.25fr; gap: 16px; align-items: start; }
+.res-row { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.res-row:last-child { border-bottom: 0; }
+.res-row.s-completed, .res-row.s-cancelled, .res-row.s-noshow { opacity: 0.55; }
+.res-time { font-family: var(--serif); font-size: 1.15rem; min-width: 54px; }
+.res-time small { font-size: 0.7rem; color: var(--muted); }
+.res-time.late { color: var(--overdue); }
+.res-main { flex: 1; min-width: 0; cursor: pointer; }
+.res-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.tag { display: inline-block; background: var(--bg-2); color: var(--ink); border-radius: 999px; padding: 1px 8px; font-size: 0.72rem; margin: 1px 0; }
+.tag.allergy { background: var(--overdue-bg); color: var(--overdue); font-weight: 600; }
+.pill.res-booked { background: var(--bg-2); color: var(--ink); }
+.pill.res-confirmed { background: #e7eef2; color: #3b6e8a; }
+.pill.res-seated { background: var(--ok-bg); color: var(--ok); }
+.pill.res-completed, .pill.res-cancelled { background: var(--bg-2); color: var(--closed); }
+.pill.res-noshow { background: var(--overdue-bg); color: var(--overdue); }
+.floor { position: relative; height: 420px; border-radius: var(--radius-sm); background: repeating-linear-gradient(0deg, transparent 0 39px, var(--line) 39px 40px), repeating-linear-gradient(90deg, var(--surface-2) 0 39px, var(--line) 39px 40px); border: 1px solid var(--line); overflow: hidden; }
+.ftable { position: absolute; transform: translate(-50%, -50%); border: 2px solid; display: flex; flex-direction: column; align-items: center; justify-content: center; font: inherit; color: var(--ink); cursor: pointer; transition: transform 0.15s; padding: 2px; }
+.ftable:hover { transform: translate(-50%, -50%) scale(1.06); }
+.ftable b { font-size: 0.85rem; } .ftable small { font-size: 0.64rem; color: var(--muted); white-space: nowrap; }
+.ftable.round { border-radius: 50%; width: 70px; height: 70px; }
+.ftable.round.seats-1 { width: 52px; height: 52px; }
+.ftable.square { border-radius: 10px; width: 84px; height: 62px; }
+.ftable.square.seats-6 { width: 104px; } .ftable.square.seats-8 { width: 126px; }
+.st-available { background: var(--surface); border-color: #8fb9a3; }
+.st-reserved { background: #e7eef2; border-color: #3b6e8a; }
+.st-seated { background: var(--ok-bg); border-color: var(--ok); }
+.st-dirty { background: var(--progress-bg); border-color: var(--gold); }
+.st-blocked { background: var(--bg-2); border-color: var(--line-strong); opacity: 0.7; }
+[data-theme="dark"] .st-reserved { background: #1e2c34; }
+.pill.st-available, .pill.st-reserved, .pill.st-seated, .pill.st-dirty, .pill.st-blocked { border: 1px solid; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 10px; font-size: 0.8rem; color: var(--muted); }
+.legend .lg { background: none; display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; }
+.legend .st-available i { background: var(--surface); border-color: #8fb9a3; } .legend .st-reserved i { background: #e7eef2; border-color: #3b6e8a; }
+.legend .st-seated i { background: var(--ok-bg); border-color: var(--ok); } .legend .st-dirty i { background: var(--progress-bg); border-color: var(--gold); } .legend .st-blocked i { background: var(--bg-2); border-color: var(--line-strong); }
+.cover-sum { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+.cover-sum div { background: var(--surface-2); border-radius: var(--radius-sm); padding: 10px; }
+.cover-sum b { font-family: var(--serif); font-size: 1.6rem; display: block; }
+.cover-sum span { color: var(--muted); font-size: 0.78rem; }
+#diner-search { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; }
+@media (max-width: 900px) {
+  .dine-grid { grid-template-columns: 1fr; }
+  .floor { height: 360px; }
+  .ftable.round { width: 56px; height: 56px; } .ftable.square { width: 66px; height: 52px; } .ftable.square.seats-6 { width: 80px; } .ftable.square.seats-8 { width: 96px; }
+  .ftable small { display: none; }
+  .cover-sum { grid-template-columns: repeat(2, 1fr); }
+  .acct-meta, .install-btn { display: none; }
+  .data-table { font-size: 0.82rem; }
+}
+[hidden] { display: none !important; }
+.toolbar.dine-bar { flex-direction: row; }
+.floor-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.floor { min-width: 640px; }
+@media (max-width: 900px) { .ftable.round { width: 60px; height: 60px; } .ftable.square { width: 72px; height: 54px; } .ftable small { display: block; } }
+.dine-grid > * { min-width: 0; }
+@media (max-width: 900px) { .bottom-nav { z-index: 45; } #view-dining .stat-grid { grid-template-columns: 1fr 1fr; } }
+.ftable.rect { border-radius: 10px; width: 116px; height: 64px; }
+#announce-bar .announce { display: flex; gap: 10px; align-items: center; background: var(--accent); color: var(--accent-ink); padding: 8px 16px; font-size: 0.88rem; }
+#announce-bar .announce span { opacity: 0.85; flex: 1; }
+#announce-bar .icon-btn { color: inherit; background: transparent; border: 0; }
+body[data-layout="compact"] .stat-card .num { font-size: 1.7rem; }
+body[data-layout="compact"] .panel { padding: 14px; }
+.auth-card label small { text-transform: none; font-weight: 400; letter-spacing: 0; }
+
+</style>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" data-action="toggle-sidebar" aria-label="Open filters and calendar" type="button">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M4 7h16v1.8H4V7zm0 4.1h16v1.8H4v-1.8zm0 4.1h16V17H4v-1.8z"/></svg>
+      </button>
+      <div class="brand">
+        <img class="brand-mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzJjNGE0MiIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iNi42IiByPSIxLjMiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSIxNS40IiB5PSI2LjYiIHdpZHRoPSIxLjIiIGhlaWdodD0iMy4yIiBmaWxsPSIjZDRiNDgzIi8+CiAgPHBhdGggZD0iTTguOCAxNi4yYzAtNiAzLjItOS4yIDcuMi05LjJzNy4yIDMuMiA3LjIgOS4ySDguOHoiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSI3LjIiIHk9IjE2IiB3aWR0aD0iMTcuNiIgaGVpZ2h0PSIzLjIiIHJ4PSIxLjQiIGZpbGw9IiNiODk0NjAiLz4KICA8cmVjdCB4PSI4LjQiIHk9IjE2LjUiIHdpZHRoPSIxNS4yIiBoZWlnaHQ9IjIuMiIgcng9IjEiIGZpbGw9IiNkNGI0ODMiLz4KPC9zdmc+Cg==" alt="" width="28" height="28" />
+        <div class="brand-text">
+          <strong>Concierge OS</strong>
+          <span>Aurora House · Dubai</span>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Primary">
+        <button type="button" data-action="nav" data-view="dashboard">Dashboard</button>
+        <button type="button" data-action="nav" data-view="tickets">Tickets</button>
+        <button type="button" data-action="nav" data-view="guests">Guests</button>
+        <button type="button" data-action="open-dining" title="Opens the separate dining app">Dining ↗</button>
+        <button type="button" data-action="nav" data-view="tasks">My Tasks</button>
+        <button type="button" data-action="nav" data-view="staff">Staff</button>
+      </nav>
+      <div class="top-actions">
+        <span id="live-status" class="live-dot offline" title="Sync status"></span>
+        <button type="button" class="btn btn-sm install-btn" id="install-btn" data-action="install">Install app</button>
+        <button type="button" class="icon-btn" data-action="toggle-theme" aria-label="Toggle dark mode" title="Dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 4.2a.9.9 0 0 1 .9-.9h0A.9.9 0 0 1 13.8 4.2V6a.9.9 0 0 1-1.8 0V4.2zm0 13.8a.9.9 0 0 1 .9.9V20a.9.9 0 0 1-1.8 0v-1.1a.9.9 0 0 1 .9-.9zM4.2 12a.9.9 0 0 1-.9-.9h0A.9.9 0 0 1 4.2 10.2H6a.9.9 0 1 1 0 1.8H4.2zm13.8 0a.9.9 0 0 1 .9-.9H20a.9.9 0 0 1 0 1.8h-1.1a.9.9 0 0 1-.9-.9zM6.5 6.5a.9.9 0 0 1 1.27-1.27l1.27 1.27A.9.9 0 1 1 7.77 7.77L6.5 6.5zm9.46 9.46a.9.9 0 0 1 1.27-1.27l1.27 1.27a.9.9 0 1 1-1.27 1.27l-1.27-1.27zM17.5 6.5a.9.9 0 0 1 1.27 1.27l-1.27 1.27A.9.9 0 1 1 16.23 7.77L17.5 6.5zm-9.46 9.46a.9.9 0 0 1 1.27 1.27L8.04 18.5A.9.9 0 1 1 6.77 17.23l1.27-1.27zM12 8.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M15.2 3.1a.7.7 0 0 1 .86.94A7.6 7.6 0 1 0 20 15.1a.7.7 0 0 1 .94.86 9.2 9.2 0 1 1-8.6-12.9 8 8 0 0 0 2.86.04z"/></svg>
+        </button>
+        <button type="button" class="punch-btn" data-action="toggle-punch" id="punch-btn">Punch in</button>
+        <button type="button" class="account-btn" id="account-btn" data-action="nav" data-view="account" aria-label="Account"></button>
+        <label class="user-switcher">
+          <span class="sr-only">Current staff</span>
+          <select id="user-select" aria-label="Switch staff user"></select>
+        </label>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="view-dashboard" class="view" hidden></section>
+
+      <section id="view-tickets" class="view tickets-view" hidden>
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-head">
+            <h2>Schedule</h2>
+            <button type="button" class="icon-btn close-sidebar" data-action="toggle-sidebar" aria-label="Close sidebar">×</button>
+          </div>
+          <div id="mini-calendar"></div>
+          <div class="sidebar-block">
+            <div class="block-title">
+              <h3>Saved filters</h3>
+              <button type="button" class="text-btn" data-action="save-filter">Save current</button>
+            </div>
+            <div id="saved-filters" class="filter-list"></div>
+          </div>
+          <div class="sidebar-block">
+            <h3>Quick links</h3>
+            <div id="quick-links" class="quick-links"></div>
+          </div>
+        </aside>
+        <div class="tickets-main">
+          <div class="toolbar">
+            <div class="create-cluster">
+              <div class="split-btn">
+                <button type="button" class="btn btn-primary" data-action="new-ticket" data-type="guest">+ Guest request</button>
+                <button type="button" class="btn btn-primary btn-caret" data-action="toggle-favs" data-type="guest" aria-label="Guest request templates">▾</button>
+                <div class="fav-menu" id="favs-guest" hidden></div>
+              </div>
+              <div class="split-btn">
+                <button type="button" class="btn" data-action="new-ticket" data-type="internal">+ Internal request</button>
+                <button type="button" class="btn btn-caret" data-action="toggle-favs" data-type="internal" aria-label="Internal request templates">▾</button>
+                <div class="fav-menu" id="favs-internal" hidden></div>
+              </div>
+            </div>
+            <div class="toolbar-filters">
+              <div class="seg" role="group" aria-label="Date range">
+                <button type="button" data-action="set-range" data-range="today">Today</button>
+                <button type="button" data-action="set-range" data-range="all">All time</button>
+              </div>
+              <div class="seg" role="group" aria-label="Status">
+                <button type="button" data-action="set-status" data-status="open">Open</button>
+                <button type="button" data-action="set-status" data-status="closed">Closed</button>
+                <button type="button" data-action="set-status" data-status="all">All</button>
+              </div>
+              <label class="search-field">
+                <span class="sr-only">Search tickets</span>
+                <input type="search" id="ticket-search" placeholder="Search room, guest, summary…" autocomplete="off" />
+              </label>
+            </div>
+          </div>
+          <div id="filter-chips" class="chip-bar"></div>
+          <div id="tickets-board" class="tickets-board"></div>
+        </div>
+      </section>
+
+      <section id="view-guests" class="view guests-view" hidden>
+        <div class="view-head">
+          <div>
+            <h1>Guests</h1>
+            <p class="lede">In-house and arriving — fictional demo profiles only.</p>
+          </div>
+          <label class="search-field wide">
+            <span class="sr-only">Search guests</span>
+            <input type="search" id="guest-search" placeholder="Search name, room, confirmation, phone…" autocomplete="off" />
+          </label>
+        </div>
+        <div id="guests-table"></div>
+      </section>
+
+      <section id="view-account" class="view" hidden></section>
+      <section id="view-tasks" class="view" hidden></section>
+      <section id="view-staff" class="view" hidden></section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Mobile">
+      <button type="button" data-action="nav" data-view="dashboard"><span>Home</span></button>
+      <button type="button" data-action="nav" data-view="tickets"><span>Tickets</span></button>
+      <button type="button" data-action="open-dining"><span>Dining ↗</span></button>
+      <button type="button" data-action="nav" data-view="guests"><span>Guests</span></button>
+      <button type="button" data-action="nav" data-view="tasks"><span>Tasks</span></button>
+      <button type="button" data-action="nav" data-view="account"><span>Me</span></button>
+    </nav>
+  </div>
+
+  <div class="sidebar-backdrop" data-action="toggle-sidebar" hidden></div>
+  <div id="modal-root"></div>
+  <div id="drawer-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script>window.COS_FORCE_LOCAL = true;</script>
+<script>window.COS_EXT_ICON = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzJjNGE0MiIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iNi42IiByPSIxLjMiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSIxNS40IiB5PSI2LjYiIHdpZHRoPSIxLjIiIGhlaWdodD0iMy4yIiBmaWxsPSIjZDRiNDgzIi8+CiAgPHBhdGggZD0iTTguOCAxNi4yYzAtNiAzLjItOS4yIDcuMi05LjJzNy4yIDMuMiA3LjIgOS4ySDguOHoiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSI3LjIiIHk9IjE2IiB3aWR0aD0iMTcuNiIgaGVpZ2h0PSIzLjIiIHJ4PSIxLjQiIGZpbGw9IiNiODk0NjAiLz4KICA8cmVjdCB4PSI4LjQiIHk9IjE2LjUiIHdpZHRoPSIxNS4yIiBoZWlnaHQ9IjIuMiIgcng9IjEiIGZpbGw9IiNkNGI0ODMiLz4KPC9zdmc+Cg==";</script>
+<script>
+/* Concierge OS shared data model + demo seed (browser + Node). All demo people, emails and numbers are fictional. */
+(function (root) {
+  const DEPTS = [
+    { id: "bell", name: "Bell Desk", color: "#c17f3a" },
+    { id: "fo", name: "Front Office", color: "#3b6e8a" },
+    { id: "concierge", name: "Concierge", color: "#6b4c8a" },
+    { id: "hk", name: "Housekeeping", color: "#4a7a62" },
+    { id: "eng", name: "Engineering", color: "#6a6e75" },
+    { id: "fb", name: "F&B", color: "#8a4a4a" }
+  ];
+  const DEPT_MAP = Object.fromEntries(DEPTS.map((d) => [d.id, d]));
+
+  const TEMPLATES = [
+    { id: "bell-am", name: "AM Bell Desk Checklist", type: "internal", department: "bell", summary: "AM Bell Desk Checklist", dueHour: 6, checklist: ["Handover log reviewed with night team", "Porte-cochere and lobby entrance inspected", "Luggage room inventory completed", "Trolleys, radios and buggies charged", "VIP arrivals and special instructions noted", "Vehicle board updated", "Uniform and name-badge check", "AM briefing with supervisor"] },
+    { id: "bell-pm", name: "PM Bell Desk Checklist", type: "internal", department: "bell", summary: "PM Bell Desk Checklist", dueHour: 14, checklist: ["Handover received from AM team", "Afternoon departures and airport transfers confirmed", "Luggage room tidy and tagged", "Buggy and trolley count", "PM VIP movement list reviewed", "Doorman briefing completed", "Peak-hour positions assigned"] },
+    { id: "bell-night", name: "Night Bell Desk Checklist", type: "internal", department: "bell", summary: "Night Bell Desk Checklist", dueHour: 21, checklist: ["Evening handover logged", "Overnight arrivals board prepared", "Early-morning departures listed", "Luggage room secured", "Night report started", "Emergency contacts confirmed", "Lobby set for quiet hours"] },
+    { id: "fo-am", name: "AM Front Desk Checklist", type: "internal", department: "fo", summary: "AM Front Desk Checklist", dueHour: 6, checklist: ["Cashier float counted and signed", "Arrivals list printed and checked", "Departures and express check-outs flagged", "Safe audit completed", "System and printer check", "VIP and special-attention notes reviewed", "Queue and lobby presence briefed"] },
+    { id: "fo-pm", name: "PM Front Desk Checklist", type: "internal", department: "fo", summary: "PM Front Desk Checklist", dueHour: 14, checklist: ["AM cash handover accepted", "Afternoon arrivals prepared", "Same-day modifications reviewed", "Late check-out requests noted", "Key packets and welcome notes ready", "PM supervisor briefing", "Shift incident log updated"] },
+    { id: "vehicle", name: "Vehicle Request", type: "guest", department: "bell", summary: "Vehicle request", dueHour: null, checklist: ["Chauffeur confirmed", "Vehicle type and pax checked", "Guest called 15 minutes prior", "Vehicle at door", "Departed and logged"] },
+    { id: "collect", name: "Collect Luggage", type: "guest", department: "bell", summary: "Collect luggage", dueHour: null, checklist: ["Guest called or door-knocked", "Piece count confirmed and tagged", "Stored in luggage room", "Guest receipt issued"] },
+    { id: "deliver", name: "Deliver Luggage", type: "guest", department: "bell", summary: "Deliver luggage", dueHour: null, checklist: ["Tags matched to room", "Delivered to room or lobby", "Guest acknowledgement", "Log updated"] },
+    { id: "buggy", name: "Buggy Request", type: "guest", department: "bell", summary: "Buggy request", dueHour: null, checklist: ["Pickup location confirmed", "Buggy dispatched", "Guest collected", "Dropped and closed"] }
+  ];
+  const TPL_MAP = Object.fromEntries(TEMPLATES.map((t) => [t.id, t]));
+  const DUBAI_OFFSET = 4 * 3600 * 1000;
+  function dubaiToday() { return new Date(Date.now() + DUBAI_OFFSET).toISOString().slice(0, 10); }
+  function addDays(ymdStr, n) { const t = new Date(ymdStr + "T12:00:00Z").getTime() + n * 86400000; return new Date(t).toISOString().slice(0, 10); }
+  // Demo seed was authored for 15 Nov 2026; shift every date so "15 Nov" lands on today.
+  function shiftDate(ymdStr) {
+    const diff = Math.round((new Date(ymdStr + "T12:00:00Z") - new Date("2026-11-15T12:00:00Z")) / 86400000);
+    return addDays(dubaiToday(), diff);
+  }
+  function dubaiISO(dateStr, hour, minute) {
+    return dateStr + "T" + String(hour).padStart(2, "0") + ":" + String(minute || 0).padStart(2, "0") + ":00+04:00";
+  }
+
+  function seedDining(guests) {
+    const today = dubaiToday();
+    const outlets = [
+      { id: "o1", name: "Saffron Terrace", kind: "All-day dining", color: "#c17f3a", shifts: [
+        { id: "breakfast", name: "Breakfast", start: "07:00", end: "11:00" },
+        { id: "lunch", name: "Lunch", start: "12:30", end: "15:30" },
+        { id: "dinner", name: "Dinner", start: "18:30", end: "23:00" } ] },
+      { id: "o2", name: "Juniper Grill", kind: "Steak & seafood", color: "#8a4a4a", shifts: [
+        { id: "dinner", name: "Dinner", start: "19:00", end: "23:30" } ] },
+      { id: "o3", name: "Lumen Lounge", kind: "Bar & small plates", color: "#6b4c8a", shifts: [
+        { id: "evening", name: "Evening", start: "17:00", end: "01:00" } ] }
+    ];
+    const sec = { o1: [{ id: "main", name: "Main room" }, { id: "terrace", name: "Terrace" }], o2: [{ id: "dining", name: "Dining room" }], o3: [{ id: "lounge", name: "Lounge" }, { id: "bar", name: "Bar" }] };
+    for (const o of outlets) o.sections = sec[o.id];
+    const tables = [];
+    // [name, maxSeats, shape, x%, y%, section]
+    const layout = {
+      o1: [["T1",2,"round",12,22,"main"],["T2",2,"round",30,22,"main"],["T3",4,"square",50,22,"main"],["T4",4,"square",68,22,"main"],["T5",6,"rect",87,22,"main"],
+           ["T6",2,"round",12,70,"main"],["T7",4,"square",32,70,"main"],["T8",4,"square",50,70,"main"],["T9",8,"rect",75,70,"main"],
+           ["T10",2,"round",18,45,"terrace"],["T11",4,"square",45,45,"terrace"],["T12",6,"rect",74,45,"terrace"]],
+      o2: [["G1",2,"round",15,22,"dining"],["G2",2,"round",38,22,"dining"],["G3",4,"square",62,22,"dining"],["G4",6,"rect",85,22,"dining"],
+           ["G5",4,"square",15,62,"dining"],["G6",4,"square",38,62,"dining"],["G7",8,"rect",66,62,"dining"],["G8",2,"round",88,78,"dining"]],
+      o3: [["L1",2,"round",14,35,"lounge"],["L2",2,"round",34,35,"lounge"],["L3",4,"round",56,35,"lounge"],["L4",4,"round",78,35,"lounge"],["L5",6,"rect",50,75,"lounge"],
+           ["B1",1,"round",25,50,"bar"],["B2",1,"round",40,50,"bar"],["B3",1,"round",55,50,"bar"]]
+    };
+    const SIZE = { round: [70, 70], square: [72, 64], rect: [116, 64] };
+    for (const [oid, rows] of Object.entries(layout)) for (const r of rows) {
+      const sz = r[1] === 1 ? [52, 52] : r[1] >= 8 ? [140, 70] : SIZE[r[2]];
+      tables.push({ id: oid + "-" + r[0], outletId: oid, sectionId: r[5], name: r[0], minSeats: Math.max(1, Math.floor(r[1] / 2)), seats: r[1], shape: r[2], x: r[3], y: r[4], w: sz[0], h: sz[1], combinable: [], state: "" });
+    }
+    const combo = (a, b) => { const A = tables.find((t) => t.id === a), B = tables.find((t) => t.id === b); A.combinable.push(b); B.combinable.push(a); };
+    combo("o1-T3", "o1-T4"); combo("o1-T7", "o1-T8"); combo("o2-G5", "o2-G6"); combo("o3-L3", "o3-L4");
+
+    const g = (id) => guests.find((x) => x.id === id);
+    const diners = [];
+    const visit = (daysAgo, outletId, covers, spend) => ({ date: addDays(today, -daysAgo), outletId, covers, spend });
+    const addGuestDiner = (gid, extra) => { const x = g(gid); diners.push(Object.assign({ id: "d-" + gid, guestId: gid, name: x.first + " " + x.last, phone: x.phone, email: x.email, prefs: "", allergies: "", tags: [], visits: [] }, extra)); };
+    addGuestDiner("g1", { prefs: "Terrace table, sparkling water", allergies: "", tags: ["VIP", "Regular"], visits: [visit(2, "o1", 2, 640), visit(1, "o2", 2, 1180)] });
+    addGuestDiner("g3", { prefs: "Quiet corner", allergies: "Shellfish", tags: ["VIP"], visits: [visit(1, "o1", 3, 520)] });
+    addGuestDiner("g8", { prefs: "Booth seating, late dinners", allergies: "", tags: ["VIP", "Anniversary"], visits: [] });
+    addGuestDiner("g10", { prefs: "Vegetarian menu", allergies: "Peanuts", tags: ["Vegetarian"], visits: [visit(1, "o3", 2, 310)] });
+    addGuestDiner("g12", { prefs: "Window seat", allergies: "Gluten", tags: ["VIP", "Gluten-free"], visits: [visit(0, "o1", 2, 210)] });
+    addGuestDiner("g14", { prefs: "Kids' high chair", allergies: "", tags: ["Family"], visits: [] });
+    addGuestDiner("g18", { prefs: "Champagne on arrival", allergies: "Dairy", tags: ["VIP", "Birthday"], visits: [visit(3, "o2", 2, 1420), visit(1, "o3", 2, 380)] });
+    const outside = [
+      ["d-x1", "Leo Marchetti", "1101", "Chef's counter", "", ["Local", "Regular"], [visit(7, "o2", 2, 980), visit(21, "o2", 4, 1750)]],
+      ["d-x2", "Aisha Rahman", "1102", "Non-alcoholic pairing", "Tree nuts", ["Local"], [visit(14, "o1", 4, 600)]],
+      ["d-x3", "Ben Hartley", "1103", "", "", ["Corporate"], []],
+      ["d-x4", "Mira Novak", "1104", "Outdoor seating", "Lactose", ["Influencer"], [visit(30, "o3", 3, 450)]],
+      ["d-x5", "Karim Saleh", "1105", "Medium-rare steaks", "", ["Regular", "Big spender"], [visit(5, "o2", 6, 3200), visit(12, "o2", 2, 1100), visit(40, "o2", 4, 2100)]]
+    ];
+    for (const o of outside) diners.push({ id: o[0], guestId: null, name: o[1], phone: "+971 50 010 " + o[2], email: o[1].toLowerCase().replace(/[^a-z]+/g, ".") + "@example.com", prefs: o[3], allergies: o[4], tags: o[5], visits: o[6] });
+
+    const R = (id, outletId, shiftId, time, dinerId, party, tableId, status, notes, tags) => ({
+      id, outletId, shiftId, date: today, time, dinerId, partySize: party, tableId, status, notes: notes || "", tags: tags || [], createdAt: new Date().toISOString()
+    });
+    const reservations = [
+      R("R-501", "o1", "breakfast", "08:30", "d-g1", 2, "o1-T1", "completed", "", []),
+      R("R-502", "o1", "lunch", "13:00", "d-g10", 2, "o1-T3", "seated", "Vegetarian menu requested", ["Allergy"]),
+      R("R-503", "o1", "lunch", "13:30", "d-x2", 4, "o1-T7", "seated", "", []),
+      R("R-504", "o1", "lunch", "14:00", "d-g12", 2, "o1-T2", "confirmed", "Gluten-free bread", ["Allergy", "VIP"]),
+      R("R-505", "o1", "dinner", "19:00", "d-g14", 4, "o1-T8", "booked", "High chair", ["Family"]),
+      R("R-506", "o1", "dinner", "19:30", "d-x3", 6, "o1-T12", "confirmed", "Client dinner", []),
+      R("R-507", "o1", "dinner", "20:30", "d-g3", 3, "o1-T4", "booked", "Shellfish allergy — flag to kitchen", ["Allergy", "VIP"]),
+      R("R-508", "o2", "dinner", "19:30", "d-g8", 2, "o2-G1", "confirmed", "Anniversary — dessert plate with candle", ["Celebration", "VIP"]),
+      R("R-509", "o2", "dinner", "20:00", "d-x5", 6, "o2-G4", "confirmed", "Usual wine on the table", ["Big spender"]),
+      R("R-510", "o2", "dinner", "20:30", "d-g18", 2, "o2-G2", "booked", "Birthday — champagne on arrival, dairy-free", ["Birthday", "Allergy"]),
+      R("R-511", "o2", "dinner", "21:00", "d-x1", 2, null, "booked", "Chef's counter if free", []),
+      R("R-512", "o3", "evening", "18:00", "d-x4", 3, "o3-L3", "seated", "", []),
+      R("R-513", "o3", "evening", "21:30", "d-g1", 2, "o3-L1", "booked", "", ["VIP"]),
+      R("R-514", "o1", "lunch", "12:45", "d-x2", 2, null, "noshow", "", [])
+    ];
+    const now = Date.now();
+    const waitlist = [
+      { id: "W-1", outletId: "o1", name: "Walk-in — Ortiz", phone: "+971 50 010 1106", partySize: 2, quotedMins: 15, addedAt: new Date(now - 6 * 60000).toISOString(), status: "waiting", notes: "Terrace if possible" },
+      { id: "W-2", outletId: "o1", name: "Walk-in — Duarte", phone: "+971 50 010 1107", partySize: 4, quotedMins: 30, addedAt: new Date(now - 12 * 60000).toISOString(), status: "waiting", notes: "" },
+      { id: "W-3", outletId: "o3", name: "Walk-in — Fischer", phone: "+971 50 010 1108", partySize: 2, quotedMins: 10, addedAt: new Date(now - 3 * 60000).toISOString(), status: "notified", notes: "Bar seats ok" }
+    ];
+    tables.find((t) => t.id === "o1-T5").state = "dirty";
+    tables.find((t) => t.id === "o2-G7").state = "blocked";
+    return { outlets, tables, reservations, waitlist, diners };
+  }
+
+  function seed() {
+    const staff = [
+      { id: "s1", name: "Jude Dabarera", role: "Bell Captain", department: "bell", punchedIn: true },
+      { id: "s2", name: "Maya Chen", role: "Front Office Supervisor", department: "fo", punchedIn: true },
+      { id: "s3", name: "Omar Haddad", role: "Concierge", department: "concierge", punchedIn: true },
+      { id: "s4", name: "Priya Sharma", role: "Housekeeping Supervisor", department: "hk", punchedIn: true },
+      { id: "s5", name: "Luca Rossi", role: "Duty Engineer", department: "eng", punchedIn: true },
+      { id: "s6", name: "Noor Al Mazrouei", role: "F&B Supervisor", department: "fb", punchedIn: false },
+      { id: "s7", name: "Samir Khan", role: "Bell Attendant", department: "bell", punchedIn: true },
+      { id: "s8", name: "Hannah Cole", role: "Receptionist", department: "fo", punchedIn: false }
+    ];
+    const guestRows = [
+      ["g1","1204","CF-884201","Elena","Vasquez","1001","2026-11-12","2026-11-18",1],
+      ["g2","804","CF-884202","Hiroshi","Tanaka","1002","2026-11-14","2026-11-16",0],
+      ["g3","1502","CF-884203","Amira","El-Sayed","1003","2026-11-13","2026-11-20",1],
+      ["g4","612","CF-884204","Thomas","Brennan","1004","2026-11-10","2026-11-15",0],
+      ["g5","918","CF-884205","Ingrid","Solberg","1005","2026-11-14","2026-11-19",0],
+      ["g6","1106","CF-884206","Rajesh","Patel","1006","2026-11-15","2026-11-22",0],
+      ["g7","401","CF-884207","Camille","Dubois","1007","2026-11-11","2026-11-17",0],
+      ["g8","2201","CF-884208","Wei","Lin","1008","2026-11-15","2026-11-18",1],
+      ["g9","707","CF-884209","Marcus","Adeyemi","1009","2026-11-12","2026-11-16",0],
+      ["g10","1408","CF-884210","Sofia","Ricci","1010","2026-11-13","2026-11-17",0],
+      ["g11","305","CF-884211","Daniel","Kowalski","1011","2026-11-09","2026-11-16",0],
+      ["g12","1902","CF-884212","Fatima","Al-Najjar","1012","2026-11-14","2026-11-21",1],
+      ["g13","516","CF-884213","Oliver","Grant","1013","2026-11-15","2026-11-15",0],
+      ["g14","1001","CF-884214","Yuna","Park","1014","2026-11-14","2026-11-18",0],
+      ["g15","812","CF-884215","Alejandro","Ruiz","1015","2026-11-11","2026-11-19",0],
+      ["g16","603","CF-884216","Hannah","Bergstrom","1016","2026-11-13","2026-11-16",0],
+      ["g17","1705","CF-884217","Kenji","Watanabe","1017","2026-11-15","2026-11-20",0],
+      ["g18","210","CF-884218","Lila","Moreau","1018","2026-11-12","2026-11-22",1],
+      ["g19","1303","CF-884219","Samuel","Okoye","1019","2026-11-14","2026-11-17",0],
+      ["g20","909","CF-884220","Natalia","Popov","1020","2026-11-10","2026-11-16",0]
+    ];
+    const guests = guestRows.map((r) => ({
+      id: r[0], room: r[1], confirmation: r[2], first: r[3], last: r[4],
+      phone: "+971 50 010 " + r[5],
+      email: (r[3] + "." + r[4]).toLowerCase().replace(/[^a-z.]/g, "") + "@example.com",
+      start: shiftDate(r[6]), end: shiftDate(r[7]), vip: !!r[8]
+    }));
+
+    const cl = (tplId, doneCount) => TPL_MAP[tplId].checklist.map((text, i) => ({
+      id: "c-" + tplId + "-" + i, text, done: i < (doneCount || 0)
+    }));
+    const T = (o) => ({ notes: "", checklist: null, guestId: null, room: "", ...o });
+    const d = (day, h, m) => dubaiISO(shiftDate("2026-11-" + day), h, m);
+    const tickets = [
+      T({ id: "T-2401", type: "internal", department: "bell", summary: "AM Bell Desk Checklist", assigneeId: "s1", createdById: "s1", status: "in_progress", dueAt: d("15", 6, 0), createdAt: d("15", 5, 42), checklist: cl("bell-am", 6) }),
+      T({ id: "T-2402", type: "internal", department: "fo", summary: "AM Front Desk Checklist", assigneeId: "s2", createdById: "s2", status: "closed", dueAt: d("15", 6, 30), createdAt: d("15", 5, 50), checklist: cl("fo-am", 7) }),
+      T({ id: "T-2403", type: "guest", department: "bell", room: "1204", guestId: "g1", summary: "Collect luggage — 3 pieces, early departure prep", assigneeId: "s7", createdById: "s1", status: "open", dueAt: d("15", 8, 0), createdAt: d("14", 21, 10), checklist: cl("collect", 0), notes: "Guest asked for a 08:00 collection. Tags ready at Bell Desk." }),
+      T({ id: "T-2404", type: "guest", department: "bell", room: "2201", guestId: "g8", summary: "Deliver luggage to suite on arrival", assigneeId: "s1", createdById: "s2", status: "in_progress", dueAt: d("15", 8, 45), createdAt: d("15", 7, 55), checklist: cl("deliver", 2), notes: "VIP arrival. Two trunks plus carry-on. Escort if guest is in lobby." }),
+      T({ id: "T-2405", type: "guest", department: "bell", room: "1502", guestId: "g3", summary: "Buggy request — spa to villa path", assigneeId: "s7", createdById: "s3", status: "open", dueAt: d("15", 9, 15), createdAt: d("15", 8, 40), checklist: cl("buggy", 0) }),
+      T({ id: "T-2406", type: "guest", department: "bell", room: "804", guestId: "g2", summary: "Vehicle request — DXB Terminal 3, 11:00 flight", assigneeId: "s7", createdById: "s3", status: "open", dueAt: d("15", 10, 0), createdAt: d("14", 18, 22), checklist: cl("vehicle", 2), notes: "Sedan. 2 pax. Pickup at porte-cochere 10:00 for 11:00 flight." }),
+      T({ id: "T-2407", type: "guest", department: "hk", room: "918", guestId: "g5", summary: "Extra pillows and a foam pillow", assigneeId: "s4", createdById: "s8", status: "open", dueAt: d("15", 10, 30), createdAt: d("15", 9, 12) }),
+      T({ id: "T-2408", type: "guest", department: "eng", room: "707", guestId: "g9", summary: "Air-conditioning not cooling", assigneeId: "s5", createdById: "s2", status: "in_progress", dueAt: d("15", 11, 0), createdAt: d("15", 9, 48), notes: "Guest reported warm air since last night. Room occupied." }),
+      T({ id: "T-2409", type: "guest", department: "bell", room: "401", guestId: "g7", summary: "Packing assistance", assigneeId: "s1", createdById: "s3", status: "open", dueAt: d("15", 11, 30), createdAt: d("15", 10, 5) }),
+      T({ id: "T-2410", type: "guest", department: "concierge", room: "1408", guestId: "g10", summary: "Confirm lunch reservation at the terrace", assigneeId: "s3", createdById: "s3", status: "open", dueAt: d("15", 12, 0), createdAt: d("15", 9, 30), notes: "Table for 2 at 13:00. Window if possible." }),
+      T({ id: "T-2411", type: "internal", department: "bell", summary: "PM Bell Desk Checklist", assigneeId: "s1", createdById: "s1", status: "open", dueAt: d("15", 14, 0), createdAt: d("15", 6, 5), checklist: cl("bell-pm", 0) }),
+      T({ id: "T-2412", type: "internal", department: "fo", summary: "PM Front Desk Checklist", assigneeId: "s2", createdById: "s2", status: "open", dueAt: d("15", 14, 30), createdAt: d("15", 6, 10), checklist: cl("fo-pm", 0) }),
+      T({ id: "T-2413", type: "guest", department: "bell", room: "516", guestId: "g13", summary: "Collect luggage — day-use departure 15:00", assigneeId: "s7", createdById: "s1", status: "open", dueAt: d("15", 14, 0), createdAt: d("15", 8, 20), checklist: cl("collect", 0) }),
+      T({ id: "T-2414", type: "guest", department: "hk", room: "1902", guestId: "g12", summary: "Deliver welcome amenity and fruit", assigneeId: "s4", createdById: "s3", status: "open", dueAt: d("15", 15, 30), createdAt: d("15", 11, 2) }),
+      T({ id: "T-2415", type: "guest", department: "bell", room: "1106", guestId: "g6", summary: "Vehicle request — Downtown, 16:30", assigneeId: "s7", createdById: "s3", status: "open", dueAt: d("15", 16, 0), createdAt: d("15", 10, 44), checklist: cl("vehicle", 0), notes: "SUV, 3 pax, return expected 21:00." }),
+      T({ id: "T-2416", type: "guest", department: "hk", room: "210", guestId: "g18", summary: "Turndown — extra roses and a handwritten note", assigneeId: "s4", createdById: "s3", status: "open", dueAt: d("15", 17, 0), createdAt: d("15", 11, 40), notes: "Anniversary. Note card at Concierge." }),
+      T({ id: "T-2417", type: "guest", department: "fb", room: "1001", guestId: "g14", summary: "Dinner booking follow-up, 19:30, 4 pax", assigneeId: "s6", createdById: "s3", status: "open", dueAt: d("15", 18, 0), createdAt: d("15", 11, 15) }),
+      T({ id: "T-2418", type: "internal", department: "bell", summary: "Night Bell Desk Checklist", assigneeId: "s1", createdById: "s1", status: "open", dueAt: d("15", 21, 0), createdAt: d("15", 6, 8), checklist: cl("bell-night", 0) }),
+      T({ id: "T-2419", type: "guest", department: "fo", room: "909", guestId: "g20", summary: "Late check-out request until 14:00 tomorrow", assigneeId: "s2", createdById: "s8", status: "open", dueAt: d("15", 22, 0), createdAt: d("15", 11, 55) }),
+      T({ id: "T-2420", type: "internal", department: "eng", room: "305", summary: "Preventive check — noisy minibar", assigneeId: "s5", createdById: "s4", status: "open", dueAt: d("15", 13, 30), createdAt: d("15", 8, 0), notes: "Guest may be out for lunch. Coordinate with Housekeeping." }),
+      T({ id: "T-2388", type: "internal", department: "bell", summary: "AM Bell Desk Checklist", assigneeId: "s1", createdById: "s1", status: "closed", dueAt: d("14", 6, 0), createdAt: d("14", 5, 40), checklist: cl("bell-am", 8) }),
+      T({ id: "T-2390", type: "guest", department: "concierge", room: "612", guestId: "g4", summary: "Desert safari booking confirmation", assigneeId: "s3", createdById: "s3", status: "closed", dueAt: d("14", 15, 0), createdAt: d("13", 11, 0) }),
+      T({ id: "T-2395", type: "guest", department: "hk", room: "812", guestId: "g15", summary: "Crib setup", assigneeId: "s4", createdById: "s2", status: "closed", dueAt: d("14", 16, 0), createdAt: d("14", 9, 20) }),
+      T({ id: "T-2399", type: "guest", department: "fo", room: "603", guestId: "g16", summary: "Print boarding passes", assigneeId: "s8", createdById: "s2", status: "open", dueAt: d("14", 20, 0), createdAt: d("14", 17, 30), notes: "Left open from last night — still needed before morning departure." }),
+      T({ id: "T-2421", type: "guest", department: "bell", room: "1705", guestId: "g17", summary: "Deliver luggage on arrival tomorrow morning", assigneeId: "s7", createdById: "s1", status: "open", dueAt: d("16", 9, 30), createdAt: d("15", 11, 50), checklist: cl("deliver", 0) }),
+      T({ id: "T-2422", type: "guest", department: "concierge", room: "1303", guestId: "g19", summary: "Museum tickets for 16 Nov, 11:00", assigneeId: "s3", createdById: "s3", status: "open", dueAt: d("16", 8, 0), createdAt: d("15", 10, 10) })
+    ];
+
+    const savedFilters = [
+      { id: "sf-my", name: "My open tasks", filters: { status: "open", range: "all", assignee: "CURRENT", overdueOnly: false, type: "", department: "" } },
+      { id: "sf-overdue", name: "Overdue", filters: { status: "open", range: "all", overdueOnly: true, type: "", department: "", assignee: "" } },
+      { id: "sf-bell", name: "Bell Desk", filters: { status: "open", range: "today", department: "bell", type: "", assignee: "", overdueOnly: false } },
+      { id: "sf-guest", name: "Guest requests", filters: { status: "open", range: "today", type: "guest", department: "", assignee: "", overdueOnly: false } },
+      { id: "sf-check", name: "Internal checklists", filters: { status: "all", range: "today", type: "internal", department: "", assignee: "", overdueOnly: false } }
+    ];
+
+    return Object.assign({ schema: 2, staff, guests, tickets, savedFilters }, seedDining(guests));
+  }
+
+  // Second demo tenant with a different property, team, outlets and floor layout (all fictional).
+  function seedHarbor() {
+    const base = seed();
+    const staffNames = [["Ava Mendes","Front Office Manager","fo"],["Rui Costa","Bell Captain","bell"],["Ines Duarte","Concierge","concierge"],["Tom Hale","Housekeeping Lead","hk"],["Marta Lopes","Duty Engineer","eng"],["Joel Pinto","Bar Manager","fb"],["Sara Reis","Bell Attendant","bell"],["Nuno Alves","Receptionist","fo"]];
+    base.staff = base.staff.map((s, i) => Object.assign({}, s, { name: staffNames[i][0], role: staffNames[i][1], department: staffNames[i][2] }));
+    const gn = ["Oscar Lind","Petra Novak","Hugo Brandt","Clara Weiss","Mateo Silva","Freya Holm","Jonas Berg","Lucia Moretti","Emil Strand","Greta Vogel","Felix Aho","Nina Kraus","Arjun Mehta","Tess Murphy","Kai Nakamura","Elsa Lund","Diego Ramos","Maja Kowal","Owen Price","Iris Baker"];
+    base.guests = base.guests.map((g, i) => { const [f, l] = gn[i].split(" "); return Object.assign({}, g, { first: f, last: l, room: "H" + (100 + i * 7), confirmation: "HL-" + (5100 + i), phone: "+971 50 010 12" + String(i).padStart(2, "0"), email: (f + "." + l).toLowerCase() + "@example.com" }); });
+    base.tickets = base.tickets.map((t) => Object.assign({}, t, { id: t.id.replace("T-", "H-"), room: t.room ? "H" + t.room.slice(-3) : "" }));
+    const today = dubaiToday();
+    base.outlets = [
+      { id: "h1", name: "Pier 9 Seafood", kind: "Seafood grill", color: "#2f6f8f", sections: [{ id: "hall", name: "Harbour hall" }, { id: "patio", name: "Patio" }], shifts: [{ id: "lunch", name: "Lunch", start: "12:00", end: "15:00" }, { id: "dinner", name: "Dinner", start: "18:00", end: "22:30" }] },
+      { id: "h2", name: "Lighthouse Bar", kind: "Cocktails", color: "#9a6a2a", sections: [{ id: "bar", name: "Bar" }], shifts: [{ id: "evening", name: "Evening", start: "17:00", end: "00:00" }] }
+    ];
+    const T = (id, o, sec, name, seats, shape, x, y, w, h) => ({ id, outletId: o, sectionId: sec, name, minSeats: Math.max(1, Math.floor(seats / 2)), seats, shape, x, y, w, h, combinable: [], state: "" });
+    base.tables = [
+      T("h1-P1", "h1", "hall", "P1", 4, "rect", 20, 25, 120, 60), T("h1-P2", "h1", "hall", "P2", 4, "rect", 50, 25, 120, 60), T("h1-P3", "h1", "hall", "P3", 10, "rect", 80, 25, 170, 70),
+      T("h1-P4", "h1", "hall", "P4", 2, "round", 20, 70, 64, 64), T("h1-P5", "h1", "hall", "P5", 2, "round", 40, 70, 64, 64), T("h1-P6", "h1", "hall", "P6", 6, "round", 70, 70, 96, 96),
+      T("h1-D1", "h1", "patio", "D1", 4, "square", 25, 50, 72, 72), T("h1-D2", "h1", "patio", "D2", 4, "square", 50, 50, 72, 72), T("h1-D3", "h1", "patio", "D3", 4, "square", 75, 50, 72, 72),
+      T("h2-S1", "h2", "bar", "S1", 2, "round", 20, 40, 56, 56), T("h2-S2", "h2", "bar", "S2", 2, "round", 40, 40, 56, 56), T("h2-S3", "h2", "bar", "S3", 6, "rect", 70, 60, 140, 66)
+    ];
+    base.tables[0].combinable = ["h1-P2"]; base.tables[1].combinable = ["h1-P1"];
+    base.diners = [
+      { id: "hd-1", guestId: "g1", name: "Oscar Lind", phone: "+971 50 010 1200", email: "oscar.lind@example.com", prefs: "Oysters to start", allergies: "", tags: ["Member"], visits: [{ date: addDays(today, -3), outletId: "h1", covers: 2, spend: 820 }] },
+      { id: "hd-2", guestId: null, name: "Wren Calder", phone: "+971 50 010 1250", email: "wren.calder@example.com", prefs: "Patio", allergies: "Shellfish", tags: ["Local"], visits: [] }
+    ];
+    const R = (id, o, sh, time, din, n, t, st) => ({ id, outletId: o, shiftId: sh, date: today, time, dinerId: din, partySize: n, tableId: t, tableIds: t ? [t] : [], status: st, notes: "", tags: [], createdAt: new Date().toISOString() });
+    base.reservations = [R("R-801", "h1", "dinner", "19:00", "hd-1", 2, "h1-P4", "confirmed"), R("R-802", "h1", "dinner", "20:00", "hd-2", 4, "h1-D1", "booked"), R("R-803", "h2", "evening", "18:30", "hd-1", 2, "h2-S1", "seated")];
+    base.waitlist = [];
+    return base;
+  }
+
+  const DINING_COLLECTIONS = ["outlets", "tables", "reservations", "waitlist", "diners"];
+  const COLLECTIONS = ["staff", "guests", "tickets", "savedFilters", "outlets", "tables", "reservations", "waitlist", "diners"];
+  const api = { DEPTS, DEPT_MAP, TEMPLATES, TPL_MAP, COLLECTIONS, DINING_COLLECTIONS, seed, seedHarbor, seedDining, dubaiToday, addDays };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.COS_SHARED = api;
+})(typeof window !== "undefined" ? window : globalThis);
+
+;
+/* Concierge OS v2 — accounts, backend sync, live updates, notifications, install. */
+(function () {
+  const SH = window.COS_SHARED, COLLS = SH.COLLECTIONS;
+  const LS_DATA = "concierge-os-v2-data", LS_ACC = "concierge-os-v2-accounts", LS_TOKEN = "concierge-os-v2-token", LS_PREFS = "concierge-os-v2-prefs", LS_NOTIFIED = "concierge-os-v2-notified";
+  const EXT = window.COS_EXT = { views: {}, mode: "local", account: null, accounts: [], live: "offline", icon: window.COS_EXT_ICON };
+  let core = null, backend = null, snapshot = {}, version = 0;
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const $ = (s) => document.querySelector(s);
+  const prefs = Object.assign({ theme: "light" }, JSON.parse(localStorage.getItem(LS_PREFS) || "{}"));
+  function savePrefs() { localStorage.setItem(LS_PREFS, JSON.stringify(prefs)); }
+
+  // ---------- identifiers ----------
+  function normIdent(raw) {
+    const s = String(raw || "").trim();
+    if (s.includes("@")) return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s) ? { kind: "email", value: s.toLowerCase() } : null;
+    const d = s.replace(/[^\d+]/g, "");
+    if (d.replace(/\D/g, "").length < 7) return null;
+    return { kind: "phone", value: d.startsWith("+") ? d : (d.startsWith("0") ? "+971" + d.slice(1) : "+" + d) };
+  }
+  const pk = (p) => String(p || "").replace(/\D/g, "");
+
+  // ---------- server backend ----------
+  function ServerBackend() {
+    const tok = () => localStorage.getItem(LS_TOKEN);
+    async function call(path, opts) {
+      const r = await fetch(path, Object.assign({ headers: { "Content-Type": "application/json", "X-Client-Tz": Intl.DateTimeFormat().resolvedOptions().timeZone || "", Authorization: "Bearer " + (tok() || "") } }, opts || {}));
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) { const e = new Error(j.error || "Request failed"); e.status = r.status; throw e; }
+      return j;
+    }
+    const post = (p, b) => call(p, { method: "POST", body: JSON.stringify(b || {}) });
+    return {
+      signup: (b) => post("/api/auth/signup", b), verify: (b) => post("/api/auth/verify", b), login: (b) => post("/api/auth/login", b),
+      forgot: (b) => post("/api/auth/forgot", b), reset: (b) => post("/api/auth/reset", b), resend: (b) => post("/api/auth/resend", b),
+      me: () => call("/api/me"), logout: () => post("/api/auth/logout"), state: () => call("/api/state"),
+      sync: (b) => post("/api/sync", b), feedback: (b) => post("/api/feedback", b), setRole: (id, role) => post("/api/accounts/" + id + "/role", { role }), resetDemo: () => post("/api/reset-demo"),
+      listen(onEvent) {
+        let es, pollT;
+        const poll = () => { clearInterval(pollT); pollT = setInterval(() => onEvent({ type: "poll" }), 15000); };
+        try {
+          es = new EventSource("/api/events?token=" + encodeURIComponent(tok()));
+          es.onopen = () => { EXT.live = "live"; clearInterval(pollT); core && core.renderChrome(); };
+          es.onmessage = (m) => { try { onEvent(JSON.parse(m.data)); } catch (e) {} };
+          es.onerror = () => { EXT.live = "reconnecting"; poll(); core && core.renderChrome(); };
+        } catch (e) { EXT.live = "polling"; poll(); }
+      }
+    };
+  }
+
+  // ---------- local (offline / single-file) backend ----------
+  async function sha(s) {
+    if (window.crypto && crypto.subtle) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, "0")).join(""); }
+    let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) | 0; return "w" + h;
+  }
+  function LocalBackend() {
+    const otps = {};
+    let accounts = JSON.parse(localStorage.getItem(LS_ACC) || "null");
+    const saveAcc = () => localStorage.setItem(LS_ACC, JSON.stringify(accounts));
+    const pub = (a) => ({ id: a.id, staffId: a.staffId, name: a.name, email: a.email, phone: a.phone, role: a.role, verified: a.verified });
+    const find = (i) => i && accounts.find((a) => i.kind === "email" ? a.email === i.value : pk(a.phone) === pk(i.value));
+    const fail = (m) => { throw new Error(m); };
+    const otp = (i, purpose) => { const code = String(Math.floor(Math.random() * 1e6)).padStart(6, "0"); otps[i.kind + ":" + i.value] = { code, purpose }; console.log("[OTP]", i.value, code); return code; };
+    const check = (i, code, purpose) => { const o = otps[i.kind + ":" + i.value]; if (!o || o.purpose !== purpose || o.code !== String(code).trim()) fail("Wrong or expired code"); delete otps[i.kind + ":" + i.value]; };
+    function readData() { try { const d = JSON.parse(localStorage.getItem(LS_DATA) || "null"); if (d && d.tickets) return d; } catch (e) {} return null; }
+    async function ensure() {
+      if (!accounts) {
+        accounts = [];
+        for (const [sid, name, email, phone, role] of [["s1", "Jude Dabarera", "admin@aurora.example.com", "+971 50 010 1090", "admin"], ["s2", "Maya Chen", "maya.chen@aurora.example.com", "+971 50 010 1091", "manager"], ["s7", "Samir Khan", "samir.khan@aurora.example.com", "+971 50 010 1092", "staff"]])
+          accounts.push({ id: "a-" + sid, staffId: sid, name, email, phone, role, verified: true, pass: await sha("demo1234") });
+        saveAcc();
+      }
+      if (!readData()) { const s = SH.seed(); const d = {}; for (const c of COLLS) d[c] = s[c] || []; localStorage.setItem(LS_DATA, JSON.stringify(d)); }
+    }
+    const session = (a) => { localStorage.setItem(LS_TOKEN, a.id); return { token: a.id, account: pub(a) }; };
+    return {
+      local: true,
+      async signup(b) {
+        await ensure(); const i = normIdent(b.identifier); if (!i) fail("Enter a valid email or mobile number");
+        if (!b.name || b.name.trim().length < 2) fail("Enter your name"); if (!b.password || b.password.length < 6) fail("Password must be at least 6 characters");
+        let a = find(i); if (a && a.verified) fail("An account already exists — sign in instead");
+        if (!a) {
+          const d = readData(); const staffId = "s-" + Math.random().toString(36).slice(2, 8);
+          d.staff.push({ id: staffId, name: b.name.trim(), role: b.title || "Team member", department: b.department || "fo", punchedIn: false });
+          localStorage.setItem(LS_DATA, JSON.stringify(d));
+          a = { id: "a-" + staffId, staffId, name: b.name.trim(), email: i.kind === "email" ? i.value : "", phone: i.kind === "phone" ? i.value : "", role: "staff", verified: false, pass: await sha(b.password) };
+          accounts.push(a); saveAcc();
+        }
+        return { pending: true, identifier: i.value, channel: i.kind, devCode: otp(i, "verify") };
+      },
+      async resend(b) { const i = normIdent(b.identifier); if (!find(i)) fail("No account found"); return { pending: true, devCode: otp(i, b.purpose === "reset" ? "reset" : "verify") }; },
+      async verify(b) { const i = normIdent(b.identifier), a = find(i); if (!a) fail("No account found"); check(i, b.code, "verify"); a.verified = true; saveAcc(); return session(a); },
+      async login(b) {
+        await ensure(); const i = normIdent(b.identifier), a = find(i);
+        if (!a || a.pass !== await sha(b.password)) fail("Wrong email/mobile or password");
+        if (!a.verified) return { pending: true, identifier: i.value, devCode: otp(i, "verify") };
+        return session(a);
+      },
+      async forgot(b) { await ensure(); const i = normIdent(b.identifier); if (!find(i)) return { pending: true }; return { pending: true, devCode: otp(i, "reset") }; },
+      async reset(b) { const i = normIdent(b.identifier), a = find(i); if (!a) fail("Wrong code"); if (!b.password || b.password.length < 6) fail("Password must be at least 6 characters"); check(i, b.code, "reset"); a.pass = await sha(b.password); a.verified = true; saveAcc(); return session(a); },
+      async me() { await ensure(); const a = accounts.find((x) => x.id === localStorage.getItem(LS_TOKEN)); if (!a) { const e = new Error("Sign in"); e.status = 401; throw e; } return { account: pub(a) }; },
+      async logout() { localStorage.removeItem(LS_TOKEN); return { ok: true }; },
+      async state() { await ensure(); return { version: 1, data: readData(), accounts: accounts.map(pub) }; },
+      async sync(b) {
+        const d = readData();
+        for (const c of COLLS) {
+          for (const r of (b.upserts[c] || [])) { const i = d[c].findIndex((x) => x.id === r.id); if (i === -1) d[c].push(r); else d[c][i] = r; }
+          for (const id of (b.deletes[c] || [])) d[c] = d[c].filter((x) => x.id !== id);
+        }
+        localStorage.setItem(LS_DATA, JSON.stringify(d)); return { version: 1 };
+      },
+      async setRole(id, role) { const a = accounts.find((x) => x.id === id); a.role = role; saveAcc(); return { account: pub(a) }; },
+      async resetDemo() { const s = SH.seed(), d = readData(); for (const c of COLLS) if (c !== "staff") d[c] = s[c] || []; localStorage.setItem(LS_DATA, JSON.stringify(d)); localStorage.removeItem(LS_NOTIFIED); return { ok: true }; },
+      listen() {}
+    };
+  }
+
+  // ---------- sync ----------
+  function takeSnapshot(st) { snapshot = {}; for (const c of COLLS) { snapshot[c] = {}; for (const r of st[c] || []) snapshot[c][r.id] = JSON.stringify(r); } }
+  function applyData(st, data) { for (const c of COLLS) st[c] = data[c] || []; takeSnapshot(st); }
+  let syncing = Promise.resolve();
+  EXT.persist = function (st) {
+    prefs.theme = st.theme; savePrefs();
+    const upserts = {}, deletes = {}; let n = 0;
+    for (const c of COLLS) {
+      const prev = snapshot[c] || {}, seen = new Set();
+      for (const r of st[c] || []) { seen.add(r.id); const j = JSON.stringify(r); if (prev[r.id] !== j) { (upserts[c] = upserts[c] || []).push(r); n++; } }
+      for (const id of Object.keys(prev)) if (!seen.has(id)) { (deletes[c] = deletes[c] || []).push(id); n++; }
+    }
+    if (!n) return;
+    takeSnapshot(st);
+    syncing = syncing.then(() => backend.sync({ upserts, deletes })).then((r) => {
+      if (r && r.version) version = r.version;
+      if (r && r.denied && r.denied.length) { core.toast("Some changes need a manager — reloading"); refresh(); }
+    }).catch((e) => { core.toast(e.status === 401 ? "Session expired — sign in again" : "Couldn't save to server — will retry on next change"); if (e.status === 401) signOut(); else takeSnapshotStale(); });
+  };
+  function takeSnapshotStale() { snapshot = {}; }
+  function applyTenant(s) {
+    if (s.tenant) EXT.tenant = s.tenant;
+    if (s.announcements) EXT.announcements = s.announcements;
+    const t = EXT.tenant; if (!t) return;
+    document.documentElement.style.setProperty("--accent", t.branding.accent);
+    const b = document.querySelector(".brand-text span"); if (b) b.textContent = t.branding.tagline;
+    document.body.dataset.layout = t.branding.layout || "classic";
+    renderAnnouncements();
+  }
+  function renderAnnouncements() {
+    const seen = JSON.parse(localStorage.getItem("cos-ann-dismissed") || "[]");
+    const list = (EXT.announcements || []).filter((a) => !seen.includes(a.id));
+    let el = document.getElementById("announce-bar");
+    if (!el) { el = document.createElement("div"); el.id = "announce-bar"; const m = document.getElementById("main"); if (!m) return; m.parentNode.insertBefore(el, m); }
+    el.innerHTML = list.slice(0, 2).map((a) => "<div class=\"announce\"><b>" + (a.kind === "release" ? "What's new · " : "") + esc(a.title) + "</b> <span>" + esc(a.body) + "</span><button type=\"button\" class=\"icon-btn\" data-ann=\"" + esc(a.id) + "\" aria-label=\"Dismiss\">×</button></div>").join("");
+  }
+  document.addEventListener("click", (e) => { const b = e.target.closest("[data-ann]"); if (!b) return; const seen = JSON.parse(localStorage.getItem("cos-ann-dismissed") || "[]"); seen.push(b.dataset.ann); localStorage.setItem("cos-ann-dismissed", JSON.stringify(seen)); renderAnnouncements(); });
+  EXT.applyTenant = applyTenant;
+  async function refresh() {
+    const s = await backend.state(); version = s.version; EXT.accounts = s.accounts || []; applyTenant(s);
+    const st = core.getState(); applyData(st, s.data); ensureMe(st); core.render();
+  }
+  function ensureMe(st) {
+    const a = EXT.account;
+    if (a && !st.staff.find((x) => x.id === a.staffId)) st.staff.push({ id: a.staffId, name: a.name, role: "Team member", department: "fo", punchedIn: false });
+    st.currentUserId = a ? a.staffId : st.currentUserId;
+  }
+
+  // ---------- notifications ----------
+  function notify(title, body) {
+    core.toast(title + (body ? " — " + body : ""));
+    try { if ("Notification" in window && Notification.permission === "granted") new Notification(title, { body, icon: EXT.icon || "icon-192.png", tag: title + body }); } catch (e) {}
+  }
+  function handleEvents(events) {
+    for (const ev of events || []) {
+      const mine = EXT.account && ev.assigneeId === EXT.account.staffId;
+      if (ev.kind === "ticket-new") notify("New ticket " + ev.id, ev.summary + (ev.by ? " · by " + ev.by : ""));
+      else if (ev.kind === "ticket-overdue") notify("Overdue " + ev.id, ev.summary + (mine ? " · assigned to you" : ""));
+      else if (ev.kind === "ticket-assigned" && mine) notify("Assigned to you: " + ev.id, ev.summary);
+      else if (ev.kind === "reservation-new") notify("New reservation " + ev.id, ev.partySize + " guests at " + ev.time);
+    }
+  }
+  function localOverdueSweep() {
+    const st = core.getState(); const done = JSON.parse(localStorage.getItem(LS_NOTIFIED) || "{}"); const evs = [];
+    for (const t of st.tickets) if (t.status !== "closed" && new Date(t.dueAt) < Date.now() && !done[t.id + "@" + t.dueAt]) { done[t.id + "@" + t.dueAt] = 1; evs.push(t); }
+    localStorage.setItem(LS_NOTIFIED, JSON.stringify(done));
+    if (evs.length > 3) notify(evs.length + " tickets overdue", "Open the dashboard to review");
+    else evs.forEach((t) => notify("Overdue " + t.id, t.summary));
+  }
+
+  // ---------- install ----------
+  let deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredPrompt = e; core && core.renderChrome(); });
+  window.addEventListener("appinstalled", () => { deferredPrompt = null; core && core.toast("Concierge OS installed"); });
+  const standalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  function detectOS() {
+    const ua = navigator.userAgent;
+    if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+    if (/Android/.test(ua)) return "android"; if (/Windows/.test(ua)) return "windows"; if (/Macintosh/.test(ua)) return "mac"; if (/Linux|CrOS/.test(ua)) return "linux"; return "other";
+  }
+  const INSTALL = [
+    ["ios", "iPhone & iPad", "Open the link in <b>Safari</b> → tap <b>Share</b> (square with arrow) → <b>Add to Home Screen</b> → <b>Add</b>. It opens full-screen like a native app."],
+    ["android", "Android", "Open in <b>Chrome</b> → tap <b>Install app</b> (or ⋮ menu → <b>Install app / Add to Home screen</b>). Samsung Internet: menu → <b>Add page to</b> → <b>Home screen</b>."],
+    ["windows", "Windows", "Open in <b>Edge</b> or <b>Chrome</b> → click the <b>install icon</b> at the right of the address bar (or ⋯ → <b>Apps</b> → <b>Install Concierge OS</b>). It appears in the Start menu and taskbar."],
+    ["mac", "Mac", "<b>Chrome/Edge</b>: install icon in the address bar. <b>Safari 17+</b>: <b>File</b> → <b>Add to Dock</b>. It shows in Launchpad and the Dock."],
+    ["linux", "Linux / ChromeOS", "Open in <b>Chrome</b>, <b>Chromium</b> or <b>Edge</b> → install icon in the address bar (or ⋮ → <b>Cast, save and share</b> → <b>Install page as app</b>)."]
+  ];
+  function installHtml() {
+    const os = detectOS();
+    const note = location.protocol === "file:" ? "<p class=\"notice\">You're viewing the offline single file. Installing needs the web link (https) — open the hosted address, then install from there.</p>" : "";
+    return note + "<div class=\"install-list\">" + INSTALL.map(([id, name, how]) => "<div class=\"install-item" + (id === os ? " here" : "") + "\"><strong>" + name + (id === os ? " <span class=\"pill open\">This device</span>" : "") + "</strong><p>" + how + "</p></div>").join("") + "</div>";
+  }
+  async function doInstall() {
+    if (deferredPrompt) { deferredPrompt.prompt(); const r = await deferredPrompt.userChoice.catch(() => ({})); deferredPrompt = null; if (r.outcome === "accepted") return; }
+    core.openModal("Install Concierge OS", installHtml(), "");
+  }
+
+  // ---------- auth screens ----------
+  let authFlow = {};
+  function authScreen(kind, msg) {
+    authFlow.kind = kind;
+    const demo = "<p class=\"auth-demo\">Demo logins (fictional): <b>admin@aurora.example.com</b>, <b>maya.chen@aurora.example.com</b> (manager) or <b>samir.khan@aurora.example.com</b> (staff); second hotel: <b>admin@harbor.example.com</b> — password <b>demo1234</b>. Mobile works too, e.g. <b>+971 50 010 1090</b>.</p>";
+    const err = msg ? "<div class=\"auth-error\">" + esc(msg) + "</div>" : "";
+    const dev = authFlow.devCode ? "<div class=\"auth-dev\">Test mode — no SMS/email provider connected. Your code is <b>" + esc(authFlow.devCode) + "</b></div>" : "";
+    const f = {
+      signin: "<h1>Welcome back</h1><p class=\"lede\">Sign in with your email or mobile number.</p>" + err +
+        "<form id=\"auth-form\" data-kind=\"signin\"><label>Email or mobile<input name=\"identifier\" required autocomplete=\"username\" value=\"" + esc(authFlow.identifier || "") + "\" placeholder=\"name@example.com or +971 50 …\" /></label>" +
+        "<label>Password<input name=\"password\" type=\"password\" required autocomplete=\"current-password\" /></label>" +
+        "<button class=\"btn btn-primary wide\" type=\"submit\">Sign in</button></form>" +
+        "<div class=\"auth-links\"><button type=\"button\" class=\"text-btn\" data-auth=\"signup\">Create an account</button><button type=\"button\" class=\"text-btn\" data-auth=\"forgot\">Forgot password?</button></div>" + demo,
+      signup: "<h1>Create your account</h1><p class=\"lede\">Use an email address <i>or</i> a mobile number. We'll send a one-time code to confirm it.</p>" + err +
+        "<form id=\"auth-form\" data-kind=\"signup\"><label>Full name<input name=\"name\" required autocomplete=\"name\" /></label>" +
+        "<label>Email or mobile<input name=\"identifier\" required autocomplete=\"username\" placeholder=\"you@yourhotel.com or +971 50 …\" /></label>" +
+        "<label>Company code <small>(needed for mobile sign-up)</small><input name=\"companyCode\" placeholder=\"e.g. AURORA\" autocapitalize=\"characters\" /></label>" +
+        "<div class=\"auth-row\"><label>Department<select name=\"department\">" + SH.DEPTS.map((d) => "<option value=\"" + d.id + "\">" + esc(d.name) + "</option>").join("") + "</select></label>" +
+        "<label>Job title<input name=\"title\" placeholder=\"e.g. Bell Attendant\" /></label></div>" +
+        "<label>Password<input name=\"password\" type=\"password\" minlength=\"6\" required autocomplete=\"new-password\" /></label>" +
+        "<button class=\"btn btn-primary wide\" type=\"submit\">Send code</button></form>" +
+        "<div class=\"auth-links\"><button type=\"button\" class=\"text-btn\" data-auth=\"signin\">I already have an account</button></div>",
+      verify: "<h1>Enter your code</h1><p class=\"lede\">We sent a 6-digit code to <b>" + esc(authFlow.identifier) + "</b>.</p>" + dev + err +
+        "<form id=\"auth-form\" data-kind=\"verify\"><label>One-time code<input name=\"code\" inputmode=\"numeric\" autocomplete=\"one-time-code\" maxlength=\"6\" required class=\"otp\" /></label>" +
+        "<button class=\"btn btn-primary wide\" type=\"submit\">Verify &amp; continue</button></form>" +
+        "<div class=\"auth-links\"><button type=\"button\" class=\"text-btn\" data-auth=\"resend\">Resend code</button><button type=\"button\" class=\"text-btn\" data-auth=\"signin\">Back</button></div>",
+      forgot: "<h1>Reset password</h1><p class=\"lede\">Enter the email or mobile on your account and we'll send a code.</p>" + err +
+        "<form id=\"auth-form\" data-kind=\"forgot\"><label>Email or mobile<input name=\"identifier\" required value=\"" + esc(authFlow.identifier || "") + "\" /></label>" +
+        "<button class=\"btn btn-primary wide\" type=\"submit\">Send code</button></form><div class=\"auth-links\"><button type=\"button\" class=\"text-btn\" data-auth=\"signin\">Back to sign in</button></div>",
+      reset: "<h1>Choose a new password</h1><p class=\"lede\">Code sent to <b>" + esc(authFlow.identifier) + "</b> (if an account exists).</p>" + dev + err +
+        "<form id=\"auth-form\" data-kind=\"reset\"><label>One-time code<input name=\"code\" inputmode=\"numeric\" autocomplete=\"one-time-code\" maxlength=\"6\" required class=\"otp\" /></label>" +
+        "<label>New password<input name=\"password\" type=\"password\" minlength=\"6\" required autocomplete=\"new-password\" /></label>" +
+        "<button class=\"btn btn-primary wide\" type=\"submit\">Reset &amp; sign in</button></form><div class=\"auth-links\"><button type=\"button\" class=\"text-btn\" data-auth=\"resend-reset\">Resend code</button><button type=\"button\" class=\"text-btn\" data-auth=\"signin\">Back</button></div>"
+    }[kind];
+    let root = $("#auth-root");
+    if (!root) { root = document.createElement("div"); root.id = "auth-root"; document.body.appendChild(root); }
+    root.hidden = false; document.body.classList.add("auth-open");
+    root.innerHTML = "<div class=\"auth-wrap\"><div class=\"auth-brand\"><img src=\"" + (EXT.icon || "favicon.svg") + "\" width=\"40\" height=\"40\" alt=\"\" /><div><strong>Concierge OS</strong><span>Hotel operations &amp; dining" + (backend && backend.local ? " · offline demo" : "") + "</span></div></div>" +
+      "<div class=\"auth-card\">" + f + "</div><p class=\"auth-foot\">Works in any browser · <button type=\"button\" class=\"text-btn\" data-auth=\"install\">Install the app</button></p></div>";
+    const first = root.querySelector("input"); if (first) setTimeout(() => first.focus(), 30);
+  }
+  let resolveLogin = null;
+  document.addEventListener("click", async (e) => {
+    const b = e.target.closest("[data-auth]"); if (!b) return;
+    const k = b.dataset.auth;
+    if (k === "install") return doInstall();
+    if (k === "resend" || k === "resend-reset") {
+      try { const r = await backend.resend({ identifier: authFlow.identifier, purpose: k === "resend" ? "verify" : "reset" }); authFlow.devCode = r.devCode; authScreen(authFlow.kind, null); core.toast("New code sent"); } catch (err) { authScreen(authFlow.kind, err.message); }
+      return;
+    }
+    authFlow.devCode = null; authScreen(k);
+  });
+  document.addEventListener("submit", async (e) => {
+    if (e.target.getAttribute("id") === "feedback-form") {
+      e.preventDefault(); const fd = Object.fromEntries(new FormData(e.target));
+      try { await backend.feedback(fd); e.target.reset(); core.toast("Thanks — sent to the developer"); } catch (err) { core.toast(err.message); }
+      return;
+    }
+    if (e.target.id !== "auth-form") return;
+    e.preventDefault();
+    const fd = Object.fromEntries(new FormData(e.target)); const kind = e.target.dataset.kind;
+    const btn = e.target.querySelector("button[type=submit]"); btn.disabled = true;
+    try {
+      let r;
+      if (kind === "signin") { authFlow.identifier = fd.identifier; r = await backend.login(fd); }
+      else if (kind === "signup") { authFlow.identifier = fd.identifier; r = await backend.signup(fd); }
+      else if (kind === "verify") r = await backend.verify({ identifier: authFlow.identifier, code: fd.code });
+      else if (kind === "forgot") { authFlow.identifier = fd.identifier; r = await backend.forgot(fd); authFlow.devCode = r.devCode; return authScreen("reset"); }
+      else if (kind === "reset") r = await backend.reset({ identifier: authFlow.identifier, code: fd.code, password: fd.password });
+      if (r.pending) { authFlow.devCode = r.devCode; if (r.identifier) authFlow.identifier = r.identifier; return authScreen("verify"); }
+      localStorage.setItem(LS_TOKEN, r.token); EXT.account = r.account; authFlow = {};
+      $("#auth-root").hidden = true; document.body.classList.remove("auth-open");
+      if (resolveLogin) resolveLogin();
+    } catch (err) { authScreen(kind, err.message); }
+  });
+  function waitForLogin() { return new Promise((res) => { resolveLogin = res; authScreen("signin"); }); }
+  async function signOut() { try { await backend.logout(); } catch (e) {} localStorage.removeItem(LS_TOKEN); location.reload(); }
+
+  // ---------- error reporting ----------
+  let errCount = 0;
+  function report(message, stack) {
+    if (EXT.mode !== "server" || ++errCount > 20) return;
+    fetch("/api/errors", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + (localStorage.getItem(LS_TOKEN) || "") }, body: JSON.stringify({ app: "hotel", message, stack, url: location.pathname + location.search }) }).catch(() => {});
+  }
+  window.addEventListener("error", (e) => report(e.message, e.error && e.error.stack));
+  window.addEventListener("unhandledrejection", (e) => report("Unhandled: " + (e.reason && e.reason.message || e.reason), e.reason && e.reason.stack));
+
+  // ---------- boot ----------
+  EXT.boot = async function (c) {
+    core = c; EXT.core = c;
+    if (location.protocol.startsWith("http") && !window.COS_FORCE_LOCAL) {
+      try { const r = await fetch("/api/health", { cache: "no-store" }); const j = await r.json(); if (j.mode === "server") EXT.mode = "server"; } catch (e) {}
+    }
+    backend = EXT.mode === "server" ? ServerBackend() : LocalBackend();
+    try { EXT.account = (await backend.me()).account; } catch (e) { await waitForLogin(); }
+    const s = await backend.state(); version = s.version; EXT.accounts = s.accounts || [];
+    const st = { schema: 2, theme: prefs.theme, savedFilters: [] }; setTimeout(() => applyTenant(s), 0);
+    applyData(st, s.data); ensureMe(st);
+    if (EXT.mode === "server") {
+      EXT.live = "connecting";
+      backend.listen(async (ev) => {
+        if (ev.type === "notify") return handleEvents(ev.events);
+        if (ev.type === "announcement") { EXT.announcements = [ev.announcement].concat(EXT.announcements || []); renderAnnouncements(); return notify(ev.announcement.title, ev.announcement.body); }
+        if (ev.type === "hello" && ev.version === version) return;
+        if (ev.type === "changed" && ev.by === EXT.account.id) { version = Math.max(version, ev.version); return; }
+        if (ev.type === "changed") handleEvents(ev.events);
+        await refresh();
+      });
+    } else { EXT.live = "offline"; setInterval(localOverdueSweep, 60000); setTimeout(localOverdueSweep, 4000); }
+    return st;
+  };
+
+  // ---------- UI hooks ----------
+  const role = () => (EXT.account && EXT.account.role) || "staff";
+  EXT.can = (what) => ({ manage: role() !== "staff", admin: role() === "admin" })[what];
+  EXT.chrome = function () {
+    const sel = $("#user-select"); if (sel) sel.closest("label").hidden = true;
+    const ab = $("#account-btn");
+    if (ab && EXT.account) ab.innerHTML = "<span class=\"acct-avatar\">" + esc(EXT.account.name.split(" ").map((w) => w[0]).slice(0, 2).join("")) + "</span><span class=\"acct-meta\"><b>" + esc(EXT.account.name.split(" ")[0]) + "</b><small>" + esc(role()) + "</small></span>";
+    const ib = $("#install-btn"); if (ib) ib.hidden = standalone();
+    const ls = $("#live-status"); if (ls) { ls.className = "live-dot " + EXT.live; ls.title = EXT.mode === "server" ? "Sync: " + EXT.live : "Offline demo — data stays in this browser"; }
+  };
+  EXT.tenantLabel = () => EXT.tenant ? EXT.tenant.name + ", " + EXT.tenant.city : "Aurora House, Dubai";
+  EXT.modeLabel = () => EXT.mode === "server" ? "live across all devices" : "offline demo on this device";
+  EXT.onClick = function (a, el) {
+    if (a === "install") { doInstall(); return true; }
+    if (a === "open-dining") { window.open(location.protocol === "file:" ? "Concierge-Dining.html" : "/dining/", "concierge-dining"); return true; }
+    if (a === "switch-user") { core.toast("Sign out and sign in as another account to switch user"); return true; }
+    if (a === "sign-out") { signOut(); return true; }
+    if (a === "enable-notifs") {
+      if (!("Notification" in window)) { core.toast("This browser doesn't support notifications"); return true; }
+      Notification.requestPermission().then((p) => { core.toast(p === "granted" ? "Notifications on" : "Notifications blocked in browser settings"); core.render(); });
+      return true;
+    }
+    if (a === "test-notif") { notify("Test notification", "Alerts are working on this device"); return true; }
+    if (a === "reset-demo") {
+      if (!EXT.can("admin")) { core.toast("Only admins can reset demo data"); return true; }
+      if (!confirm("Reset all tickets, guests and dining data back to the sample data for everyone?")) return true;
+      backend.resetDemo().then(refresh).then(() => core.toast("Demo data restored"));
+      return true;
+    }
+    return false;
+  };
+  EXT.onChange = function (e) {
+    if (e.target.matches("[data-role-for]")) {
+      backend.setRole(e.target.dataset.roleFor, e.target.value).then(() => { core.toast("Role updated"); return refresh(); }).catch((err) => { core.toast(err.message); refresh(); });
+      return true;
+    }
+    return false;
+  };
+  EXT.views.account = function () {
+    const a = EXT.account, perm = "Notification" in window ? Notification.permission : "unsupported";
+    const accs = EXT.mode === "server" ? EXT.accounts : JSON.parse(localStorage.getItem(LS_ACC) || "[]");
+    $("#view-account").innerHTML =
+      "<div class=\"view-head\"><div><h1>Account &amp; app</h1><p class=\"lede\">" + esc(a.name) + " · " + esc(a.email || a.phone) + " · <span class=\"pill open\">" + esc(role()) + "</span></p></div>" +
+      "<button type=\"button\" class=\"btn\" data-action=\"sign-out\">Sign out</button></div>" +
+      "<div class=\"dash-grid\">" +
+        "<div class=\"panel\"><h2>Connection</h2><p>" + (EXT.mode === "server" ? "Connected to the Concierge OS server. Changes sync to every signed-in device in real time (<b>" + esc(EXT.live) + "</b>)." : "Offline demo mode — everything is saved only in this browser. Run the server version to share data between devices.") + "</p></div>" +
+        "<div class=\"panel\"><h2>Notifications</h2><p class=\"muted\" style=\"margin-bottom:10px\">Alerts for new tickets, tickets assigned to you, overdue tickets and new reservations. Status: <b>" + esc(perm) + "</b></p>" +
+          "<button type=\"button\" class=\"btn btn-primary\" data-action=\"enable-notifs\">Enable notifications</button> <button type=\"button\" class=\"btn\" data-action=\"test-notif\">Send test</button></div>" +
+        "<div class=\"panel\" style=\"grid-column:1/-1\"><h2>Install on any device</h2><p style=\"margin-bottom:10px\"><button type=\"button\" class=\"btn btn-primary\" data-action=\"install\">Install Concierge OS</button></p>" + installHtml() + "</div>" +
+        (EXT.mode === "server" ? "<div class=\"panel\" style=\"grid-column:1/-1\"><h2>Report an issue or idea</h2><form id=\"feedback-form\" class=\"form-grid\"><div class=\"field\"><label>Type</label><select name=\"kind\"><option value=\"bug\">Problem / bug</option><option value=\"idea\">Idea</option><option value=\"question\">Question</option></select></div><div class=\"field\"><label>Where</label><input name=\"page\" placeholder=\"e.g. Tickets\" /></div><div class=\"field span-2\"><label>Details</label><textarea name=\"message\" required placeholder=\"What happened? What did you expect?\"></textarea></div><div><button class=\"btn btn-primary\" type=\"submit\">Send to developer</button></div></form></div>" : "") +
+        (EXT.can("admin") ? "<div class=\"panel\" style=\"grid-column:1/-1\"><h2>Accounts &amp; roles</h2><table class=\"data-table\"><thead><tr><th>Name</th><th>Email / mobile</th><th>Verified</th><th>Role</th></tr></thead><tbody>" +
+          accs.map((x) => "<tr><td>" + esc(x.name) + "</td><td>" + esc([x.email, x.phone].filter(Boolean).join(" · ")) + "</td><td>" + (x.verified ? "Yes" : "Pending") + "</td><td><select data-role-for=\"" + esc(x.id) + "\"" + (EXT.mode !== "server" && false ? " disabled" : "") + ">" + ["admin", "manager", "staff"].map((r) => "<option" + (r === x.role ? " selected" : "") + ">" + r + "</option>").join("") + "</select></td></tr>").join("") +
+          "</tbody></table><p class=\"muted\" style=\"margin-top:8px\">Admin: everything incl. roles and demo reset. Manager: delete records, edit outlets/staff. Staff: create and update tickets, reservations and waitlist.</p></div>" : "") +
+      "</div>";
+  };
+})();
+
+;
+/* Concierge OS v2 — Dining: outlets, shifts, reservations, live floor plan, waitlist, diner profiles. */
+(function () {
+  const EXT = window.COS_EXT, SH = window.COS_SHARED;
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const $ = (s) => document.querySelector(s);
+  const ACTIVE = ["booked", "confirmed", "seated"];
+  const STATUS_LABEL = { booked: "Booked", confirmed: "Confirmed", seated: "Seated", completed: "Completed", cancelled: "Cancelled", noshow: "No-show" };
+  const d = { tab: "floor", outlet: "o1", date: null, shift: "all", q: "", section: "" };
+  const tids = (r) => r.tableIds && r.tableIds.length ? r.tableIds : (r.tableId ? [r.tableId] : []);
+  const tnames = (r) => tids(r).map((id) => (tbl(id) || { name: "?" }).name).join("+");
+  let core, st;
+  const nowHM = () => new Date(Date.now() + 4 * 3600e3).toISOString().slice(11, 16);
+  const toMin = (hm) => { const [h, m] = hm.split(":").map(Number); return h * 60 + m; };
+  const outlet = (id) => st.outlets.find((o) => o.id === id) || st.outlets[0];
+  const diner = (id) => st.diners.find((x) => x.id === id);
+  const tbl = (id) => st.tables.find((t) => t.id === id);
+  const resFor = (oid, date) => st.reservations.filter((r) => r.outletId === oid && r.date === date);
+  function nextId(prefix, list) { let m = 500; for (const r of list) { const n = parseInt(String(r.id).replace(/\D/g, ""), 10); if (n > m) m = n; } return prefix + (m + 1); }
+  function save() { core.persist(); core.render(); }
+  function inShift(r) { return d.shift === "all" || r.shiftId === d.shift; }
+  function shiftFor(o, time) { const t = toMin(time); const s = o.shifts.find((s) => { const a = toMin(s.start), b = toMin(s.end) < a ? toMin(s.end) + 1440 : toMin(s.end); return (t >= a && t < b) || (t + 1440 >= a && t + 1440 < b); }); return (s || o.shifts[0]).id; }
+
+  function tableStatus(t) {
+    const rs = st.reservations.filter((r) => tids(r).includes(t.id) && r.date === d.date);
+    const seated = rs.find((r) => r.status === "seated");
+    if (seated) return { s: "seated", r: seated };
+    if (t.state === "dirty") return { s: "dirty" };
+    if (t.state === "blocked") return { s: "blocked" };
+    const up = rs.filter((r) => r.status === "booked" || r.status === "confirmed").sort((a, b) => a.time.localeCompare(b.time))[0];
+    if (up) return { s: "reserved", r: up };
+    return { s: "available" };
+  }
+  function covers(date, oid) {
+    const rs = st.reservations.filter((r) => r.date === date && (!oid || r.outletId === oid));
+    const sum = (f) => rs.filter(f).reduce((n, r) => n + Number(r.partySize || 0), 0);
+    return { booked: sum((r) => r.status !== "cancelled" && r.status !== "noshow"), seated: sum((r) => r.status === "seated"), done: sum((r) => r.status === "completed"), upcoming: sum((r) => r.status === "booked" || r.status === "confirmed"), noshow: sum((r) => r.status === "noshow"), count: rs.filter((r) => r.status !== "cancelled").length };
+  }
+
+  // ---------- render ----------
+  EXT.views.dining = function (c) {
+    core = c; st = c.getState(); if (!d.date) d.date = SH.dubaiToday();
+    const o = outlet(d.outlet); d.outlet = o.id;
+    const cv = covers(d.date, o.id);
+    const wl = st.waitlist.filter((w) => w.outletId === o.id && (w.status === "waiting" || w.status === "notified"));
+    const head =
+      "<div class=\"view-head\"><div><h1>Dining</h1><p class=\"lede\">Reservations, floor and waitlist · " + esc(o.name) + " · " + esc(o.kind) + "</p></div>" +
+      "<div class=\"create-cluster\"><button type=\"button\" class=\"btn btn-primary\" data-action=\"res-new\">+ Reservation</button><button type=\"button\" class=\"btn\" data-action=\"wl-new\">+ Waitlist</button></div></div>" +
+      "<div class=\"toolbar dine-bar\"><div class=\"seg\">" + st.outlets.map((x) => "<button type=\"button\" class=\"" + (x.id === o.id ? "active" : "") + "\" data-action=\"dine-outlet\" data-id=\"" + x.id + "\">" + esc(x.name) + "</button>").join("") + "</div>" +
+      "<input type=\"date\" id=\"dine-date\" value=\"" + d.date + "\" />" +
+      "<div class=\"seg\"><button type=\"button\" class=\"" + (d.shift === "all" ? "active" : "") + "\" data-action=\"dine-shift\" data-id=\"all\">All shifts</button>" + o.shifts.map((s) => "<button type=\"button\" class=\"" + (d.shift === s.id ? "active" : "") + "\" data-action=\"dine-shift\" data-id=\"" + s.id + "\">" + esc(s.name) + " <small>" + s.start + "–" + s.end + "</small></button>").join("") + "</div></div>" +
+      "<div class=\"stat-grid\">" +
+        "<div class=\"stat-card\"><div class=\"label\">Covers booked</div><div class=\"num\">" + cv.booked + "</div><div class=\"muted\">" + cv.count + " parties</div></div>" +
+        "<div class=\"stat-card open\"><div class=\"label\">Seated now</div><div class=\"num\">" + cv.seated + "</div><div class=\"muted\">" + cv.done + " covers completed</div></div>" +
+        "<div class=\"stat-card\"><div class=\"label\">Still to arrive</div><div class=\"num\">" + cv.upcoming + "</div><div class=\"muted\">" + cv.noshow + " no-show covers</div></div>" +
+        "<button type=\"button\" class=\"stat-card overdue\" data-action=\"dine-tab\" data-id=\"waitlist\"><div class=\"label\">Waitlist</div><div class=\"num\">" + wl.length + "</div><div class=\"muted\">" + wl.reduce((n, w) => n + w.partySize, 0) + " covers waiting</div></button></div>" +
+      "<div class=\"tabs\">" + [["floor", "Floor & bookings"], ["waitlist", "Waitlist"], ["profiles", "Guest profiles"]].map(([id, n]) => "<button type=\"button\" class=\"" + (d.tab === id ? "active" : "") + "\" data-action=\"dine-tab\" data-id=\"" + id + "\">" + n + "</button>").join("") + "</div>";
+    let body = "";
+    if (d.tab === "floor") body = renderFloor(o);
+    if (d.tab === "waitlist") body = renderWaitlist(o, wl);
+    if (d.tab === "profiles") body = renderProfiles();
+    $("#view-dining").innerHTML = head + body;
+  };
+
+  function resRow(r) {
+    const g = diner(r.dinerId) || { name: r.name || "Walk-in", tags: [], allergies: "" };
+    const t = tids(r).length ? { name: tnames(r) } : null;
+    const act = r.status === "booked" || r.status === "confirmed"
+      ? "<button type=\"button\" class=\"btn btn-sm btn-primary\" data-action=\"res-seat\" data-id=\"" + r.id + "\">Seat</button>"
+      : r.status === "seated" ? "<button type=\"button\" class=\"btn btn-sm\" data-action=\"res-complete\" data-id=\"" + r.id + "\">Complete</button>" : "";
+    return "<div class=\"res-row s-" + r.status + "\"><div class=\"res-time\">" + esc(r.time) + "</div>" +
+      "<div class=\"res-main\" data-action=\"res-edit\" data-id=\"" + r.id + "\"><div><strong>" + esc(g.name) + "</strong> · " + r.partySize + " pax" + (t ? " · " + esc(t.name) : " · <i>no table</i>") + "</div>" +
+      "<div class=\"muted\">" + [...new Set([...(r.tags || []), ...(g.tags || [])])].slice(0, 4).map((x) => "<span class=\"tag\">" + esc(x) + "</span>").join(" ") + (g.allergies ? " <span class=\"tag allergy\">⚠ " + esc(g.allergies) + "</span>" : "") + (r.notes ? " " + esc(r.notes) : "") + "</div></div>" +
+      "<div class=\"res-actions\"><span class=\"pill res-" + r.status + "\">" + STATUS_LABEL[r.status] + "</span>" + act + "</div></div>";
+  }
+  function renderFloor(o) {
+    const list = resFor(o.id, d.date).filter(inShift).sort((a, b) => a.time.localeCompare(b.time));
+    const secs = o.sections || [];
+    if (secs.length && !secs.find((x) => x.id === d.section)) d.section = secs[0].id;
+    const tables = st.tables.filter((t) => t.outletId === o.id && (!secs.length || t.sectionId === d.section));
+    const secBar = secs.length > 1 ? "<div class=\"seg\" style=\"margin-bottom:10px\">" + secs.map((x) => "<button type=\"button\" class=\"" + (x.id === d.section ? "active" : "") + "\" data-action=\"dine-section\" data-id=\"" + x.id + "\">" + esc(x.name) + "</button>").join("") + "</div>" : "";
+    const counts = {};
+    const tablesHtml = tables.map((t) => {
+      const ts = tableStatus(t); counts[ts.s] = (counts[ts.s] || 0) + 1;
+      const who = ts.r ? (diner(ts.r.dinerId) || { name: ts.r.name || "Walk-in" }).name.split(" ").slice(-1)[0] : "";
+      return "<button type=\"button\" class=\"ftable " + t.shape + " st-" + ts.s + " seats-" + Math.min(t.seats, 8) + "\" style=\"left:" + t.x + "%;top:" + t.y + "%" + (t.w ? ";width:" + t.w + "px;height:" + t.h + "px" : "") + "\" data-action=\"table-open\" data-id=\"" + t.id + "\" title=\"" + esc(t.name + " · " + t.seats + " seats · " + ts.s) + "\">" +
+        "<b>" + esc(t.name) + "</b><small>" + (ts.r ? esc(who) + " · " + (ts.s === "reserved" ? ts.r.time : ts.r.partySize + "p") : t.seats + " seats") + "</small></button>";
+    }).join("");
+    const legend = ["available", "reserved", "seated", "dirty", "blocked"].map((s) => "<span class=\"lg st-" + s + "\"><i></i>" + s[0].toUpperCase() + s.slice(1) + " " + (counts[s] || 0) + "</span>").join("");
+    return "<div class=\"dine-grid\"><div class=\"panel res-list\"><h2>Reservations <span class=\"muted\">" + list.length + "</span></h2>" +
+      (list.length ? list.map(resRow).join("") : "<p class=\"empty\">No reservations for this shift.</p>") + "</div>" +
+      "<div class=\"panel\"><h2>Live floor plan</h2>" + secBar + "<div class=\"floor-scroll\"><div class=\"floor\">" + tablesHtml + "</div></div><div class=\"legend\">" + legend + "</div><p class=\"muted\" style=\"margin-top:6px\">Tap a table to seat a walk-in, finish a table or mark it clean.</p></div></div>";
+  }
+  function mins(iso) { return Math.max(0, Math.round((Date.now() - new Date(iso)) / 60000)); }
+  function renderWaitlist(o, wl) {
+    return "<div class=\"panel\"><h2>Waitlist · " + esc(o.name) + "</h2>" + (wl.length ? wl.sort((a, b) => new Date(a.addedAt) - new Date(b.addedAt)).map((w) => {
+      const m = mins(w.addedAt), late = m > w.quotedMins;
+      return "<div class=\"res-row\"><div class=\"res-time" + (late ? " late" : "") + "\">" + m + "m<small>/" + w.quotedMins + "m</small></div><div class=\"res-main\"><strong>" + esc(w.name) + "</strong> · " + w.partySize + " pax<div class=\"muted\">" + esc(w.phone) + (w.notes ? " · " + esc(w.notes) : "") + "</div></div>" +
+        "<div class=\"res-actions\"><span class=\"pill " + (w.status === "notified" ? "in_progress" : "open") + "\">" + (w.status === "notified" ? "Notified" : "Waiting") + "</span>" +
+        (w.status === "waiting" ? "<button type=\"button\" class=\"btn btn-sm\" data-action=\"wl-notify\" data-id=\"" + w.id + "\">Table ready</button>" : "") +
+        "<button type=\"button\" class=\"btn btn-sm btn-primary\" data-action=\"wl-seat\" data-id=\"" + w.id + "\">Seat</button><button type=\"button\" class=\"btn btn-sm btn-ghost\" data-action=\"wl-remove\" data-id=\"" + w.id + "\">Remove</button></div></div>";
+    }).join("") : "<p class=\"empty\">Nobody waiting.</p>") + "</div>";
+  }
+  function dinerStats(x) {
+    const v = x.visits || [], spend = v.reduce((s, y) => s + Number(y.spend || 0), 0);
+    const L = (EXT.tenant && EXT.tenant.loyalty) || { name: "Points", pointsPerAED: 1, welcomeBonus: 0, tiers: [{ name: "Member", min: 0 }] };
+    const points = Math.round(L.welcomeBonus + spend * L.pointsPerAED);
+    const tier = L.tiers.filter((t) => points >= t.min).slice(-1)[0] || L.tiers[0];
+    return { n: v.length, spend, last: v.map((y) => y.date).sort().slice(-1)[0], points, tier: tier.name, program: L.name };
+  }
+  function renderProfiles() {
+    const q = d.q.toLowerCase();
+    const list = st.diners.filter((x) => !q || [x.name, x.phone, x.email, (x.tags || []).join(" "), x.allergies, x.prefs].join(" ").toLowerCase().includes(q));
+    return "<div class=\"panel\"><div class=\"view-head\" style=\"margin-bottom:10px\"><h2>Guest dining profiles</h2><div style=\"display:flex;gap:8px\"><input type=\"search\" id=\"diner-search\" placeholder=\"Search name, tag, allergy…\" value=\"" + esc(d.q) + "\" /><button type=\"button\" class=\"btn\" data-action=\"diner-new\">+ Profile</button></div></div>" +
+      "<table class=\"data-table\"><thead><tr><th>Guest</th><th>Tags</th><th>Allergies</th><th>Visits</th><th>Spend (AED)</th><th>Loyalty</th><th>Last visit</th></tr></thead><tbody>" +
+      list.map((x) => { const s = dinerStats(x); const g = x.guestId && st.guests.find((y) => y.id === x.guestId);
+        return "<tr data-action=\"diner-open\" data-id=\"" + x.id + "\" class=\"click\"><td><strong>" + esc(x.name) + "</strong><div class=\"muted\">" + (g ? "In-house · Room " + esc(g.room) : "Outside guest") + "</div></td><td>" + (x.tags || []).map((t) => "<span class=\"tag\">" + esc(t) + "</span>").join(" ") + "</td><td>" + (x.allergies ? "<span class=\"tag allergy\">" + esc(x.allergies) + "</span>" : "—") + "</td><td>" + s.n + "</td><td>" + s.spend.toLocaleString() + "</td><td>" + s.points.toLocaleString() + " pts · " + esc(s.tier) + "</td><td>" + (s.last ? esc(s.last) : "—") + "</td></tr>"; }).join("") +
+      "</tbody></table></div>";
+  }
+
+  // ---------- dashboard ----------
+  EXT.afterDashboard = function (el, c) {
+    core = c; st = c.getState(); const today = SH.dubaiToday(); const all = covers(today);
+    const max = Math.max(1, ...st.outlets.map((o) => covers(today, o.id).booked));
+    const wl = st.waitlist.filter((w) => w.status === "waiting" || w.status === "notified").length;
+    const html = "<div class=\"panel\" style=\"grid-column:1/-1\"><div class=\"view-head\" style=\"margin-bottom:8px\"><h2 style=\"margin:0\">Dining covers today</h2><button type=\"button\" class=\"btn btn-sm\" data-action=\"open-dining\">Open dining app ↗</button></div>" +
+      "<div class=\"cover-sum\"><div><b>" + all.booked + "</b><span>booked</span></div><div><b>" + all.seated + "</b><span>seated now</span></div><div><b>" + all.upcoming + "</b><span>to arrive</span></div><div><b>" + wl + "</b><span>parties waiting</span></div></div>" +
+      st.outlets.map((o) => { const cv = covers(today, o.id); return "<button type=\"button\" class=\"dept-row\" data-action=\"open-dining\" style=\"width:100%;border:0;background:transparent;padding:0;margin-bottom:8px\"><span>" + esc(o.name) + "</span><span class=\"bar\"><span style=\"width:" + (cv.booked / max * 100) + "%;background:" + o.color + "\"></span></span><span>" + cv.booked + "</span></button>"; }).join("") + "</div>";
+    const grid = el.querySelector(".dash-grid"); if (grid) grid.insertAdjacentHTML("afterbegin", html);
+  };
+
+  // ---------- modals ----------
+  function resModal(r) {
+    const o = outlet(r ? r.outletId : d.outlet);
+    const time = r ? r.time : (d.date === SH.dubaiToday() ? (() => { const m = Math.ceil((toMin(nowHM()) + 30) / 15) * 15; return String(Math.floor(m / 60) % 24).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); })() : "19:30");
+    const opt = (v, l, sel) => "<option value=\"" + esc(v) + "\"" + (sel ? " selected" : "") + ">" + esc(l) + "</option>";
+    const body = "<form id=\"res-form\"><input type=\"hidden\" name=\"id\" value=\"" + (r ? r.id : "") + "\" /><div class=\"form-grid\">" +
+      "<div class=\"field span-2\"><label>Guest profile</label><select name=\"dinerId\" id=\"res-diner\">" + opt("", "＋ New guest…", !r) + st.diners.map((x) => opt(x.id, x.name + (x.tags && x.tags.length ? " · " + x.tags.join(", ") : ""), r && r.dinerId === x.id)).join("") + "</select></div>" +
+      "<div class=\"field new-diner\"" + (r ? " hidden" : "") + "><label>New guest name</label><input name=\"newName\" placeholder=\"Full name\" /></div>" +
+      "<div class=\"field new-diner\"" + (r ? " hidden" : "") + "><label>Mobile</label><input name=\"newPhone\" placeholder=\"+971 50 010 …\" /></div>" +
+      "<div class=\"field span-2 new-diner\"" + (r ? " hidden" : "") + "><label>Or link an in-house guest</label><select name=\"guestId\">" + opt("", "Not staying with us", true) + st.guests.map((g) => opt(g.id, g.room + " — " + g.first + " " + g.last, false)).join("") + "</select></div>" +
+      "<div class=\"field\"><label>Outlet</label><select name=\"outletId\">" + st.outlets.map((x) => opt(x.id, x.name, x.id === o.id)).join("") + "</select></div>" +
+      "<div class=\"field\"><label>Party size</label><input type=\"number\" min=\"1\" max=\"40\" name=\"partySize\" value=\"" + (r ? r.partySize : 2) + "\" required /></div>" +
+      "<div class=\"field\"><label>Date</label><input type=\"date\" name=\"date\" value=\"" + (r ? r.date : d.date) + "\" required /></div>" +
+      "<div class=\"field\"><label>Time</label><input type=\"time\" name=\"time\" step=\"900\" value=\"" + time + "\" required /></div>" +
+      "<div class=\"field\"><label>Table</label><select name=\"tableId\">" + opt("", "Assign later", !r || !r.tableId) + st.tables.filter((t) => t.outletId === o.id).map((t) => opt(t.id, t.name + " · " + t.seats + " seats", r && r.tableId === t.id)).join("") + "</select></div>" +
+      "<div class=\"field\"><label>Status</label><select name=\"status\">" + Object.entries(STATUS_LABEL).map(([k, l]) => opt(k, l, (r ? r.status : "booked") === k)).join("") + "</select></div>" +
+      "<div class=\"field span-2\"><label>Tags (comma separated)</label><input name=\"tags\" value=\"" + esc(r ? (r.tags || []).join(", ") : "") + "\" placeholder=\"Birthday, VIP, Allergy\" /></div>" +
+      "<div class=\"field span-2\"><label>Notes</label><textarea name=\"notes\" placeholder=\"Occasion, seating, dietary notes…\">" + esc(r ? r.notes : "") + "</textarea></div>" +
+      "</div></form>";
+    const foot = "<button type=\"submit\" form=\"res-form\" class=\"btn btn-primary\">" + (r ? "Save" : "Book table") + "</button>" +
+      (r && ACTIVE.includes(r.status) ? "<button type=\"button\" class=\"btn btn-danger\" data-action=\"res-cancel\" data-id=\"" + r.id + "\">Cancel booking</button><button type=\"button\" class=\"btn\" data-action=\"res-noshow\" data-id=\"" + r.id + "\">No-show</button>" : "") +
+      "<button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Close</button>";
+    core.openModal(r ? "Reservation " + r.id : "New reservation · " + o.name, body, foot);
+  }
+  function tableModal(t) {
+    const ts = tableStatus(t); const g = ts.r && (diner(ts.r.dinerId) || { name: ts.r.name || "Walk-in" });
+    let info = "<p><b>" + (t.minSeats && t.minSeats < t.seats ? t.minSeats + "–" : "") + t.seats + "</b> seats · " + t.shape + ((t.combinable || []).length ? " · combines with " + t.combinable.map((x) => (tbl(x) || { name: x }).name).join(", ") : "") + " · status <span class=\"pill st-" + ts.s + "\">" + ts.s + "</span></p>";
+    if (ts.r) info += "<p style=\"margin-top:8px\">" + (ts.s === "seated" ? "Seated: " : "Next booking: ") + "<b>" + esc(g.name) + "</b> · " + ts.r.partySize + " pax · " + esc(ts.r.time) + (g.allergies ? " · <span class=\"tag allergy\">⚠ " + esc(g.allergies) + "</span>" : "") + "</p>";
+    const waiting = st.waitlist.filter((w) => w.outletId === t.outletId && w.status !== "seated" && w.status !== "removed" && w.partySize <= t.seats);
+    let foot = "";
+    if (ts.s === "seated") foot += "<button type=\"button\" class=\"btn btn-primary\" data-action=\"res-complete\" data-id=\"" + ts.r.id + "\">Guests left · finish</button>";
+    if (ts.s === "dirty") foot += "<button type=\"button\" class=\"btn btn-primary\" data-action=\"table-state\" data-id=\"" + t.id + "\" data-state=\"\">Mark clean</button>";
+    if (ts.s === "reserved") foot += "<button type=\"button\" class=\"btn btn-primary\" data-action=\"res-seat\" data-id=\"" + ts.r.id + "\">Seat " + esc(g.name.split(" ")[0]) + "</button>";
+    if (ts.s === "available" || ts.s === "reserved") {
+      foot += "<button type=\"button\" class=\"btn\" data-action=\"table-walkin\" data-id=\"" + t.id + "\">Seat walk-in</button>";
+      if (waiting.length) foot += "<button type=\"button\" class=\"btn\" data-action=\"wl-seat\" data-id=\"" + waiting[0].id + "\" data-table=\"" + t.id + "\">Seat " + esc(waiting[0].name) + " (waitlist)</button>";
+    }
+    if (ts.s !== "seated") foot += "<button type=\"button\" class=\"btn btn-ghost\" data-action=\"table-state\" data-id=\"" + t.id + "\" data-state=\"" + (t.state === "blocked" ? "" : "blocked") + "\">" + (t.state === "blocked" ? "Unblock" : "Block table") + "</button>";
+    core.openModal("Table " + t.name + " · " + outlet(t.outletId).name, info, foot);
+  }
+  function dinerDrawer(x) {
+    const s = dinerStats(x); const g = x.guestId && st.guests.find((y) => y.id === x.guestId);
+    const upcoming = st.reservations.filter((r) => r.dinerId === x.id && ACTIVE.includes(r.status)).sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+    $("#drawer-root").innerHTML = "<div class=\"drawer-backdrop\" data-action=\"close-drawer\"></div><aside class=\"drawer\" role=\"dialog\"><div class=\"drawer-head\"><div><div class=\"muted\">" + (g ? "In-house · Room " + esc(g.room) + " · " + esc(g.confirmation) : "Outside guest") + "</div><h2 style=\"font-size:1.35rem;margin-top:4px\">" + esc(x.name) + "</h2><div style=\"margin-top:8px\">" + (x.tags || []).map((t) => "<span class=\"tag\">" + esc(t) + "</span>").join(" ") + "</div></div><button type=\"button\" class=\"icon-btn\" data-action=\"close-drawer\">×</button></div>" +
+      "<div class=\"drawer-body\"><dl class=\"detail-kv\"><dt>Mobile</dt><dd>" + esc(x.phone || "—") + "</dd><dt>Email</dt><dd>" + esc(x.email || "—") + "</dd><dt>Preferences</dt><dd>" + esc(x.prefs || "—") + "</dd><dt>Allergies</dt><dd>" + (x.allergies ? "<span class=\"tag allergy\">⚠ " + esc(x.allergies) + "</span>" : "None noted") + "</dd><dt>Visits</dt><dd>" + s.n + " · AED " + s.spend.toLocaleString() + " total</dd><dt>" + esc(s.program) + "</dt><dd>" + s.points.toLocaleString() + " points · <span class=\"tag\">" + esc(s.tier) + "</span></dd></dl>" +
+      "<h3 style=\"margin:14px 0 6px\">Upcoming</h3>" + (upcoming.length ? upcoming.map((r) => "<div class=\"list-row\" data-action=\"res-edit\" data-id=\"" + r.id + "\">" + esc(r.date + " " + r.time) + " · " + esc(outlet(r.outletId).name) + " · " + r.partySize + " pax</div>").join("") : "<p class=\"muted\">No upcoming bookings.</p>") +
+      "<h3 style=\"margin:14px 0 6px\">Visit history</h3>" + ((x.visits || []).length ? x.visits.slice().sort((a, b) => b.date.localeCompare(a.date)).map((v) => "<div class=\"list-row\">" + esc(v.date) + " · " + esc(outlet(v.outletId).name) + " · " + v.covers + " covers" + (v.spend ? " · AED " + Number(v.spend).toLocaleString() : "") + "</div>").join("") : "<p class=\"muted\">First visit coming up.</p>") + "</div>" +
+      "<div class=\"drawer-actions\"><button type=\"button\" class=\"btn btn-primary\" data-action=\"diner-edit\" data-id=\"" + x.id + "\">Edit profile</button><button type=\"button\" class=\"btn\" data-action=\"res-new\" data-diner=\"" + x.id + "\">Book a table</button></div></aside>";
+  }
+  function dinerModal(x) {
+    const body = "<form id=\"diner-form\"><input type=\"hidden\" name=\"id\" value=\"" + (x ? x.id : "") + "\" /><div class=\"form-grid\">" +
+      "<div class=\"field span-2\"><label>Name</label><input name=\"name\" required value=\"" + esc(x ? x.name : "") + "\" /></div>" +
+      "<div class=\"field\"><label>Mobile</label><input name=\"phone\" value=\"" + esc(x ? x.phone : "") + "\" /></div><div class=\"field\"><label>Email</label><input name=\"email\" type=\"email\" value=\"" + esc(x ? x.email : "") + "\" /></div>" +
+      "<div class=\"field span-2\"><label>Preferences</label><input name=\"prefs\" value=\"" + esc(x ? x.prefs : "") + "\" placeholder=\"Seating, drinks, menu…\" /></div>" +
+      "<div class=\"field span-2\"><label>Allergies</label><input name=\"allergies\" value=\"" + esc(x ? x.allergies : "") + "\" placeholder=\"Shellfish, nuts…\" /></div>" +
+      "<div class=\"field span-2\"><label>Tags (comma separated)</label><input name=\"tags\" value=\"" + esc(x ? (x.tags || []).join(", ") : "") + "\" placeholder=\"VIP, Regular, Birthday\" /></div></div></form>";
+    core.openModal(x ? "Edit profile" : "New dining profile", body, "<button type=\"submit\" form=\"diner-form\" class=\"btn btn-primary\">Save</button><button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Cancel</button>");
+  }
+  const splitTags = (s) => String(s || "").split(",").map((x) => x.trim()).filter(Boolean);
+
+  // ---------- actions ----------
+  const free = (t) => tableStatus(t).s === "available";
+  function bestFit(oid, party) {
+    const fits = st.tables.filter((t) => t.outletId === oid && t.seats >= party && (t.minSeats || 1) <= party && free(t)).sort((a, b) => a.seats - b.seats)[0];
+    if (fits) return [fits];
+    const loose = st.tables.filter((t) => t.outletId === oid && t.seats >= party && free(t)).sort((a, b) => a.seats - b.seats)[0];
+    if (loose) return [loose];
+    for (const t of st.tables.filter((t) => t.outletId === oid && free(t))) for (const pid of t.combinable || []) {
+      const p = tbl(pid); if (p && free(p) && t.seats + p.seats >= party) return [t, p];
+    }
+    return null;
+  }
+  function seat(r, tableId) {
+    let ts = tableId ? [tbl(tableId)] : tids(r).map(tbl).filter(Boolean);
+    if (!ts.length || ts.some((t) => ["seated", "dirty", "blocked"].includes(tableStatus(t).s)) || ts.reduce((n, t) => n + t.seats, 0) < r.partySize) ts = bestFit(r.outletId, r.partySize);
+    if (!ts) { core.toast("No free table (or combination) fits " + r.partySize + " — add to waitlist"); return false; }
+    r.tableId = ts[0].id; r.tableIds = ts.map((t) => t.id); r.status = "seated"; r.seatedAt = new Date().toISOString();
+    core.toast("Seated at " + ts.map((t) => t.name).join(" + ")); return true;
+  }
+  EXT.onClickDining = function (a, el) {
+    core = EXT.core; st = core.getState(); const id = el.dataset.id;
+    if (a === "dine-outlet") { d.outlet = id; d.shift = "all"; core.render(); }
+    else if (a === "dine-goto") { d.outlet = id; d.tab = "floor"; core.go("dining"); }
+    else if (a === "dine-section") { d.section = id; core.render(); }
+    else if (a === "dine-shift") { d.shift = id; core.render(); }
+    else if (a === "dine-tab") { d.tab = id; core.render(); }
+    else if (a === "res-new") { core.closeDrawer(); resModal(null); if (el.dataset.diner) { const s = $("#res-diner"); s.value = el.dataset.diner; s.dispatchEvent(new Event("change", { bubbles: true })); } }
+    else if (a === "res-edit") { core.closeDrawer(); resModal(st.reservations.find((r) => r.id === id)); }
+    else if (a === "res-seat") { const r = st.reservations.find((x) => x.id === id); if (seat(r)) { core.closeModal(); save(); } }
+    else if (a === "res-complete") {
+      const r = st.reservations.find((x) => x.id === id); r.status = "completed"; r.completedAt = new Date().toISOString();
+      const ts = tids(r).map(tbl).filter(Boolean); ts.forEach((t) => { t.state = "dirty"; }); const t = ts.length ? { name: ts.map((x) => x.name).join("+") } : null;
+      const x = diner(r.dinerId); if (x) { x.visits = x.visits || []; x.visits.push({ date: r.date, outletId: r.outletId, covers: r.partySize, spend: 0 }); }
+      core.closeModal(); save(); core.toast("Table " + (t ? t.name : "") + " marked for clearing");
+    }
+    else if (a === "res-cancel" || a === "res-noshow") { const r = st.reservations.find((x) => x.id === id); r.status = a === "res-cancel" ? "cancelled" : "noshow"; core.closeModal(); save(); core.toast(STATUS_LABEL[r.status]); }
+    else if (a === "table-open") tableModal(tbl(id));
+    else if (a === "table-state") { tbl(id).state = el.dataset.state; core.closeModal(); save(); }
+    else if (a === "table-walkin") {
+      const t = tbl(id); const n = parseInt(prompt("Party size for walk-in at " + t.name + "?", String(Math.min(2, t.seats))) || "0", 10); if (!n) return true;
+      st.reservations.push({ id: nextId("R-", st.reservations), outletId: t.outletId, shiftId: shiftFor(outlet(t.outletId), nowHM()), date: d.date, time: nowHM(), dinerId: null, name: "Walk-in", partySize: n, tableId: t.id, status: "seated", notes: "Walk-in", tags: ["Walk-in"], createdAt: new Date().toISOString() });
+      core.closeModal(); save(); core.toast("Walk-in seated at " + t.name);
+    }
+    else if (a === "wl-new") {
+      core.openModal("Add to waitlist · " + outlet(d.outlet).name, "<form id=\"wl-form\"><div class=\"form-grid\"><div class=\"field span-2\"><label>Name</label><input name=\"name\" required /></div><div class=\"field\"><label>Mobile</label><input name=\"phone\" placeholder=\"+971 50 010 …\" /></div><div class=\"field\"><label>Party size</label><input type=\"number\" name=\"partySize\" min=\"1\" value=\"2\" required /></div><div class=\"field\"><label>Quoted wait (min)</label><input type=\"number\" name=\"quotedMins\" min=\"0\" value=\"15\" /></div><div class=\"field\"><label>Notes</label><input name=\"notes\" /></div></div></form>",
+        "<button type=\"submit\" form=\"wl-form\" class=\"btn btn-primary\">Add</button><button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Cancel</button>");
+    }
+    else if (a === "wl-notify") { const w = st.waitlist.find((x) => x.id === id); w.status = "notified"; w.notifiedAt = new Date().toISOString(); save(); core.toast("Marked notified — text " + w.phone + " (SMS needs a provider)"); }
+    else if (a === "wl-remove") { const w = st.waitlist.find((x) => x.id === id); w.status = "removed"; save(); }
+    else if (a === "wl-seat") {
+      const w = st.waitlist.find((x) => x.id === id);
+      const r = { id: nextId("R-", st.reservations), outletId: w.outletId, shiftId: shiftFor(outlet(w.outletId), nowHM()), date: SH.dubaiToday(), time: nowHM(), dinerId: null, name: w.name, partySize: w.partySize, tableId: el.dataset.table || null, status: "booked", notes: w.notes || "From waitlist", tags: ["Waitlist"], createdAt: new Date().toISOString() };
+      if (!seat(r, el.dataset.table)) return true;
+      st.reservations.push(r); w.status = "seated"; core.closeModal(); save();
+    }
+    else if (a === "diner-open") dinerDrawer(diner(id));
+    else if (a === "diner-edit") dinerModal(diner(id));
+    else if (a === "diner-new") dinerModal(null);
+    else return false;
+    return true;
+  };
+  EXT.onSubmitDining = function (e) {
+    const f = e.target, fid = f.getAttribute("id"); if (!["res-form", "wl-form", "diner-form"].includes(fid)) return false;
+    core = EXT.core; st = core.getState();
+    e.preventDefault(); const fd = Object.fromEntries(new FormData(f));
+    if (fid === "res-form") {
+      let dinerId = fd.dinerId;
+      if (!dinerId) {
+        const g = fd.guestId && st.guests.find((x) => x.id === fd.guestId);
+        const existing = g && st.diners.find((x) => x.guestId === g.id);
+        if (existing) dinerId = existing.id;
+        else {
+          const name = g ? g.first + " " + g.last : String(fd.newName || "").trim();
+          if (!name) { core.toast("Pick a guest profile or enter a name"); return true; }
+          dinerId = "d-" + Math.random().toString(36).slice(2, 8);
+          st.diners.push({ id: dinerId, guestId: g ? g.id : null, name, phone: g ? g.phone : fd.newPhone || "", email: g ? g.email : "", prefs: "", allergies: "", tags: g && g.vip ? ["VIP"] : [], visits: [] });
+        }
+      }
+      const o = outlet(fd.outletId);
+      const rec = { outletId: o.id, shiftId: shiftFor(o, fd.time), date: fd.date, time: fd.time, dinerId, partySize: Number(fd.partySize), tableId: fd.tableId && tbl(fd.tableId) && tbl(fd.tableId).outletId === o.id ? fd.tableId : null, status: fd.status, notes: fd.notes || "", tags: splitTags(fd.tags) };
+      const ex = fd.id && st.reservations.find((r) => r.id === fd.id);
+      rec.tableIds = rec.tableId ? [rec.tableId] : [];
+      if (ex) Object.assign(ex, rec); else st.reservations.push(Object.assign({ id: nextId("R-", st.reservations), createdAt: new Date().toISOString() }, rec));
+      d.outlet = o.id; d.date = fd.date; core.closeModal(); save(); core.toast(ex ? "Reservation updated" : "Table booked");
+    } else if (fid === "wl-form") {
+      st.waitlist.push({ id: "W-" + Math.random().toString(36).slice(2, 7), outletId: d.outlet, name: fd.name, phone: fd.phone || "", partySize: Number(fd.partySize), quotedMins: Number(fd.quotedMins || 15), addedAt: new Date().toISOString(), status: "waiting", notes: fd.notes || "" });
+      d.tab = "waitlist"; core.closeModal(); save(); core.toast("Added to waitlist");
+    } else {
+      const rec = { name: fd.name, phone: fd.phone, email: fd.email, prefs: fd.prefs, allergies: fd.allergies, tags: splitTags(fd.tags) };
+      let x = fd.id && diner(fd.id);
+      if (x) Object.assign(x, rec); else { x = Object.assign({ id: "d-" + Math.random().toString(36).slice(2, 8), guestId: null, visits: [] }, rec); st.diners.push(x); }
+      core.closeModal(); save(); dinerDrawer(x);
+    }
+    return true;
+  };
+  EXT.onChangeDining = function (e) {
+    if (e.target.id === "res-diner") { document.querySelectorAll(".new-diner").forEach((n) => { n.hidden = !!e.target.value; }); return true; }
+    if (e.target.id === "dine-date") { d.date = e.target.value || SH.dubaiToday(); core.render(); return true; }
+    return false;
+  };
+  EXT.onInputDining = function (e) {
+    if (e.target.id === "diner-search") { d.q = e.target.value; const pos = e.target.selectionStart; core.render(); const n = $("#diner-search"); n.focus(); n.setSelectionRange(pos, pos); return true; }
+    return false;
+  };
+})();
+
+;
+/* Concierge OS v2 — all demo guests and numbers are fictional. */
+(function () {
+  const STORE_KEY = "concierge-os-v1";
+  const TZ = "Asia/Dubai";
+  const { DEPTS, DEPT_MAP, TEMPLATES, TPL_MAP } = window.COS_SHARED;
+  const EXT = window.COS_EXT;
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+  function esc(s) {
+    return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+  function uid(prefix) {
+    return prefix + "-" + Math.random().toString(36).slice(2, 8) + Date.now().toString(36).slice(-4);
+  }
+  function zonedParts(date = new Date()) {
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", weekday: "short", hour12: false
+    }).formatToParts(date);
+    const p = {};
+    for (const x of parts) if (x.type !== "literal") p[x.type] = x.value;
+    if (p.hour === "24") p.hour = "00";
+    return p;
+  }
+  function ymd(date) {
+    const p = zonedParts(date);
+    return p.year + "-" + p.month + "-" + p.day;
+  }
+  function todayYmd() { return ymd(new Date()); }
+  function dubaiISO(dateStr, hour, minute) {
+    const hh = String(hour).padStart(2, "0");
+    const mm = String(minute ?? 0).padStart(2, "0");
+    return dateStr + "T" + hh + ":" + mm + ":00+04:00";
+  }
+  function formatTime(iso) {
+    const p = zonedParts(new Date(iso));
+    return p.hour + ":" + p.minute;
+  }
+  function formatDate(isoOrYmd) {
+    const d = isoOrYmd.length <= 10 ? new Date(isoOrYmd + "T12:00:00+04:00") : new Date(isoOrYmd);
+    return d.toLocaleDateString("en-GB", { timeZone: TZ, day: "numeric", month: "short", year: "numeric" });
+  }
+  function formatDateTime(iso) {
+    return formatDate(iso) + " · " + formatTime(iso);
+  }
+  function weekdayLong(dateStr) {
+    return new Date(dateStr + "T12:00:00+04:00").toLocaleDateString("en-GB", { timeZone: TZ, weekday: "long", day: "numeric", month: "long" });
+  }
+  function hourOf(iso) { return parseInt(zonedParts(new Date(iso)).hour, 10); }
+  function isOverdue(t) { return t.status !== "closed" && new Date(t.dueAt).getTime() < Date.now(); }
+  function guestName(g) { return g ? g.first + " " + g.last : "—"; }
+  function staffName(id) {
+    const s = state.staff.find((x) => x.id === id);
+    return s ? s.name : "Unassigned";
+  }
+  function initials(name) {
+    return name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+  }
+  function checklistProgress(t) {
+    if (!t.checklist || !t.checklist.length) return null;
+    const done = t.checklist.filter((i) => i.done).length;
+    return done + "/" + t.checklist.length;
+  }
+  function statusLabel(s) {
+    return { open: "Open", in_progress: "In progress", closed: "Closed" }[s] || s;
+  }
+
+  function seed() { return window.COS_SHARED.seed(); }
+
+  let state = null;
+  let ui = {
+    view: "dashboard",
+    selectedDate: todayYmd(),
+    calMonth: todayYmd().slice(0, 7),
+    range: "today",
+    status: "open",
+    type: "",
+    department: "",
+    assignee: "",
+    overdueOnly: false,
+    q: "",
+    guestQ: "",
+    activeSaved: "",
+    sidebarOpen: false
+  };
+
+  function persist() { EXT.persist(state); }
+
+  function currentUser() { return state.staff.find((s) => s.id === state.currentUserId); }
+  function guestById(id) { return state.guests.find((g) => g.id === id); }
+  function ticketById(id) { return state.tickets.find((t) => t.id === id); }
+
+  function applyTheme() {
+    document.documentElement.setAttribute("data-theme", state.theme === "dark" ? "dark" : "light");
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", state.theme === "dark" ? "#161412" : "#2c4a42");
+  }
+
+  function resolvedAssignee(id) { return id === "CURRENT" ? state.currentUserId : id; }
+
+  function filteredTickets() {
+    const q = ui.q.trim().toLowerCase();
+    const assignee = resolvedAssignee(ui.assignee);
+    return state.tickets.filter((t) => {
+      if (ui.status === "open" && t.status === "closed") return false;
+      if (ui.status === "closed" && t.status !== "closed") return false;
+      if (ui.type && t.type !== ui.type) return false;
+      if (ui.department && t.department !== ui.department) return false;
+      if (assignee && t.assigneeId !== assignee) return false;
+      if (ui.overdueOnly && !isOverdue(t)) return false;
+      if (ui.range === "today" && ymd(new Date(t.dueAt)) !== ui.selectedDate) return false;
+      if (q) {
+        const g = guestById(t.guestId);
+        const hay = [t.summary, t.room, t.notes, t.id, t.type, DEPT_MAP[t.department] && DEPT_MAP[t.department].name, guestName(g), g && g.confirmation, staffName(t.assigneeId)].join(" ").toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    }).sort((a, b) => new Date(a.dueAt) - new Date(b.dueAt));
+  }
+
+  function datesWithTickets() {
+    return new Set(state.tickets.map((t) => ymd(new Date(t.dueAt))));
+  }
+
+  function nextTicketId() {
+    let max = 2400;
+    for (const t of state.tickets) {
+      const n = parseInt(String(t.id).replace(/\D/g, ""), 10);
+      if (n > max) max = n;
+    }
+    return "T-" + (max + 1);
+  }
+
+  function render() {
+    applyTheme();
+    renderChrome();
+    if (ui.view === "dashboard") renderDashboard();
+    if (ui.view === "tickets") renderTickets();
+    if (ui.view === "guests") renderGuests();
+    if (ui.view === "tasks") renderTasks();
+    if (ui.view === "staff") renderStaff();
+    if (EXT.views[ui.view]) EXT.views[ui.view](core);
+    $$(".view").forEach((el) => { el.hidden = el.id !== "view-" + ui.view; });
+    $$("[data-action='nav']").forEach((b) => b.classList.toggle("active", b.dataset.view === ui.view));
+    document.body.classList.toggle("sidebar-open", ui.sidebarOpen);
+    const backdrop = document.querySelector(".sidebar-backdrop");
+    if (backdrop) backdrop.hidden = !ui.sidebarOpen;
+  }
+
+  function renderChrome() {
+    const user = currentUser();
+    if (!user) return;
+    const sel = $("#user-select");
+    sel.innerHTML = state.staff.map((s) => "<option value=\"" + esc(s.id) + "\"" + (s.id === state.currentUserId ? " selected" : "") + ">" + esc(s.name) + "</option>").join("");
+    const punch = $("#punch-btn");
+    punch.textContent = user.punchedIn ? "Punched in" : "Punch in";
+    punch.classList.toggle("on", !!user.punchedIn);
+    punch.title = user.punchedIn ? "Punch out" : "Punch in";
+    EXT.chrome(core);
+  }
+
+  function greeting() {
+    const h = parseInt(zonedParts().hour, 10);
+    if (h < 12) return "morning";
+    if (h < 17) return "afternoon";
+    return "evening";
+  }
+
+  function compactRow(t) {
+    const g = guestById(t.guestId);
+    const color = (DEPT_MAP[t.department] && DEPT_MAP[t.department].color) || "#8a6a3a";
+    const late = isOverdue(t);
+    return "<div class=\"list-row\" data-action=\"open-ticket\" data-id=\"" + esc(t.id) + "\">" +
+      "<span class=\"dot\" style=\"background:" + color + "\"></span>" +
+      "<div style=\"flex:1;min-width:0\">" +
+        "<div><strong>" + esc(t.summary) + "</strong> " + (late ? "<span class=\"pill overdue\">Overdue</span>" : "") + "</div>" +
+        "<div class=\"muted\">" + esc(formatDateTime(t.dueAt)) + (t.room ? " · Room " + esc(t.room) : "") + (g ? " · " + esc(guestName(g)) : "") + " · " + esc(staffName(t.assigneeId)) + "</div>" +
+      "</div>" +
+      "<span class=\"pill " + esc(t.status) + "\">" + esc(statusLabel(t.status)) + "</span></div>";
+  }
+
+  function renderDashboard() {
+    const open = state.tickets.filter((t) => t.status !== "closed");
+    const overdue = open.filter(isOverdue);
+    const progress = state.tickets.filter((t) => t.status === "in_progress");
+    const closedToday = state.tickets.filter((t) => t.status === "closed" && ymd(new Date(t.dueAt)) === todayYmd());
+    const byDept = DEPTS.map((d) => Object.assign({}, d, { n: open.filter((t) => t.department === d.id).length }));
+    const max = Math.max(1, ...byDept.map((d) => d.n));
+    const upcoming = open.filter((t) => !isOverdue(t)).sort((a, b) => new Date(a.dueAt) - new Date(b.dueAt)).slice(0, 8);
+    const overdueList = overdue.sort((a, b) => new Date(a.dueAt) - new Date(b.dueAt)).slice(0, 8);
+    const dueTodayOpen = state.tickets.filter((t) => ymd(new Date(t.dueAt)) === todayYmd() && t.status !== "closed").length;
+
+    $("#view-dashboard").innerHTML =
+      "<div class=\"view-head\"><div>" +
+        "<h1>Good " + greeting() + ", " + esc(currentUser().name.split(" ")[0]) + "</h1>" +
+        "<p class=\"lede\">" + esc(weekdayLong(todayYmd())) + " · " + esc(EXT.tenantLabel()) + " · " + esc(EXT.modeLabel()) + "</p>" +
+      "</div><button type=\"button\" class=\"btn btn-primary\" data-action=\"nav\" data-view=\"tickets\">Open tickets</button></div>" +
+      "<div class=\"stat-grid\">" +
+        "<button type=\"button\" class=\"stat-card open\" data-action=\"dash-filter\" data-kind=\"open\"><div class=\"label\">Open</div><div class=\"num\">" + open.length + "</div><div class=\"muted\">" + progress.length + " in progress</div></button>" +
+        "<button type=\"button\" class=\"stat-card overdue\" data-action=\"dash-filter\" data-kind=\"overdue\"><div class=\"label\">Overdue</div><div class=\"num\">" + overdue.length + "</div><div class=\"muted\">Needs attention now</div></button>" +
+        "<button type=\"button\" class=\"stat-card\" data-action=\"dash-filter\" data-kind=\"today\"><div class=\"label\">Due today</div><div class=\"num\">" + dueTodayOpen + "</div><div class=\"muted\">Still open on the board</div></button>" +
+        "<div class=\"stat-card\"><div class=\"label\">Closed (today's board)</div><div class=\"num\">" + closedToday.length + "</div><div class=\"muted\">Due today and already done</div></div>" +
+      "</div><div class=\"dash-grid\">" +
+        "<div class=\"panel\"><h2>By department</h2>" +
+          byDept.map((d) => "<button type=\"button\" class=\"dept-row\" data-action=\"dash-dept\" data-dept=\"" + d.id + "\" style=\"width:100%;border:0;background:transparent;padding:0;margin-bottom:8px\"><span>" + esc(d.name) + "</span><span class=\"bar\"><span style=\"width:" + ((d.n / max) * 100) + "%;background:" + d.color + "\"></span></span><span>" + d.n + "</span></button>").join("") +
+        "</div><div class=\"panel\"><h2>Overdue</h2>" +
+          (overdueList.length ? overdueList.map(compactRow).join("") : "<p class=\"empty\">Nothing overdue. Nice work.</p>") +
+        "</div><div class=\"panel\" style=\"grid-column:1/-1\"><h2>Up next</h2>" +
+          (upcoming.length ? upcoming.map(compactRow).join("") : "<p class=\"empty\">No upcoming open tickets.</p>") +
+        "</div></div>";
+    if (EXT.afterDashboard) EXT.afterDashboard($("#view-dashboard"), core);
+  }
+
+  function ticketRow(t) {
+    const g = guestById(t.guestId);
+    const color = (DEPT_MAP[t.department] && DEPT_MAP[t.department].color) || "#8a6a3a";
+    const late = isOverdue(t);
+    const prog = checklistProgress(t);
+    return "<button type=\"button\" class=\"ticket-row" + (late ? " overdue" : "") + (t.status === "closed" ? " closed" : "") + "\" style=\"--dept:" + color + "\" data-action=\"open-ticket\" data-id=\"" + esc(t.id) + "\">" +
+      "<span class=\"time\">" + esc(formatTime(t.dueAt)) + "</span>" +
+      "<span class=\"sum\"><strong>" + esc(t.summary) + "</strong><span>" +
+        (t.room ? "Rm " + esc(t.room) : "Internal") + (g ? " · " + esc(guestName(g)) : "") + " · " + esc((DEPT_MAP[t.department] && DEPT_MAP[t.department].name) || "") + (prog ? " · " + prog : "") +
+      "</span></span>" +
+      "<span class=\"pills-end\" style=\"display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end\">" +
+        (late ? "<span class=\"pill overdue\">Overdue</span>" : "") +
+        "<span class=\"pill " + esc(t.type) + "\">" + (t.type === "guest" ? "Guest" : "Internal") + "</span>" +
+        "<span class=\"pill " + esc(t.status) + "\">" + esc(statusLabel(t.status)) + "</span>" +
+      "</span><span class=\"assignee\">" + esc(staffName(t.assigneeId)) + "</span></button>";
+  }
+
+  function ticketCard(t) {
+    const g = guestById(t.guestId);
+    const color = (DEPT_MAP[t.department] && DEPT_MAP[t.department].color) || "#8a6a3a";
+    const late = isOverdue(t);
+    const prog = checklistProgress(t);
+    return "<button type=\"button\" class=\"ticket-card" + (late ? " overdue" : "") + "\" style=\"--dept:" + color + "\" data-action=\"open-ticket\" data-id=\"" + esc(t.id) + "\">" +
+      "<div class=\"card-top\"><h4>" + esc(t.summary) + "</h4><span class=\"pill " + esc(t.status) + "\">" + esc(statusLabel(t.status)) + "</span></div>" +
+      "<div class=\"meta\"><span>" + esc(formatDateTime(t.dueAt)) + "</span>" +
+        (t.room ? "<span>Rm " + esc(t.room) + "</span>" : "") +
+        (g ? "<span>" + esc(guestName(g)) + "</span>" : "") +
+        "<span>" + esc((DEPT_MAP[t.department] && DEPT_MAP[t.department].name) || "") + "</span>" +
+        "<span>" + esc(staffName(t.assigneeId)) + "</span>" +
+        (prog ? "<span>" + prog + " checklist</span>" : "") +
+        (late ? "<span class=\"pill overdue\">Overdue</span>" : "") +
+      "</div></button>";
+  }
+
+  function renderTickets() {
+    renderCalendar();
+    renderSavedFilters();
+    renderQuickLinks();
+    renderFavMenus();
+    renderChips();
+    $$(".seg [data-action=\"set-range\"]").forEach((b) => b.classList.toggle("active", b.dataset.range === ui.range));
+    $$(".seg [data-action=\"set-status\"]").forEach((b) => b.classList.toggle("active", b.dataset.status === ui.status));
+    const search = $("#ticket-search");
+    if (search && search.value !== ui.q) search.value = ui.q;
+
+    const list = filteredTickets();
+    const board = $("#tickets-board");
+    const label = ui.range === "today" ? weekdayLong(ui.selectedDate) : "All time";
+    const head = "<div class=\"board-meta\"><span>" + esc(label) + "</span><span>" + list.length + " ticket" + (list.length === 1 ? "" : "s") + "</span></div>";
+
+    if (!list.length) {
+      board.innerHTML = head + "<p class=\"empty\">No tickets match these filters.</p>";
+      return;
+    }
+    if (ui.range === "today") {
+      const byHour = new Map();
+      for (const t of list) {
+        const h = hourOf(t.dueAt);
+        if (!byHour.has(h)) byHour.set(h, []);
+        byHour.get(h).push(t);
+      }
+      const hours = [];
+      for (let h = 0; h < 24; h++) hours.push(h);
+      const interesting = hours.filter((h) => byHour.has(h) || (h >= 6 && h <= 23));
+      board.innerHTML = head + interesting.map((h) => {
+        const items = byHour.get(h) || [];
+        return "<div class=\"hour-block" + (items.length ? "" : " empty") + "\">" +
+          "<div class=\"hour-label\">" + String(h).padStart(2, "0") + ":00</div>" +
+          "<div class=\"hour-tickets\">" + items.map(ticketRow).join("") + "</div></div>";
+      }).join("");
+    } else {
+      board.innerHTML = head + "<div class=\"ticket-list\">" + list.map(ticketCard).join("") + "</div>";
+    }
+  }
+
+  function renderCalendar() {
+    const parts = ui.calMonth.split("-");
+    const year = Number(parts[0]);
+    const month = Number(parts[1]);
+    const first = new Date(ui.calMonth + "-01T12:00:00+04:00");
+    const startWd = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(
+      new Intl.DateTimeFormat("en-US", { timeZone: TZ, weekday: "short" }).format(first)
+    );
+    const daysIn = new Date(year, month, 0).getDate();
+    const prevDays = new Date(year, month - 1, 0).getDate();
+    const marked = datesWithTickets();
+    const today = todayYmd();
+    const cells = [];
+    for (let i = 0; i < startWd; i++) {
+      const day = prevDays - startWd + 1 + i;
+      const m = month === 1 ? 12 : month - 1;
+      const y = month === 1 ? year - 1 : year;
+      cells.push({ id: y + "-" + String(m).padStart(2, "0") + "-" + String(day).padStart(2, "0"), day: day, outside: true });
+    }
+    for (let d = 1; d <= daysIn; d++) {
+      cells.push({ id: year + "-" + String(month).padStart(2, "0") + "-" + String(d).padStart(2, "0"), day: d, outside: false });
+    }
+    while (cells.length % 7) {
+      const d = cells.length - (startWd + daysIn) + 1;
+      const m = month === 12 ? 1 : month + 1;
+      const y = month === 12 ? year + 1 : year;
+      cells.push({ id: y + "-" + String(m).padStart(2, "0") + "-" + String(d).padStart(2, "0"), day: d, outside: true });
+    }
+    const title = first.toLocaleDateString("en-GB", { timeZone: TZ, month: "long", year: "numeric" });
+    $("#mini-calendar").innerHTML =
+      "<div class=\"cal-head\">" +
+        "<button type=\"button\" class=\"icon-btn\" data-action=\"cal-prev\" aria-label=\"Previous month\">‹</button>" +
+        "<strong>" + esc(title) + "</strong>" +
+        "<button type=\"button\" class=\"icon-btn\" data-action=\"cal-next\" aria-label=\"Next month\">›</button>" +
+      "</div><div class=\"cal-grid\">" +
+        ["S","M","T","W","T","F","S"].map((d) => "<div class=\"dow\">" + d + "</div>").join("") +
+        cells.map((c) => {
+          const cls = (c.outside ? "outside " : "") + (c.id === today ? "today " : "") + (c.id === ui.selectedDate ? "selected " : "") + (marked.has(c.id) ? "has-tickets" : "");
+          return "<button type=\"button\" data-action=\"pick-date\" data-date=\"" + c.id + "\" class=\"" + cls.trim() + "\">" + c.day + "</button>";
+        }).join("") +
+      "</div>";
+  }
+
+  function shiftMonth(delta) {
+    const parts = ui.calMonth.split("-");
+    const dt = new Date(Number(parts[0]), Number(parts[1]) - 1 + delta, 1);
+    ui.calMonth = dt.getFullYear() + "-" + String(dt.getMonth() + 1).padStart(2, "0");
+  }
+
+  function renderSavedFilters() {
+    $("#saved-filters").innerHTML = state.savedFilters.map((sf) =>
+      "<button type=\"button\" class=\"" + (ui.activeSaved === sf.id ? "active" : "") + "\" data-action=\"apply-saved\" data-id=\"" + esc(sf.id) + "\">" +
+        esc(sf.name) + " <span class=\"count\">" + countForSaved(sf) + "</span></button>"
+    ).join("") || "<p class=\"muted\">No saved filters yet.</p>";
+  }
+
+  function countForSaved(sf) {
+    const snap = Object.assign({}, ui, sf.filters);
+    const assignee = resolvedAssignee(snap.assignee);
+    return state.tickets.filter((t) => {
+      if (snap.status === "open" && t.status === "closed") return false;
+      if (snap.status === "closed" && t.status !== "closed") return false;
+      if (snap.type && t.type !== snap.type) return false;
+      if (snap.department && t.department !== snap.department) return false;
+      if (assignee && t.assigneeId !== assignee) return false;
+      if (snap.overdueOnly && !isOverdue(t)) return false;
+      if (snap.range === "today" && ymd(new Date(t.dueAt)) !== ui.selectedDate) return false;
+      return true;
+    }).length;
+  }
+
+  function renderQuickLinks() {
+    $("#quick-links").innerHTML = TEMPLATES.map((t) =>
+      "<button type=\"button\" data-action=\"use-template\" data-id=\"" + t.id + "\">" + esc(t.name) + "</button>"
+    ).join("");
+  }
+
+  function renderFavMenus() {
+    function item(t) {
+      return "<button type=\"button\" data-action=\"use-template\" data-id=\"" + t.id + "\">" + esc(t.name) + "<span class=\"fav-meta\">" + esc(DEPT_MAP[t.department].name) + "</span></button>";
+    }
+    $("#favs-guest").innerHTML = TEMPLATES.filter((t) => t.type === "guest").map(item).join("");
+    $("#favs-internal").innerHTML = TEMPLATES.filter((t) => t.type === "internal").map(item).join("");
+  }
+
+  function renderChips() {
+    const chips = [];
+    if (ui.range === "today") chips.push({ key: "range", label: ui.selectedDate === todayYmd() ? "Today" : formatDate(ui.selectedDate) });
+    if (ui.status !== "all") chips.push({ key: "status", label: ui.status === "open" ? "Open + in progress" : "Closed" });
+    if (ui.type) chips.push({ key: "type", label: ui.type === "guest" ? "Guest requests" : "Internal" });
+    if (ui.department) chips.push({ key: "department", label: DEPT_MAP[ui.department].name });
+    if (ui.assignee) chips.push({ key: "assignee", label: ui.assignee === "CURRENT" ? "Assigned to me" : staffName(ui.assignee) });
+    if (ui.overdueOnly) chips.push({ key: "overdueOnly", label: "Overdue" });
+    if (ui.q) chips.push({ key: "q", label: "“" + ui.q + "”" });
+    $("#filter-chips").innerHTML = chips.map((c) =>
+      "<span class=\"chip\">" + esc(c.label) + " <button type=\"button\" class=\"x\" data-action=\"clear-chip\" data-key=\"" + c.key + "\" aria-label=\"Remove filter\">×</button></span>"
+    ).join("");
+  }
+
+  function renderGuests() {
+    const q = ui.guestQ.trim().toLowerCase();
+    const rows = state.guests.filter((g) => {
+      if (!q) return true;
+      return [g.first, g.last, g.room, g.confirmation, g.phone, g.email].join(" ").toLowerCase().includes(q);
+    }).sort((a, b) => a.room.localeCompare(b.room, undefined, { numeric: true }));
+    const input = $("#guest-search");
+    if (input && input.value !== ui.guestQ) input.value = ui.guestQ;
+    const target = $("#guests-table");
+    if (!rows.length) {
+      target.innerHTML = "<p class=\"empty\">No guests match that search.</p>";
+      return;
+    }
+    target.innerHTML = "<div class=\"table-wrap\"><table><thead><tr><th>Room</th><th>Guest</th><th>Confirmation</th><th>Phone</th><th>Email</th><th>Stay</th></tr></thead><tbody>" +
+      rows.map((g) => "<tr data-action=\"open-guest\" data-id=\"" + g.id + "\"><td><strong>" + esc(g.room) + "</strong>" + (g.vip ? " <span class=\"pill\">VIP</span>" : "") + "</td><td>" + esc(guestName(g)) + "</td><td>" + esc(g.confirmation) + "</td><td>" + esc(g.phone) + "</td><td>" + esc(g.email) + "</td><td>" + esc(formatDate(g.start)) + " – " + esc(formatDate(g.end)) + "</td></tr>").join("") +
+      "</tbody></table></div><p class=\"muted\" style=\"margin-top:10px\">" + rows.length + " guests · sample data only</p>";
+  }
+
+  function renderTasks() {
+    const me = currentUser();
+    const mine = state.tickets.filter((t) => t.assigneeId === me.id).sort((a, b) => new Date(a.dueAt) - new Date(b.dueAt));
+    const open = mine.filter((t) => t.status !== "closed");
+    const overdue = open.filter(isOverdue);
+    const shown = open.length ? open : mine;
+    $("#view-tasks").innerHTML =
+      "<div class=\"view-head\"><div><h1>My tasks</h1><p class=\"lede\">" + esc(me.name) + " · " + esc(me.role) + " · " + (me.punchedIn ? "On duty" : "Punched out") + "</p></div>" +
+      "<button type=\"button\" class=\"punch-btn " + (me.punchedIn ? "on" : "") + "\" data-action=\"toggle-punch\">" + (me.punchedIn ? "Punched in — tap to punch out" : "Punch in") + "</button></div>" +
+      "<div class=\"stat-grid\" style=\"grid-template-columns:repeat(3,1fr)\">" +
+        "<div class=\"stat-card open\"><div class=\"label\">Assigned open</div><div class=\"num\">" + open.length + "</div></div>" +
+        "<div class=\"stat-card overdue\"><div class=\"label\">Overdue</div><div class=\"num\">" + overdue.length + "</div></div>" +
+        "<div class=\"stat-card\"><div class=\"label\">Closed (all)</div><div class=\"num\">" + (mine.length - open.length) + "</div></div>" +
+      "</div><div class=\"tickets-board\"><div class=\"board-meta\"><span>Assigned to you</span><span>" + mine.length + "</span></div>" +
+      (shown.length ? "<div class=\"ticket-list\">" + shown.map(ticketCard).join("") + "</div>" : "<p class=\"empty\">Nothing assigned to you.</p>") +
+      "</div>";
+  }
+
+  function renderStaff() {
+    const openBy = {};
+    for (const t of state.tickets) {
+      if (t.status === "closed") continue;
+      openBy[t.assigneeId] = (openBy[t.assigneeId] || 0) + 1;
+    }
+    $("#view-staff").innerHTML =
+      "<div class=\"view-head\"><div><h1>Staff</h1><p class=\"lede\">" + (EXT.mode === "server" ? "Everyone signed in to this hotel. Punch status syncs live." : "Offline demo — sign in as another demo account to switch user.") + "</p></div>" +
+      "<button type=\"button\" class=\"btn\" data-action=\"reset-demo\">Reset demo data</button></div>" +
+      "<div class=\"staff-grid\">" + state.staff.map((s) =>
+        "<button type=\"button\" class=\"staff-card" + (s.id === state.currentUserId ? " current" : "") + "\" data-action=\"switch-user\" data-id=\"" + s.id + "\" style=\"width:100%\">" +
+          "<div class=\"avatar\">" + esc(initials(s.name)) + "</div><div style=\"text-align:left\"><strong>" + esc(s.name) + "</strong>" +
+          "<div class=\"muted\">" + esc(s.role) + " · " + esc(DEPT_MAP[s.department].name) + "</div>" +
+          "<div class=\"muted\" style=\"margin-top:6px\"><span class=\"status-dot " + (s.punchedIn ? "on" : "") + "\"></span>" + (s.punchedIn ? "On duty" : "Off duty") + " · " + (openBy[s.id] || 0) + " open</div></div></button>"
+      ).join("") + "</div>";
+  }
+
+  function closeDrawer() { $("#drawer-root").innerHTML = ""; }
+  function closeModal() { $("#modal-root").innerHTML = ""; }
+
+  function openTicket(id) {
+    const t = ticketById(id);
+    if (!t) return;
+    const g = guestById(t.guestId);
+    const late = isOverdue(t);
+    const prog = checklistProgress(t);
+    const assignOpts = state.staff.map((s) => "<option value=\"" + s.id + "\"" + (s.id === t.assigneeId ? " selected" : "") + ">" + esc(s.name) + "</option>").join("") +
+      "<option value=\"\"" + (!t.assigneeId ? " selected" : "") + ">Unassigned</option>";
+    const checks = (t.checklist && t.checklist.length) ? ("<h3 style=\"margin-bottom:6px\">Checklist" + (prog ? " · " + prog : "") + "</h3><ul class=\"checklist\">" +
+      t.checklist.map((item) => "<li class=\"" + (item.done ? "done" : "") + "\"><input type=\"checkbox\"" + (item.done ? " checked" : "") + " data-action=\"toggle-check\" data-tid=\"" + t.id + "\" data-cid=\"" + item.id + "\" /><span>" + esc(item.text) + "</span></li>").join("") +
+      "</ul>") : "";
+    $("#drawer-root").innerHTML =
+      "<div class=\"drawer-backdrop\" data-action=\"close-drawer\"></div>" +
+      "<aside class=\"drawer\" role=\"dialog\" aria-labelledby=\"t-title\">" +
+        "<div class=\"drawer-head\"><div>" +
+          "<div class=\"muted\">" + esc(t.id) + " · " + esc(DEPT_MAP[t.department].name) + "</div>" +
+          "<h2 id=\"t-title\" style=\"font-size:1.35rem;margin-top:4px\">" + esc(t.summary) + "</h2>" +
+          "<div style=\"display:flex;gap:6px;flex-wrap:wrap;margin-top:8px\">" +
+            "<span class=\"pill " + esc(t.type) + "\">" + (t.type === "guest" ? "Guest" : "Internal") + "</span>" +
+            "<span class=\"pill " + esc(t.status) + "\">" + esc(statusLabel(t.status)) + "</span>" +
+            (late ? "<span class=\"pill overdue\">Overdue</span>" : "") +
+          "</div></div>" +
+          "<button type=\"button\" class=\"icon-btn\" data-action=\"close-drawer\" aria-label=\"Close\">×</button></div>" +
+        "<div class=\"drawer-body\"><dl class=\"detail-kv\">" +
+          "<dt>Due</dt><dd>" + esc(formatDateTime(t.dueAt)) + "</dd>" +
+          "<dt>Room</dt><dd>" + (t.room ? esc(t.room) : "—") + "</dd>" +
+          "<dt>Guest</dt><dd>" + (g ? "<button type=\"button\" class=\"text-btn\" data-action=\"open-guest\" data-id=\"" + g.id + "\">" + esc(guestName(g)) + "</button> · " + esc(g.confirmation) : "—") + "</dd>" +
+          "<dt>Assignee</dt><dd><select id=\"assign-select\">" + assignOpts + "</select> <button type=\"button\" class=\"text-btn\" data-action=\"assign-ticket\" data-id=\"" + t.id + "\">Update</button></dd>" +
+          "<dt>Created by</dt><dd>" + esc(staffName(t.createdById)) + "</dd>" +
+          "<dt>Created</dt><dd>" + esc(formatDateTime(t.createdAt)) + "</dd>" +
+        "</dl>" + (t.notes ? "<p style=\"margin-bottom:16px\">" + esc(t.notes) + "</p>" : "") + checks + "</div>" +
+        "<div class=\"drawer-actions\">" +
+          "<button type=\"button\" class=\"btn btn-primary\" data-action=\"edit-ticket\" data-id=\"" + t.id + "\">Edit</button>" +
+          (t.status !== "in_progress" && t.status !== "closed" ? "<button type=\"button\" class=\"btn\" data-action=\"set-ticket-status\" data-id=\"" + t.id + "\" data-status=\"in_progress\">Start</button>" : "") +
+          (t.status !== "closed"
+            ? "<button type=\"button\" class=\"btn btn-danger\" data-action=\"set-ticket-status\" data-id=\"" + t.id + "\" data-status=\"closed\">Close</button>"
+            : "<button type=\"button\" class=\"btn\" data-action=\"set-ticket-status\" data-id=\"" + t.id + "\" data-status=\"open\">Reopen</button>") +
+        "</div></aside>";
+  }
+
+  function openGuest(id) {
+    const g = guestById(id);
+    if (!g) return;
+    const tickets = state.tickets.filter((t) => t.guestId === g.id).sort((a, b) => new Date(b.dueAt) - new Date(a.dueAt));
+    $("#drawer-root").innerHTML =
+      "<div class=\"drawer-backdrop\" data-action=\"close-drawer\"></div>" +
+      "<aside class=\"drawer\" role=\"dialog\" aria-labelledby=\"g-title\">" +
+        "<div class=\"drawer-head\"><div><div class=\"muted\">Room " + esc(g.room) + (g.vip ? " · VIP" : "") + "</div>" +
+          "<h2 id=\"g-title\" style=\"font-size:1.35rem;margin-top:4px\">" + esc(guestName(g)) + "</h2></div>" +
+          "<button type=\"button\" class=\"icon-btn\" data-action=\"close-drawer\" aria-label=\"Close\">×</button></div>" +
+        "<div class=\"drawer-body\"><dl class=\"detail-kv\">" +
+          "<dt>Confirmation</dt><dd>" + esc(g.confirmation) + "</dd>" +
+          "<dt>Phone</dt><dd>" + esc(g.phone) + "</dd>" +
+          "<dt>Email</dt><dd>" + esc(g.email) + "</dd>" +
+          "<dt>Stay</dt><dd>" + esc(formatDate(g.start)) + " – " + esc(formatDate(g.end)) + "</dd>" +
+        "</dl><h3 style=\"margin-bottom:8px\">Tickets</h3>" +
+        (tickets.length ? tickets.map(compactRow).join("") : "<p class=\"empty\">No tickets for this guest.</p>") +
+        "</div><div class=\"drawer-actions\">" +
+          "<button type=\"button\" class=\"btn btn-primary\" data-action=\"new-for-guest\" data-id=\"" + g.id + "\">+ Guest request</button>" +
+        "</div></aside>";
+  }
+
+  function defaultDue(tpl) {
+    const date = ui.selectedDate || todayYmd();
+    if (tpl && tpl.dueHour != null) return new Date(dubaiISO(date, tpl.dueHour, 0));
+    const p = zonedParts();
+    let h = parseInt(p.hour, 10);
+    let m = Math.ceil(parseInt(p.minute, 10) / 15) * 15;
+    if (m === 60) { m = 0; h += 1; }
+    if (ymd(new Date()) !== date) return new Date(dubaiISO(date, 10, 0));
+    return new Date(dubaiISO(date, h, m));
+  }
+
+  function renderFormChecklist(items) {
+    return "<div class=\"block-title\"><h3>Checklist</h3><button type=\"button\" class=\"text-btn\" data-action=\"add-check-item\">Add item</button></div>" +
+      "<ul class=\"checklist\" id=\"form-check-list\">" +
+      items.map((item, i) => "<li><input type=\"checkbox\"" + (item.done ? " checked" : "") + " data-idx=\"" + i + "\" class=\"form-check-done\" />" +
+        "<input type=\"text\" value=\"" + esc(item.text) + "\" data-idx=\"" + i + "\" class=\"form-check-text\" style=\"flex:1;border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:var(--bg)\" />" +
+        "<button type=\"button\" class=\"text-btn\" data-action=\"remove-check-item\" data-idx=\"" + i + "\">Remove</button></li>").join("") +
+      (items.length ? "" : "<li class=\"muted\">No checklist items. Use Add item for a task list.</li>") +
+      "</ul>";
+  }
+
+  function readFormChecklist() {
+    const texts = $$(".form-check-text");
+    const dones = $$(".form-check-done");
+    return texts.map((input, i) => ({
+      id: uid("c"),
+      text: input.value.trim(),
+      done: !!(dones[i] && dones[i].checked)
+    })).filter((x) => x.text);
+  }
+
+  function openTicketForm(opts) {
+    const t = opts.ticket || null;
+    const type = t ? t.type : (opts.type || "guest");
+    const tpl = opts.template || null;
+    const guestPrefill = opts.guestId || (t && t.guestId) || "";
+    const due = t ? new Date(t.dueAt) : defaultDue(tpl);
+    const dueParts = zonedParts(due);
+    const dueDate = dueParts.year + "-" + dueParts.month + "-" + dueParts.day;
+    const dueTime = dueParts.hour + ":" + dueParts.minute;
+    const summary = (t && t.summary) || (tpl && tpl.summary) || "";
+    const department = (t && t.department) || (tpl && tpl.department) || "bell";
+    const gPre = guestPrefill ? guestById(guestPrefill) : null;
+    const room = (t && t.room) || (gPre && gPre.room) || "";
+    const notes = (t && t.notes) || "";
+    const assignee = (t && t.assigneeId) || state.currentUserId;
+    const status = (t && t.status) || "open";
+    const checklist = (t && t.checklist) || (tpl ? tpl.checklist.map((text) => ({ id: uid("c"), text: text, done: false })) : []);
+
+    $("#modal-root").innerHTML =
+      "<div class=\"modal-backdrop\" data-action=\"close-modal\">" +
+        "<div class=\"modal\" role=\"dialog\" aria-labelledby=\"form-title\" data-stop=\"1\">" +
+          "<form id=\"ticket-form\">" +
+            "<div class=\"modal-head\"><div><div class=\"muted\">" + (t ? esc(t.id) : "New " + (type === "guest" ? "guest" : "internal") + " request") + "</div>" +
+              "<h2 id=\"form-title\" style=\"font-size:1.3rem\">" + (t ? "Edit ticket" : esc(tpl ? tpl.name : "New ticket")) + "</h2></div>" +
+              "<button type=\"button\" class=\"icon-btn\" data-action=\"close-modal\" aria-label=\"Close\">×</button></div>" +
+            "<div class=\"modal-body\">" +
+              "<input type=\"hidden\" name=\"id\" value=\"" + (t ? esc(t.id) : "") + "\" />" +
+              "<input type=\"hidden\" name=\"type\" value=\"" + esc(type) + "\" />" +
+              "<div class=\"form-grid\">" +
+                "<div class=\"field\"><label>Department</label><select name=\"department\">" +
+                  DEPTS.map((d) => "<option value=\"" + d.id + "\"" + (d.id === department ? " selected" : "") + ">" + esc(d.name) + "</option>").join("") +
+                "</select></div>" +
+                "<div class=\"field\"><label>Status</label><select name=\"status\">" +
+                  "<option value=\"open\"" + (status === "open" ? " selected" : "") + ">Open</option>" +
+                  "<option value=\"in_progress\"" + (status === "in_progress" ? " selected" : "") + ">In progress</option>" +
+                  "<option value=\"closed\"" + (status === "closed" ? " selected" : "") + ">Closed</option>" +
+                "</select></div>" +
+                "<div class=\"field span-2\"><label>Guest</label><select name=\"guestId\" id=\"form-guest\">" +
+                  "<option value=\"\">No guest</option>" +
+                  state.guests.map((g) => "<option value=\"" + g.id + "\"" + (g.id === guestPrefill ? " selected" : "") + ">" + esc(g.room + " — " + guestName(g)) + "</option>").join("") +
+                "</select></div>" +
+                "<div class=\"field\"><label>Room</label><input name=\"room\" id=\"form-room\" value=\"" + esc(room) + "\" placeholder=\"e.g. 1204\" /></div>" +
+                "<div class=\"field\"><label>Assignee</label><select name=\"assigneeId\">" +
+                  state.staff.map((s) => "<option value=\"" + s.id + "\"" + (s.id === assignee ? " selected" : "") + ">" + esc(s.name) + "</option>").join("") +
+                  "<option value=\"\"" + (!assignee ? " selected" : "") + ">Unassigned</option>" +
+                "</select></div>" +
+                "<div class=\"field span-2\"><label>Summary</label><input name=\"summary\" required value=\"" + esc(summary) + "\" placeholder=\"What needs to be done?\" /></div>" +
+                "<div class=\"field\"><label>Due date</label><input type=\"date\" name=\"dueDate\" required value=\"" + esc(dueDate) + "\" /></div>" +
+                "<div class=\"field\"><label>Due time</label><input type=\"time\" name=\"dueTime\" required value=\"" + esc(dueTime) + "\" /></div>" +
+                "<div class=\"field span-2\"><label>Notes</label><textarea name=\"notes\" placeholder=\"Vehicle type, piece count, special instructions…\">" + esc(notes) + "</textarea></div>" +
+              "</div><div style=\"margin-top:14px\" id=\"form-check-wrap\">" + renderFormChecklist(checklist) + "</div>" +
+            "</div><div class=\"modal-foot\">" +
+              "<button type=\"submit\" class=\"btn btn-primary\">" + (t ? "Save changes" : "Create ticket") + "</button>" +
+              "<button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Cancel</button>" +
+            "</div></form></div></div>";
+  }
+
+  function toast(msg) {
+    const el = document.createElement("div");
+    el.className = "toast";
+    el.textContent = msg;
+    $("#toast-root").appendChild(el);
+    setTimeout(function () { el.remove(); }, 2400);
+  }
+
+  function closeFavs() {
+    $$(".fav-menu").forEach((m) => { m.hidden = true; });
+  }
+
+  function onClick(e) {
+    const actionEl = e.target.closest("[data-action]");
+    if (e.target.classList.contains("modal-backdrop")) {
+      closeModal();
+      return;
+    }
+    const favBtn = e.target.closest("[data-action='toggle-favs']");
+    if (!favBtn && !e.target.closest(".fav-menu")) closeFavs();
+    if (!actionEl) return;
+    if (actionEl.classList.contains("modal-backdrop")) return;
+    const a = actionEl.dataset.action;
+    if (EXT.onClick(a, actionEl, e)) return;
+    if (EXT.onClickDining && EXT.onClickDining(a, actionEl, e)) return;
+
+    if (a === "nav") {
+      ui.view = actionEl.dataset.view;
+      ui.sidebarOpen = false;
+      closeDrawer();
+      render();
+    } else if (a === "toggle-theme") {
+      state.theme = state.theme === "dark" ? "light" : "dark";
+      persist(); render();
+    } else if (a === "toggle-punch") {
+      const u = currentUser();
+      u.punchedIn = !u.punchedIn;
+      persist(); render();
+      toast(u.punchedIn ? "Punched in" : "Punched out");
+    } else if (a === "toggle-sidebar") {
+      ui.sidebarOpen = !ui.sidebarOpen;
+      render();
+    } else if (a === "toggle-favs") {
+      const menu = $("#favs-" + actionEl.dataset.type);
+      const was = menu.hidden;
+      closeFavs();
+      menu.hidden = !was;
+    } else if (a === "set-range") {
+      ui.range = actionEl.dataset.range;
+      if (ui.range === "today" && !ui.selectedDate) ui.selectedDate = todayYmd();
+      ui.activeSaved = "";
+      render();
+    } else if (a === "set-status") {
+      ui.status = actionEl.dataset.status;
+      ui.activeSaved = "";
+      render();
+    } else if (a === "pick-date") {
+      ui.selectedDate = actionEl.dataset.date;
+      ui.range = "today";
+      ui.activeSaved = "";
+      ui.sidebarOpen = false;
+      render();
+    } else if (a === "cal-prev") { shiftMonth(-1); render(); }
+    else if (a === "cal-next") { shiftMonth(1); render(); }
+    else if (a === "apply-saved") {
+      const sf = state.savedFilters.find((x) => x.id === actionEl.dataset.id);
+      if (!sf) return;
+      ui.status = sf.filters.status;
+      ui.range = sf.filters.range;
+      ui.type = sf.filters.type || "";
+      ui.department = sf.filters.department || "";
+      ui.assignee = sf.filters.assignee || "";
+      ui.overdueOnly = !!sf.filters.overdueOnly;
+      ui.activeSaved = sf.id;
+      ui.view = "tickets";
+      render();
+    } else if (a === "save-filter") {
+      const name = prompt("Name this filter");
+      if (!name || !name.trim()) return;
+      state.savedFilters.push({
+        id: uid("sf"),
+        name: name.trim(),
+        filters: { status: ui.status, range: ui.range, type: ui.type, department: ui.department, assignee: ui.assignee, overdueOnly: ui.overdueOnly }
+      });
+      persist(); render();
+      toast("Filter saved");
+    } else if (a === "clear-chip") {
+      const k = actionEl.dataset.key;
+      if (k === "range") ui.range = "all";
+      if (k === "status") ui.status = "all";
+      if (k === "type") ui.type = "";
+      if (k === "department") ui.department = "";
+      if (k === "assignee") ui.assignee = "";
+      if (k === "overdueOnly") ui.overdueOnly = false;
+      if (k === "q") ui.q = "";
+      ui.activeSaved = "";
+      render();
+    } else if (a === "new-ticket") {
+      closeFavs();
+      openTicketForm({ type: actionEl.dataset.type });
+    } else if (a === "use-template") {
+      closeFavs();
+      const tpl = TPL_MAP[actionEl.dataset.id];
+      ui.view = "tickets";
+      ui.sidebarOpen = false;
+      render();
+      openTicketForm({ type: tpl.type, template: tpl });
+    } else if (a === "open-ticket") {
+      openTicket(actionEl.dataset.id);
+    } else if (a === "open-guest") {
+      openGuest(actionEl.dataset.id);
+    } else if (a === "close-drawer") { closeDrawer(); }
+    else if (a === "close-modal") { closeModal(); }
+    else if (a === "edit-ticket") {
+      const ticket = ticketById(actionEl.dataset.id);
+      closeDrawer();
+      openTicketForm({ ticket: ticket, type: ticket.type });
+    } else if (a === "set-ticket-status") {
+      const ticket = ticketById(actionEl.dataset.id);
+      ticket.status = actionEl.dataset.status;
+      persist();
+      openTicket(ticket.id);
+      render();
+      toast(ticket.status === "closed" ? "Ticket closed" : statusLabel(ticket.status));
+    } else if (a === "assign-ticket") {
+      const ticket = ticketById(actionEl.dataset.id);
+      ticket.assigneeId = $("#assign-select").value;
+      persist();
+      openTicket(ticket.id);
+      render();
+      toast("Assignee updated");
+    } else if (a === "toggle-check") {
+      const ticket = ticketById(actionEl.dataset.tid);
+      const item = ticket.checklist.find((c) => c.id === actionEl.dataset.cid);
+      item.done = actionEl.checked;
+      if (item.done && ticket.status === "open") ticket.status = "in_progress";
+      persist();
+      openTicket(ticket.id);
+      render();
+    } else if (a === "new-for-guest") {
+      const g = guestById(actionEl.dataset.id);
+      closeDrawer();
+      openTicketForm({ type: "guest", guestId: g.id });
+    } else if (a === "dash-filter") {
+      ui.view = "tickets";
+      ui.type = ""; ui.department = ""; ui.assignee = ""; ui.q = "";
+      if (actionEl.dataset.kind === "open") { ui.status = "open"; ui.range = "all"; ui.overdueOnly = false; }
+      if (actionEl.dataset.kind === "overdue") { ui.status = "open"; ui.range = "all"; ui.overdueOnly = true; }
+      if (actionEl.dataset.kind === "today") { ui.status = "open"; ui.range = "today"; ui.selectedDate = todayYmd(); ui.overdueOnly = false; }
+      ui.activeSaved = "";
+      render();
+    } else if (a === "dash-dept") {
+      ui.view = "tickets";
+      ui.status = "open"; ui.range = "all"; ui.department = actionEl.dataset.dept;
+      ui.type = ""; ui.assignee = ""; ui.overdueOnly = false; ui.activeSaved = "";
+      render();
+    } else if (a === "switch-user") {
+      state.currentUserId = actionEl.dataset.id;
+      persist(); render();
+      toast("Now working as " + currentUser().name);
+    } else if (a === "reset-demo") {
+      if (!confirm("Reset all tickets, filters and punch status back to the sample data?")) return;
+      const theme = state.theme;
+      state = seed();
+      state.theme = theme;
+      persist();
+      ui.q = ""; ui.guestQ = ""; ui.activeSaved = ""; ui.type = ""; ui.department = ""; ui.assignee = "";
+      ui.overdueOnly = false; ui.status = "open"; ui.range = "today"; ui.selectedDate = todayYmd();
+      render();
+      toast("Demo data restored");
+    } else if (a === "add-check-item") {
+      const items = readFormChecklist();
+      items.push({ id: uid("c"), text: "", done: false });
+      $("#form-check-wrap").innerHTML = renderFormChecklist(items);
+    } else if (a === "remove-check-item") {
+      const items = readFormChecklist();
+      items.splice(Number(actionEl.dataset.idx), 1);
+      $("#form-check-wrap").innerHTML = renderFormChecklist(items);
+    }
+  }
+
+  function onChange(e) {
+    if (EXT.onChange(e) || (EXT.onChangeDining && EXT.onChangeDining(e))) return;
+    if (e.target.id === "user-select") {
+      state.currentUserId = e.target.value;
+      persist(); render();
+    }
+    if (e.target.id === "form-guest") {
+      const g = guestById(e.target.value);
+      const room = $("#form-room");
+      if (g && room) room.value = g.room;
+    }
+  }
+
+  function onInput(e) {
+    if (e.target.id === "ticket-search") {
+      ui.q = e.target.value;
+      ui.activeSaved = "";
+      renderTickets();
+    }
+    if (e.target.id === "guest-search") {
+      ui.guestQ = e.target.value;
+      renderGuests();
+    }
+  }
+
+  function onSubmit(e) {
+    if (EXT.onSubmitDining && EXT.onSubmitDining(e)) return;
+    if (e.target.getAttribute("id") !== "ticket-form") return;
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const timeParts = String(fd.get("dueTime") || "10:00").split(":").map(Number);
+    const dueAt = dubaiISO(fd.get("dueDate"), timeParts[0], timeParts[1]);
+    const checklist = readFormChecklist();
+    const id = fd.get("id") || nextTicketId();
+    const existing = ticketById(id);
+    const record = {
+      id: id,
+      type: fd.get("type"),
+      department: fd.get("department"),
+      room: String(fd.get("room") || "").trim(),
+      guestId: fd.get("guestId") || null,
+      summary: String(fd.get("summary") || "").trim(),
+      notes: String(fd.get("notes") || "").trim(),
+      assigneeId: fd.get("assigneeId") || "",
+      createdById: existing ? existing.createdById : state.currentUserId,
+      status: fd.get("status"),
+      dueAt: dueAt,
+      createdAt: existing ? existing.createdAt : new Date().toISOString(),
+      checklist: checklist.length ? checklist : null
+    };
+    if (existing) {
+      Object.assign(existing, record);
+      toast("Ticket updated");
+    } else {
+      state.tickets.push(record);
+      toast("Ticket created");
+    }
+    persist();
+    closeModal();
+    ui.view = "tickets";
+    ui.selectedDate = ymd(new Date(dueAt));
+    ui.calMonth = ui.selectedDate.slice(0, 7);
+    render();
+    openTicket(id);
+  }
+
+  function onKey(e) {
+    if (e.key === "Escape") {
+      closeFavs();
+      closeModal();
+      closeDrawer();
+      if (ui.sidebarOpen) { ui.sidebarOpen = false; render(); }
+    }
+  }
+
+  function openModal(title, bodyHtml, footHtml) {
+    $("#modal-root").innerHTML =
+      "<div class=\"modal-backdrop\" data-action=\"close-modal\"><div class=\"modal\" role=\"dialog\" data-stop=\"1\">" +
+        "<div class=\"modal-head\"><h2 style=\"font-size:1.25rem\">" + esc(title) + "</h2><button type=\"button\" class=\"icon-btn\" data-action=\"close-modal\" aria-label=\"Close\">×</button></div>" +
+        "<div class=\"modal-body\">" + bodyHtml + "</div>" + (footHtml ? "<div class=\"modal-foot\">" + footHtml + "</div>" : "") +
+      "</div></div>";
+  }
+  const core = {
+    getState: () => state, persist, render, renderChrome, toast, openModal, closeModal, closeDrawer, ui,
+    go(view) { ui.view = view; closeDrawer(); render(); window.scrollTo(0, 0); }
+  };
+
+  async function init() {
+    document.addEventListener("click", onClick);
+    document.addEventListener("change", onChange);
+    document.addEventListener("input", function (e) { if (EXT.onInputDining && EXT.onInputDining(e)) return; onInput(e); });
+    document.addEventListener("submit", onSubmit);
+    document.addEventListener("keydown", onKey);
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      navigator.serviceWorker.register("./sw.js").catch(function () {});
+    }
+    state = await EXT.boot(core);
+    applyTheme();
+    ui.selectedDate = todayYmd();
+    ui.calMonth = ui.selectedDate.slice(0, 7);
+    try {
+      const params = new URLSearchParams(location.search);
+      const allowed = ["dashboard", "tickets", "guests", "tasks", "staff", "account"];
+      if (allowed.includes(params.get("view"))) ui.view = params.get("view");
+    } catch (e) {}
+    document.body.classList.add("ready");
+    render();
+  }
+
+  init();
+})();
+
+</script>
+</body>
+</html>

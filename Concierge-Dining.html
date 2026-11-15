@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#3a2c4a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Dining" />
+  <meta name="robots" content="noindex" />
+  <title>Concierge Dining</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzJjNGE0MiIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iNi42IiByPSIxLjMiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSIxNS40IiB5PSI2LjYiIHdpZHRoPSIxLjIiIGhlaWdodD0iMy4yIiBmaWxsPSIjZDRiNDgzIi8+CiAgPHBhdGggZD0iTTguOCAxNi4yYzAtNiAzLjItOS4yIDcuMi05LjJzNy4yIDMuMiA3LjIgOS4ySDguOHoiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSI3LjIiIHk9IjE2IiB3aWR0aD0iMTcuNiIgaGVpZ2h0PSIzLjIiIHJ4PSIxLjQiIGZpbGw9IiNiODk0NjAiLz4KICA8cmVjdCB4PSI4LjQiIHk9IjE2LjUiIHdpZHRoPSIxNS4yIiBoZWlnaHQ9IjIuMiIgcng9IjEiIGZpbGw9IiNkNGI0ODMiLz4KPC9zdmc+Cg==" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFEElEQVR4nO3aO24UQRRG4RrLy0AIiRAvgBRLJPYGWAMxyyBmDWwAJ5ZM6gXYIRJC7MMEePxo93TX41bXrb/OF/KYKdrHl+vu2QUHTs5O71qfAeVuLq52rc/Q5AAEPIYWgW/2hkQ8tq3irvomRIw5NeOu8sKEjBg1wj6yfkFiRqwarZh9hxAySlhNa5MJTcwoZdVQ0XcFIaOGkmmdPaGJGbWUtJUVNDGjttzGkoMmZmwlp7WkoIkZW0ttLjpoYkYrKe1FBU3MaC22wdWgiRlexLRo/ugbaGkxaKYzvFlr8mDQxAyvltpk5YCU2aCZzvDuUKMvgiZm9GKuVVYOSHkWNNMZvZk2y4SGFIKGlIegWTfQq6ftMqEhhaAh5SgE1g30b98wExpSjlsfQNn3zx9mf/3Tt58bn2QcBF3BoZCnv0/Y9nbsz7bWYp4ialvs0IZSY879OziMoI2UhEnUdggaUgjagMWEZUrbIGhIIWhIIWhIIWhIIWgDFg9HeMBig6AhhaCNlExYprMdgjaUEyYx2yJoYymBErM9gq4gJlRiroOgIYWgIYUP+BvK/YAR64cdgi5Q6xNyBJ6PoBNt/TFP4k5D0BG8fFaZuNcR9AIvIU8R9mEEPcNryFOE/RJBP9FLyFOE/Yj70Pd6jTmEvs9ujaCDRhAK/wYLQ68cqhGMvIIMO6FVYw5B+9+2ZsgJXfML/u79xx8pf/72+vK81llGnNTDBW0dc2rAa6wDHy3qoYK2inkp4tQgLV/rkJGiHiZoi5jn4rOeqLXeY5Sohwi6NOZpZDX33prvO0LUw97liPU0qtvry/OtYp57P+t9XZH8hM6dztOQzQ5UwOJM6lNaekIrxRzC87PkTmv1e9TSQefwGvMeK8gy2aBzJpH3mPdKo1ae0rJBl/Ac814PZ2xBMuiS6dxTKPuzMqUfSQaNccndtlOdPLWo3cZjQkMKQUOKVNCsG+nUrplU0ABBQwpBQ4pM0Gq74JaUrp1M0EAIBA0xBA0pBA0pBA0pBA0pBA0pBA0pXXwe+uvZ69ZHwL0vF39aH2GR66AJ2S+vYbtdOYjZN69fH5dBe71YeM7j1+m49QFyvXrztvUR5P39/av1EZK5m9Ax3/XEvI2Y6+xtSrsLeg0xb6u3691V0L1dXBU9XfeuggbWEDSkEDSkEDSkuAt66ZFqj/dFFSxdd2+PwN0FvYaot9VTzCE4DXrtQhH1Nnq8znzaDsk8TuY910HvEbYfnmMOoZOggVgud2ggF0FDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDytHNxdWu9SEACzcXVzsmNKQQNKQQNKQchfB/92h9EKDEvmEmNKQQNKQ8BM3agV49bZcJDSkEDSnPgmbtQG+mzTKhIeVF0Exp9GKu1dkJTdTw7lCjrByQcjBopjS8WmpzcUITNbxZa5KVA1JWg2ZKw4uYFqMmNFGjtdgGo1cOokYrKe0l7dBEja2lNpf8QyFRYys5rWXd5SBq1JbbWPZtO6JGLSVtmUR5cnZ6Z/E6GJvFkDR5sMK0RimrhsxDZFojhfUwNH/0zbRGrBqtVI2PaY05NYfeZtOUuMe21f/cTdYD4h5Di/XTxb5L4Bo8/Pz0D41bzJxsfGkpAAAAAElFTkSuQmCC" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #f4efe6;
+  --bg-2: #ece5d8;
+  --surface: #fffdf8;
+  --surface-2: #f8f3ea;
+  --ink: #1c1915;
+  --muted: #6b645a;
+  --line: #e3d9c8;
+  --line-strong: #cfc3ad;
+  --accent: #2c4a42;
+  --accent-ink: #f4efe6;
+  --gold: #8a6a3a;
+  --gold-soft: #d4b483;
+  --overdue: #9c3a2c;
+  --overdue-bg: #f8e8e4;
+  --ok: #2c6e4f;
+  --ok-bg: #e4f0e9;
+  --progress: #8a6a3a;
+  --progress-bg: #f3ead8;
+  --closed: #6b645a;
+  --shadow: 0 10px 30px rgba(28, 25, 21, 0.08);
+  --shadow-lg: 0 24px 60px rgba(28, 25, 21, 0.16);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --font: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --serif: "Fraunces", "Palatino Linotype", Palatino, Georgia, serif;
+  --topbar: 64px;
+  --bottom: 0px;
+  --sidebar: 268px;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --bg: #161412;
+  --bg-2: #1e1b18;
+  --surface: #221f1b;
+  --surface-2: #2a2621;
+  --ink: #f3eee6;
+  --muted: #a89f92;
+  --line: #3a342c;
+  --line-strong: #52493d;
+  --accent: #c9a46a;
+  --accent-ink: #1c1915;
+  --gold: #d4b483;
+  --gold-soft: #8a6a3a;
+  --overdue: #f0a398;
+  --overdue-bg: #3a221f;
+  --ok: #8fcead;
+  --ok-bg: #1d3228;
+  --progress: #e2c48a;
+  --progress-bg: #3a3120;
+  --closed: #a89f92;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+[data-theme="dark"] .icon-sun { display: none; }
+[data-theme="light"] .icon-moon, :root:not([data-theme="dark"]) .icon-moon { display: none; }
+[data-theme="dark"] .icon-moon { display: block; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.02em; margin: 0; }
+h1 { font-size: 1.85rem; }
+h2 { font-size: 1.05rem; }
+h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-family: var(--font); font-weight: 600; }
+p { margin: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+#app { min-height: 100%; display: flex; flex-direction: column; }
+#main { flex: 1; padding-bottom: var(--bottom); }
+
+/* Top bar */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  height: var(--topbar);
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 16px 0 18px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 10px; min-width: 180px; }
+.brand-mark { border-radius: 7px; display: block; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text strong { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; }
+.brand-text span { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.04em; }
+.main-nav { display: flex; gap: 2px; flex: 1; justify-content: center; }
+.main-nav button, .bottom-nav button {
+  border: 0; background: transparent; color: var(--muted);
+  padding: 8px 14px; border-radius: 999px; font-weight: 500;
+}
+.main-nav button:hover, .bottom-nav button:hover { background: var(--bg-2); color: var(--ink); }
+.main-nav button.active, .bottom-nav button.active { background: var(--accent); color: var(--accent-ink); }
+.top-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.icon-btn {
+  width: 36px; height: 36px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface);
+  display: inline-flex; align-items: center; justify-content: center; color: var(--ink);
+}
+.icon-btn:hover { border-color: var(--line-strong); background: var(--bg-2); }
+.menu-btn { display: none; }
+.punch-btn {
+  border: 1px solid var(--line); background: var(--surface);
+  border-radius: 999px; padding: 6px 12px; font-size: 0.8rem; font-weight: 500;
+}
+.punch-btn.on { background: var(--ok-bg); color: var(--ok); border-color: transparent; }
+.user-switcher select {
+  border: 1px solid var(--line); background: var(--surface);
+  border-radius: 999px; padding: 6px 28px 6px 12px; appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%236b645a' d='M1 1l5 5 5-5'/></svg>");
+  background-repeat: no-repeat; background-position: right 10px center; max-width: 180px;
+}
+
+/* Buttons */
+.btn {
+  border: 1px solid var(--line-strong); background: var(--surface);
+  border-radius: 10px; padding: 8px 13px; font-weight: 500; white-space: nowrap;
+}
+.btn:hover { background: var(--bg-2); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-danger { background: var(--overdue); color: #fff; border-color: transparent; }
+.btn-ghost { border-color: transparent; background: transparent; color: var(--muted); }
+.btn-ghost:hover { background: var(--bg-2); color: var(--ink); }
+.text-btn { border: 0; background: none; color: var(--gold); font-size: 0.75rem; font-weight: 600; padding: 0; }
+.split-btn { position: relative; display: inline-flex; }
+.split-btn .btn { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.split-btn .btn-caret {
+  border-top-left-radius: 0; border-bottom-left-radius: 0;
+  border-left: 1px solid color-mix(in srgb, var(--accent-ink) 25%, transparent);
+  padding-left: 8px; padding-right: 8px; min-width: 32px;
+}
+.split-btn .btn:not(.btn-primary) + .btn-caret { border-left-color: var(--line-strong); }
+.fav-menu {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 30;
+  min-width: 260px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); padding: 6px;
+}
+.fav-menu button {
+  display: block; width: 100%; text-align: left; border: 0; background: transparent;
+  padding: 8px 10px; border-radius: 6px; font-size: 0.9rem;
+}
+.fav-menu button:hover { background: var(--bg-2); }
+.fav-menu .fav-meta { display: block; font-size: 0.7rem; color: var(--muted); }
+
+/* Views */
+.view { padding: 20px 24px 40px; }
+.view-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.lede { color: var(--muted); margin-top: 4px; }
+
+/* Dashboard */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+.stat-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 18px 16px; box-shadow: var(--shadow);
+}
+.stat-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; }
+.stat-card .num { font-family: var(--serif); font-size: 2.2rem; margin-top: 6px; line-height: 1; }
+.stat-card.overdue .num { color: var(--overdue); }
+.stat-card.open .num { color: var(--ok); }
+.dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px; box-shadow: var(--shadow);
+}
+.panel h2 { margin-bottom: 14px; }
+.dept-row { display: grid; grid-template-columns: 120px 1fr 28px; gap: 10px; align-items: center; margin-bottom: 8px; font-size: 0.88rem; }
+.bar { height: 8px; background: var(--bg-2); border-radius: 99px; overflow: hidden; }
+.bar > span { display: block; height: 100%; border-radius: 99px; }
+.list-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--line); cursor: pointer;
+}
+.list-row:last-child { border-bottom: 0; }
+.list-row:hover { color: var(--accent); }
+.dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.muted { color: var(--muted); font-size: 0.82rem; }
+.empty { color: var(--muted); padding: 28px 8px; text-align: center; }
+
+/* Tickets layout */
+.tickets-view { display: grid; grid-template-columns: var(--sidebar) 1fr; gap: 20px; padding: 16px 16px 40px 12px; align-items: start; }
+.sidebar {
+  position: sticky; top: calc(var(--topbar) + 16px);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px; box-shadow: var(--shadow);
+}
+.sidebar-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.close-sidebar { display: none; }
+.sidebar-block { margin-top: 18px; }
+.block-title { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.filter-list, .quick-links { display: flex; flex-direction: column; gap: 2px; }
+.filter-list button, .quick-links button, .chip {
+  border: 0; background: transparent; text-align: left; padding: 7px 8px; border-radius: 8px; color: var(--ink);
+}
+.filter-list button:hover, .quick-links button:hover, .chip:hover { background: var(--bg-2); }
+.filter-list button.active { background: color-mix(in srgb, var(--accent) 14%, var(--surface)); color: var(--accent); font-weight: 600; }
+.filter-list .count, .chip .count { float: right; color: var(--muted); font-size: 0.75rem; }
+.quick-links button { font-size: 0.86rem; }
+
+/* Calendar */
+.cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.cal-head strong { font-family: var(--serif); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; }
+.cal-grid .dow { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em; padding: 4px 0; text-transform: uppercase; }
+.cal-grid button {
+  border: 0; background: transparent; border-radius: 8px; height: 32px; position: relative; font-size: 0.8rem;
+}
+.cal-grid button:hover { background: var(--bg-2); }
+.cal-grid button.today { box-shadow: inset 0 0 0 1px var(--gold); }
+.cal-grid button.selected { background: var(--accent); color: var(--accent-ink); }
+.cal-grid button.outside { color: var(--line-strong); }
+.cal-grid button.has-tickets::after {
+  content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--gold);
+  position: absolute; left: 50%; bottom: 3px; transform: translateX(-50%);
+}
+.cal-grid button.selected.has-tickets::after { background: var(--accent-ink); }
+
+/* Toolbar */
+.tickets-main { min-width: 0; }
+.toolbar { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }
+.create-cluster, .toolbar-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: transparent; padding: 6px 12px; color: var(--muted); font-size: 0.82rem; font-weight: 500; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.active { background: var(--ink); color: var(--bg); }
+.search-field { flex: 1; min-width: 180px; }
+.search-field.wide { min-width: 260px; max-width: 420px; }
+.search-field input, .field input, .field select, .field textarea {
+  width: 100%; border: 1px solid var(--line); background: var(--surface);
+  border-radius: 10px; padding: 8px 12px; outline: none;
+}
+.search-field input:focus, .field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent);
+}
+.chip-bar { display: flex; flex-wrap: wrap; gap: 6px; min-height: 8px; margin-bottom: 12px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1px solid var(--line) !important; border-radius: 999px; padding: 4px 8px 4px 10px; font-size: 0.78rem;
+}
+.chip .x { border: 0; background: none; color: var(--muted); padding: 0 2px; font-size: 1rem; line-height: 1; }
+
+/* Timeline */
+.tickets-board { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.board-meta { padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.82rem; display: flex; justify-content: space-between; }
+.hour-block { display: grid; grid-template-columns: 64px 1fr; border-bottom: 1px solid var(--line); }
+.hour-block:last-child { border-bottom: 0; }
+.hour-block.empty { opacity: 0.55; }
+.hour-label {
+  padding: 10px 8px 10px 14px; font-size: 0.75rem; font-weight: 600; color: var(--muted);
+  border-right: 1px solid var(--line); background: var(--surface-2);
+}
+.hour-tickets { padding: 6px; display: flex; flex-direction: column; gap: 6px; min-height: 20px; }
+.ticket-row {
+  display: grid; grid-template-columns: 64px 1fr auto auto; gap: 10px; align-items: center;
+  padding: 8px 10px; border-radius: 10px; background: var(--bg);
+  border: 1px solid transparent; border-left: 4px solid var(--dept, var(--gold));
+  cursor: pointer; text-align: left;
+}
+.ticket-row:hover { border-color: var(--line-strong); border-left-color: var(--dept, var(--gold)); }
+.ticket-row.overdue { background: var(--overdue-bg); }
+.ticket-row.closed { opacity: 0.62; }
+.ticket-row .time { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.82rem; }
+.ticket-row .sum { min-width: 0; }
+.ticket-row .sum strong { display: block; font-weight: 550; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ticket-row .sum span { color: var(--muted); font-size: 0.75rem; }
+.pill {
+  display: inline-flex; align-items: center; border-radius: 999px; padding: 2px 8px;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  background: var(--bg-2); color: var(--muted); white-space: nowrap;
+}
+.pill.open { background: var(--ok-bg); color: var(--ok); }
+.pill.in_progress { background: var(--progress-bg); color: var(--progress); }
+.pill.closed { background: var(--bg-2); color: var(--closed); }
+.pill.overdue { background: var(--overdue); color: #fff; }
+.pill.guest { background: #e7eef2; color: #3b6e8a; }
+.pill.internal { background: #f1eadf; color: #8a6a3a; }
+[data-theme="dark"] .pill.guest { background: #1e2c34; color: #8eb6c8; }
+[data-theme="dark"] .pill.internal { background: #32291c; color: #d4b483; }
+.assignee { font-size: 0.75rem; color: var(--muted); max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Ticket cards (mobile / all-time list) */
+.ticket-list { display: flex; flex-direction: column; }
+.ticket-card {
+  display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--line);
+  background: transparent; padding: 14px 16px; border-left: 4px solid var(--dept, var(--gold));
+  cursor: pointer;
+}
+.ticket-card:hover { background: var(--bg); }
+.ticket-card.overdue { background: var(--overdue-bg); }
+.ticket-card .card-top { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.ticket-card h4 { font-family: var(--font); font-size: 0.95rem; font-weight: 550; margin: 0; }
+.ticket-card .meta { color: var(--muted); font-size: 0.78rem; display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Guests */
+.table-wrap { overflow: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; background: var(--surface-2); }
+tr { cursor: pointer; }
+tr:hover td { background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+
+/* Staff / tasks */
+.staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.staff-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px; box-shadow: var(--shadow); display: flex; gap: 12px; align-items: flex-start;
+}
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: var(--accent-ink);
+  display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; font-size: 0.85rem;
+}
+.staff-card.current { outline: 2px solid var(--gold); }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; background: var(--line-strong); }
+.status-dot.on { background: var(--ok); }
+
+/* Drawer + modal */
+.drawer-backdrop, .modal-backdrop, .sidebar-backdrop {
+  position: fixed; inset: 0; background: rgba(28, 25, 21, 0.4); z-index: 50;
+}
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100%);
+  background: var(--surface); z-index: 60; box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; animation: slide 0.22s ease;
+}
+@keyframes slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.drawer-head, .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 18px 18px 12px; border-bottom: 1px solid var(--line); }
+.drawer-body, .modal-body { padding: 16px 18px; overflow: auto; flex: 1; }
+.drawer-actions, .modal-foot { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 18px; border-top: 1px solid var(--line); }
+.detail-kv { display: grid; grid-template-columns: 110px 1fr; gap: 8px 12px; font-size: 0.9rem; margin-bottom: 16px; }
+.detail-kv dt { color: var(--muted); }
+.checklist { list-style: none; margin: 0; padding: 0; }
+.checklist li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.checklist li:last-child { border-bottom: 0; }
+.checklist li.done span { text-decoration: line-through; color: var(--muted); }
+.checklist input { margin-top: 3px; accent-color: var(--accent); width: 16px; height: 16px; }
+
+.modal-backdrop { display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 70; }
+.modal {
+  width: min(560px, 100%); max-height: min(92vh, 820px); overflow: auto;
+  background: var(--surface); border-radius: 16px; box-shadow: var(--shadow-lg);
+  animation: pop 0.18s ease;
+}
+@keyframes pop { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field.span-2 { grid-column: span 2; }
+.field label { font-size: 0.75rem; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.field textarea { min-height: 72px; resize: vertical; }
+
+.toast-root { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 80; display: flex; flex-direction: column; gap: 8px; }
+.toast { background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-size: 0.85rem; box-shadow: var(--shadow-lg); }
+
+.bottom-nav { display: none; }
+.progress-mini { font-size: 0.72rem; color: var(--muted); }
+
+@media (max-width: 980px) {
+  .stat-grid, .dash-grid { grid-template-columns: 1fr 1fr; }
+  .menu-btn { display: inline-flex; }
+  .tickets-view { grid-template-columns: 1fr; padding: 12px; }
+  .sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0; z-index: 55; width: min(320px, 90vw);
+    border-radius: 0; transform: translateX(-105%); transition: transform 0.2s ease; overflow: auto;
+  }
+  body.sidebar-open .sidebar { transform: none; }
+  .close-sidebar { display: inline-flex; }
+  .main-nav { display: none; }
+  .brand-text span { display: none; }
+  .ticket-row { grid-template-columns: 52px 1fr; }
+  .ticket-row .assignee, .ticket-row .pills-end { grid-column: 2; }
+}
+@media (max-width: 720px) {
+  :root { --bottom: 64px; --topbar: 58px; }
+  .view { padding: 14px 12px 24px; }
+  .stat-grid, .dash-grid, .form-grid { grid-template-columns: 1fr; }
+  .field.span-2 { grid-column: span 1; }
+  .user-switcher select { max-width: 120px; }
+  .punch-btn { display: none; }
+  .create-cluster { width: 100%; }
+  .split-btn { flex: 1; }
+  .split-btn .btn:first-child { flex: 1; }
+  .bottom-nav {
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    height: calc(56px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter: blur(16px); border-top: 1px solid var(--line);
+  }
+  .bottom-nav button { flex: 1; border-radius: 0; font-size: 0.68rem; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px; }
+  .drawer { width: 100%; }
+  th:nth-child(n+5), td:nth-child(n+5) { display: none; }
+}
+
+/* ===== v2: auth, account, install, dining ===== */
+body:not(.ready) #app { visibility: hidden; }
+body.auth-open #app { display: none; }
+#auth-root { position: fixed; inset: 0; z-index: 90; overflow: auto; background: radial-gradient(1200px 600px at 10% -10%, var(--bg-2), var(--bg)); }
+.auth-wrap { max-width: 440px; margin: 0 auto; padding: 48px 20px 32px; }
+.auth-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 22px; }
+.auth-brand strong { font-family: var(--serif); font-size: 1.4rem; display: block; }
+.auth-brand span { color: var(--muted); font-size: 0.85rem; }
+.auth-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; box-shadow: var(--shadow-lg); }
+.auth-card h1 { font-size: 1.6rem; }
+.auth-card form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.auth-card label { display: flex; flex-direction: column; gap: 5px; font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.auth-card input, .auth-card select { font: inherit; font-size: 1rem; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 11px 12px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-2); }
+.auth-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.auth-card .otp { font-size: 1.6rem; letter-spacing: 0.4em; text-align: center; font-family: ui-monospace, monospace; }
+.btn.wide { width: 100%; justify-content: center; padding: 12px; font-size: 1rem; }
+.auth-links { display: flex; justify-content: space-between; margin-top: 14px; flex-wrap: wrap; gap: 8px; }
+.auth-error { background: var(--overdue-bg); color: var(--overdue); padding: 9px 12px; border-radius: var(--radius-sm); margin-top: 12px; font-size: 0.9rem; }
+.auth-dev { background: var(--progress-bg); color: var(--progress); padding: 10px 12px; border-radius: var(--radius-sm); margin-top: 12px; font-size: 0.9rem; border: 1px dashed var(--gold-soft); }
+.auth-dev b { font-family: ui-monospace, monospace; font-size: 1.15rem; letter-spacing: 0.15em; }
+.auth-demo { margin-top: 18px; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; line-height: 1.5; }
+.auth-foot { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+.btn-sm { padding: 5px 10px; font-size: 0.8rem; }
+.account-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px 10px 3px 3px; color: var(--ink); }
+.acct-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 0.75rem; font-weight: 600; }
+.acct-meta { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+.acct-meta small { color: var(--muted); font-size: 0.7rem; text-transform: capitalize; }
+.live-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); display: inline-block; }
+.live-dot.live { background: #2fa36b; box-shadow: 0 0 0 4px rgba(47, 163, 107, 0.18); }
+.live-dot.reconnecting, .live-dot.connecting, .live-dot.polling { background: #d79a2b; }
+.notice { background: var(--progress-bg); color: var(--progress); padding: 10px 12px; border-radius: var(--radius-sm); margin-bottom: 10px; }
+.install-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.install-item { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px; background: var(--surface-2); }
+.install-item.here { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.install-item p { margin-top: 6px; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.data-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px; border-bottom: 1px solid var(--line); }
+.data-table td { padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table tr.click { cursor: pointer; } .data-table tr.click:hover { background: var(--surface-2); }
+.dine-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+.dine-bar input[type=date] { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; }
+.seg small { opacity: 0.7; font-size: 0.7rem; }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 18px 0 16px; }
+.tabs button { border: 0; background: none; padding: 10px 14px; color: var(--muted); font: inherit; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tabs button.active { color: var(--ink); border-bottom-color: var(--accent); }
+.dine-grid { display: grid; grid-template-columns: minmax(320px, 1fr) 1.25fr; gap: 16px; align-items: start; }
+.res-row { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.res-row:last-child { border-bottom: 0; }
+.res-row.s-completed, .res-row.s-cancelled, .res-row.s-noshow { opacity: 0.55; }
+.res-time { font-family: var(--serif); font-size: 1.15rem; min-width: 54px; }
+.res-time small { font-size: 0.7rem; color: var(--muted); }
+.res-time.late { color: var(--overdue); }
+.res-main { flex: 1; min-width: 0; cursor: pointer; }
+.res-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.tag { display: inline-block; background: var(--bg-2); color: var(--ink); border-radius: 999px; padding: 1px 8px; font-size: 0.72rem; margin: 1px 0; }
+.tag.allergy { background: var(--overdue-bg); color: var(--overdue); font-weight: 600; }
+.pill.res-booked { background: var(--bg-2); color: var(--ink); }
+.pill.res-confirmed { background: #e7eef2; color: #3b6e8a; }
+.pill.res-seated { background: var(--ok-bg); color: var(--ok); }
+.pill.res-completed, .pill.res-cancelled { background: var(--bg-2); color: var(--closed); }
+.pill.res-noshow { background: var(--overdue-bg); color: var(--overdue); }
+.floor { position: relative; height: 420px; border-radius: var(--radius-sm); background: repeating-linear-gradient(0deg, transparent 0 39px, var(--line) 39px 40px), repeating-linear-gradient(90deg, var(--surface-2) 0 39px, var(--line) 39px 40px); border: 1px solid var(--line); overflow: hidden; }
+.ftable { position: absolute; transform: translate(-50%, -50%); border: 2px solid; display: flex; flex-direction: column; align-items: center; justify-content: center; font: inherit; color: var(--ink); cursor: pointer; transition: transform 0.15s; padding: 2px; }
+.ftable:hover { transform: translate(-50%, -50%) scale(1.06); }
+.ftable b { font-size: 0.85rem; } .ftable small { font-size: 0.64rem; color: var(--muted); white-space: nowrap; }
+.ftable.round { border-radius: 50%; width: 70px; height: 70px; }
+.ftable.round.seats-1 { width: 52px; height: 52px; }
+.ftable.square { border-radius: 10px; width: 84px; height: 62px; }
+.ftable.square.seats-6 { width: 104px; } .ftable.square.seats-8 { width: 126px; }
+.st-available { background: var(--surface); border-color: #8fb9a3; }
+.st-reserved { background: #e7eef2; border-color: #3b6e8a; }
+.st-seated { background: var(--ok-bg); border-color: var(--ok); }
+.st-dirty { background: var(--progress-bg); border-color: var(--gold); }
+.st-blocked { background: var(--bg-2); border-color: var(--line-strong); opacity: 0.7; }
+[data-theme="dark"] .st-reserved { background: #1e2c34; }
+.pill.st-available, .pill.st-reserved, .pill.st-seated, .pill.st-dirty, .pill.st-blocked { border: 1px solid; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 10px; font-size: 0.8rem; color: var(--muted); }
+.legend .lg { background: none; display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; }
+.legend .st-available i { background: var(--surface); border-color: #8fb9a3; } .legend .st-reserved i { background: #e7eef2; border-color: #3b6e8a; }
+.legend .st-seated i { background: var(--ok-bg); border-color: var(--ok); } .legend .st-dirty i { background: var(--progress-bg); border-color: var(--gold); } .legend .st-blocked i { background: var(--bg-2); border-color: var(--line-strong); }
+.cover-sum { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+.cover-sum div { background: var(--surface-2); border-radius: var(--radius-sm); padding: 10px; }
+.cover-sum b { font-family: var(--serif); font-size: 1.6rem; display: block; }
+.cover-sum span { color: var(--muted); font-size: 0.78rem; }
+#diner-search { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; }
+@media (max-width: 900px) {
+  .dine-grid { grid-template-columns: 1fr; }
+  .floor { height: 360px; }
+  .ftable.round { width: 56px; height: 56px; } .ftable.square { width: 66px; height: 52px; } .ftable.square.seats-6 { width: 80px; } .ftable.square.seats-8 { width: 96px; }
+  .ftable small { display: none; }
+  .cover-sum { grid-template-columns: repeat(2, 1fr); }
+  .acct-meta, .install-btn { display: none; }
+  .data-table { font-size: 0.82rem; }
+}
+[hidden] { display: none !important; }
+.toolbar.dine-bar { flex-direction: row; }
+.floor-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.floor { min-width: 640px; }
+@media (max-width: 900px) { .ftable.round { width: 60px; height: 60px; } .ftable.square { width: 72px; height: 54px; } .ftable small { display: block; } }
+.dine-grid > * { min-width: 0; }
+@media (max-width: 900px) { .bottom-nav { z-index: 45; } #view-dining .stat-grid { grid-template-columns: 1fr 1fr; } }
+.ftable.rect { border-radius: 10px; width: 116px; height: 64px; }
+#announce-bar .announce { display: flex; gap: 10px; align-items: center; background: var(--accent); color: var(--accent-ink); padding: 8px 16px; font-size: 0.88rem; }
+#announce-bar .announce span { opacity: 0.85; flex: 1; }
+#announce-bar .icon-btn { color: inherit; background: transparent; border: 0; }
+body[data-layout="compact"] .stat-card .num { font-size: 1.7rem; }
+body[data-layout="compact"] .panel { padding: 14px; }
+.auth-card label small { text-transform: none; font-weight: 400; letter-spacing: 0; }
+
+</style>
+  <style>
+body.dining-app { --accent: #3a2c4a; }
+body.dining-app.auth-open #app { display: none; }
+.dn-role { display: inline-block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; background: var(--bg-2); padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
+.lock-note { font-size: 0.8rem; color: var(--muted); margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; line-height: 1.5; }
+.ed-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.ed-bar select { padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; }
+.ed-grid { display: grid; grid-template-columns: 1fr 320px; gap: 16px; align-items: start; }
+.ed-grid > * { min-width: 0; }
+.floor.editor .ftable { cursor: grab; touch-action: none; user-select: none; }
+.floor.editor .ftable.sel { box-shadow: 0 0 0 3px var(--accent); z-index: 2; }
+.floor.editor .ftable.blocked-t { background: repeating-linear-gradient(45deg, var(--bg-2) 0 6px, var(--surface) 6px 12px); }
+.floor.editor .rs { position: absolute; right: -7px; bottom: -7px; width: 14px; height: 14px; border-radius: 4px; background: var(--accent); cursor: nwse-resize; touch-action: none; }
+.chip-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip-row .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 0.85rem; color: var(--ink); }
+.chip-row .chip.active { background: var(--ink); color: var(--bg); }
+.props .field { margin-bottom: 10px; }
+.props input, .props select { width: 100%; }
+.combo-list { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 0.85rem; }
+.status-pill { font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; background: var(--ok-bg); color: var(--ok); }
+.status-pill.locked, .status-pill.disabled { background: var(--overdue-bg); color: var(--overdue); }
+.status-pill.must { background: var(--progress-bg); color: var(--progress); }
+.seat-meter { font-size: 0.85rem; color: var(--muted); }
+.audit-table td { font-size: 0.82rem; }
+body.role-server [data-action="res-new"], body.role-server [data-action="wl-new"], body.role-server [data-action="diner-new"], body.role-server [data-action="diner-edit"], body.role-server [data-action="res-cancel"] { display: none; }
+@media (max-width: 900px) { .ed-grid { grid-template-columns: 1fr; } }
+.props input[type=checkbox] { width: auto; margin-right: 4px; }
+.combo-list label, .props .field > label:has(input[type=checkbox]) { display: inline-flex; align-items: center; gap: 4px; text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--ink); font-size: 0.85rem; }
+
+</style>
+</head>
+<body class="dining-app">
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <img class="brand-mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzJjNGE0MiIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iNi42IiByPSIxLjMiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSIxNS40IiB5PSI2LjYiIHdpZHRoPSIxLjIiIGhlaWdodD0iMy4yIiBmaWxsPSIjZDRiNDgzIi8+CiAgPHBhdGggZD0iTTguOCAxNi4yYzAtNiAzLjItOS4yIDcuMi05LjJzNy4yIDMuMiA3LjIgOS4ySDguOHoiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSI3LjIiIHk9IjE2IiB3aWR0aD0iMTcuNiIgaGVpZ2h0PSIzLjIiIHJ4PSIxLjQiIGZpbGw9IiNiODk0NjAiLz4KICA8cmVjdCB4PSI4LjQiIHk9IjE2LjUiIHdpZHRoPSIxNS4yIiBoZWlnaHQ9IjIuMiIgcng9IjEiIGZpbGw9IiNkNGI0ODMiLz4KPC9zdmc+Cg==" alt="" width="28" height="28" />
+        <div class="brand-text"><strong>Concierge Dining</strong><span id="dn-tenant">Restaurant operations</span></div>
+      </div>
+      <nav class="main-nav" id="dn-nav" aria-label="Dining"></nav>
+      <div class="top-actions">
+        <span id="live-status" class="live-dot offline"></span>
+        <button type="button" class="btn btn-sm install-btn" id="install-btn" data-action="install">Install app</button>
+        <button type="button" class="account-btn" id="account-btn" data-action="dn-nav" data-view="me"></button>
+      </div>
+    </header>
+    <div id="announce-bar"></div>
+    <main id="main">
+      <section id="view-dining" class="view" hidden></section>
+      <section id="view-editor" class="view" hidden></section>
+      <section id="view-team" class="view" hidden></section>
+      <section id="view-audit" class="view" hidden></section>
+      <section id="view-me" class="view" hidden></section>
+    </main>
+    <nav class="bottom-nav" id="dn-bottom" aria-label="Mobile"></nav>
+  </div>
+  <div id="modal-root"></div>
+  <div id="drawer-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <script>window.COS_FORCE_LOCAL = true; window.COS_EXT_ICON = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzJjNGE0MiIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iNi42IiByPSIxLjMiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSIxNS40IiB5PSI2LjYiIHdpZHRoPSIxLjIiIGhlaWdodD0iMy4yIiBmaWxsPSIjZDRiNDgzIi8+CiAgPHBhdGggZD0iTTguOCAxNi4yYzAtNiAzLjItOS4yIDcuMi05LjJzNy4yIDMuMiA3LjIgOS4ySDguOHoiIGZpbGw9IiNkNGI0ODMiLz4KICA8cmVjdCB4PSI3LjIiIHk9IjE2IiB3aWR0aD0iMTcuNiIgaGVpZ2h0PSIzLjIiIHJ4PSIxLjQiIGZpbGw9IiNiODk0NjAiLz4KICA8cmVjdCB4PSI4LjQiIHk9IjE2LjUiIHdpZHRoPSIxNS4yIiBoZWlnaHQ9IjIuMiIgcng9IjEiIGZpbGw9IiNkNGI0ODMiLz4KPC9zdmc+Cg==";</script>
+<script>
+/* Concierge OS shared data model + demo seed (browser + Node). All demo people, emails and numbers are fictional. */
+(function (root) {
+  const DEPTS = [
+    { id: "bell", name: "Bell Desk", color: "#c17f3a" },
+    { id: "fo", name: "Front Office", color: "#3b6e8a" },
+    { id: "concierge", name: "Concierge", color: "#6b4c8a" },
+    { id: "hk", name: "Housekeeping", color: "#4a7a62" },
+    { id: "eng", name: "Engineering", color: "#6a6e75" },
+    { id: "fb", name: "F&B", color: "#8a4a4a" }
+  ];
+  const DEPT_MAP = Object.fromEntries(DEPTS.map((d) => [d.id, d]));
+
+  const TEMPLATES = [
+    { id: "bell-am", name: "AM Bell Desk Checklist", type: "internal", department: "bell", summary: "AM Bell Desk Checklist", dueHour: 6, checklist: ["Handover log reviewed with night team", "Porte-cochere and lobby entrance inspected", "Luggage room inventory completed", "Trolleys, radios and buggies charged", "VIP arrivals and special instructions noted", "Vehicle board updated", "Uniform and name-badge check", "AM briefing with supervisor"] },
+    { id: "bell-pm", name: "PM Bell Desk Checklist", type: "internal", department: "bell", summary: "PM Bell Desk Checklist", dueHour: 14, checklist: ["Handover received from AM team", "Afternoon departures and airport transfers confirmed", "Luggage room tidy and tagged", "Buggy and trolley count", "PM VIP movement list reviewed", "Doorman briefing completed", "Peak-hour positions assigned"] },
+    { id: "bell-night", name: "Night Bell Desk Checklist", type: "internal", department: "bell", summary: "Night Bell Desk Checklist", dueHour: 21, checklist: ["Evening handover logged", "Overnight arrivals board prepared", "Early-morning departures listed", "Luggage room secured", "Night report started", "Emergency contacts confirmed", "Lobby set for quiet hours"] },
+    { id: "fo-am", name: "AM Front Desk Checklist", type: "internal", department: "fo", summary: "AM Front Desk Checklist", dueHour: 6, checklist: ["Cashier float counted and signed", "Arrivals list printed and checked", "Departures and express check-outs flagged", "Safe audit completed", "System and printer check", "VIP and special-attention notes reviewed", "Queue and lobby presence briefed"] },
+    { id: "fo-pm", name: "PM Front Desk Checklist", type: "internal", department: "fo", summary: "PM Front Desk Checklist", dueHour: 14, checklist: ["AM cash handover accepted", "Afternoon arrivals prepared", "Same-day modifications reviewed", "Late check-out requests noted", "Key packets and welcome notes ready", "PM supervisor briefing", "Shift incident log updated"] },
+    { id: "vehicle", name: "Vehicle Request", type: "guest", department: "bell", summary: "Vehicle request", dueHour: null, checklist: ["Chauffeur confirmed", "Vehicle type and pax checked", "Guest called 15 minutes prior", "Vehicle at door", "Departed and logged"] },
+    { id: "collect", name: "Collect Luggage", type: "guest", department: "bell", summary: "Collect luggage", dueHour: null, checklist: ["Guest called or door-knocked", "Piece count confirmed and tagged", "Stored in luggage room", "Guest receipt issued"] },
+    { id: "deliver", name: "Deliver Luggage", type: "guest", department: "bell", summary: "Deliver luggage", dueHour: null, checklist: ["Tags matched to room", "Delivered to room or lobby", "Guest acknowledgement", "Log updated"] },
+    { id: "buggy", name: "Buggy Request", type: "guest", department: "bell", summary: "Buggy request", dueHour: null, checklist: ["Pickup location confirmed", "Buggy dispatched", "Guest collected", "Dropped and closed"] }
+  ];
+  const TPL_MAP = Object.fromEntries(TEMPLATES.map((t) => [t.id, t]));
+  const DUBAI_OFFSET = 4 * 3600 * 1000;
+  function dubaiToday() { return new Date(Date.now() + DUBAI_OFFSET).toISOString().slice(0, 10); }
+  function addDays(ymdStr, n) { const t = new Date(ymdStr + "T12:00:00Z").getTime() + n * 86400000; return new Date(t).toISOString().slice(0, 10); }
+  // Demo seed was authored for 15 Nov 2026; shift every date so "15 Nov" lands on today.
+  function shiftDate(ymdStr) {
+    const diff = Math.round((new Date(ymdStr + "T12:00:00Z") - new Date("2026-11-15T12:00:00Z")) / 86400000);
+    return addDays(dubaiToday(), diff);
+  }
+  function dubaiISO(dateStr, hour, minute) {
+    return dateStr + "T" + String(hour).padStart(2, "0") + ":" + String(minute || 0).padStart(2, "0") + ":00+04:00";
+  }
+
+  function seedDining(guests) {
+    const today = dubaiToday();
+    const outlets = [
+      { id: "o1", name: "Saffron Terrace", kind: "All-day dining", color: "#c17f3a", shifts: [
+        { id: "breakfast", name: "Breakfast", start: "07:00", end: "11:00" },
+        { id: "lunch", name: "Lunch", start: "12:30", end: "15:30" },
+        { id: "dinner", name: "Dinner", start: "18:30", end: "23:00" } ] },
+      { id: "o2", name: "Juniper Grill", kind: "Steak & seafood", color: "#8a4a4a", shifts: [
+        { id: "dinner", name: "Dinner", start: "19:00", end: "23:30" } ] },
+      { id: "o3", name: "Lumen Lounge", kind: "Bar & small plates", color: "#6b4c8a", shifts: [
+        { id: "evening", name: "Evening", start: "17:00", end: "01:00" } ] }
+    ];
+    const sec = { o1: [{ id: "main", name: "Main room" }, { id: "terrace", name: "Terrace" }], o2: [{ id: "dining", name: "Dining room" }], o3: [{ id: "lounge", name: "Lounge" }, { id: "bar", name: "Bar" }] };
+    for (const o of outlets) o.sections = sec[o.id];
+    const tables = [];
+    // [name, maxSeats, shape, x%, y%, section]
+    const layout = {
+      o1: [["T1",2,"round",12,22,"main"],["T2",2,"round",30,22,"main"],["T3",4,"square",50,22,"main"],["T4",4,"square",68,22,"main"],["T5",6,"rect",87,22,"main"],
+           ["T6",2,"round",12,70,"main"],["T7",4,"square",32,70,"main"],["T8",4,"square",50,70,"main"],["T9",8,"rect",75,70,"main"],
+           ["T10",2,"round",18,45,"terrace"],["T11",4,"square",45,45,"terrace"],["T12",6,"rect",74,45,"terrace"]],
+      o2: [["G1",2,"round",15,22,"dining"],["G2",2,"round",38,22,"dining"],["G3",4,"square",62,22,"dining"],["G4",6,"rect",85,22,"dining"],
+           ["G5",4,"square",15,62,"dining"],["G6",4,"square",38,62,"dining"],["G7",8,"rect",66,62,"dining"],["G8",2,"round",88,78,"dining"]],
+      o3: [["L1",2,"round",14,35,"lounge"],["L2",2,"round",34,35,"lounge"],["L3",4,"round",56,35,"lounge"],["L4",4,"round",78,35,"lounge"],["L5",6,"rect",50,75,"lounge"],
+           ["B1",1,"round",25,50,"bar"],["B2",1,"round",40,50,"bar"],["B3",1,"round",55,50,"bar"]]
+    };
+    const SIZE = { round: [70, 70], square: [72, 64], rect: [116, 64] };
+    for (const [oid, rows] of Object.entries(layout)) for (const r of rows) {
+      const sz = r[1] === 1 ? [52, 52] : r[1] >= 8 ? [140, 70] : SIZE[r[2]];
+      tables.push({ id: oid + "-" + r[0], outletId: oid, sectionId: r[5], name: r[0], minSeats: Math.max(1, Math.floor(r[1] / 2)), seats: r[1], shape: r[2], x: r[3], y: r[4], w: sz[0], h: sz[1], combinable: [], state: "" });
+    }
+    const combo = (a, b) => { const A = tables.find((t) => t.id === a), B = tables.find((t) => t.id === b); A.combinable.push(b); B.combinable.push(a); };
+    combo("o1-T3", "o1-T4"); combo("o1-T7", "o1-T8"); combo("o2-G5", "o2-G6"); combo("o3-L3", "o3-L4");
+
+    const g = (id) => guests.find((x) => x.id === id);
+    const diners = [];
+    const visit = (daysAgo, outletId, covers, spend) => ({ date: addDays(today, -daysAgo), outletId, covers, spend });
+    const addGuestDiner = (gid, extra) => { const x = g(gid); diners.push(Object.assign({ id: "d-" + gid, guestId: gid, name: x.first + " " + x.last, phone: x.phone, email: x.email, prefs: "", allergies: "", tags: [], visits: [] }, extra)); };
+    addGuestDiner("g1", { prefs: "Terrace table, sparkling water", allergies: "", tags: ["VIP", "Regular"], visits: [visit(2, "o1", 2, 640), visit(1, "o2", 2, 1180)] });
+    addGuestDiner("g3", { prefs: "Quiet corner", allergies: "Shellfish", tags: ["VIP"], visits: [visit(1, "o1", 3, 520)] });
+    addGuestDiner("g8", { prefs: "Booth seating, late dinners", allergies: "", tags: ["VIP", "Anniversary"], visits: [] });
+    addGuestDiner("g10", { prefs: "Vegetarian menu", allergies: "Peanuts", tags: ["Vegetarian"], visits: [visit(1, "o3", 2, 310)] });
+    addGuestDiner("g12", { prefs: "Window seat", allergies: "Gluten", tags: ["VIP", "Gluten-free"], visits: [visit(0, "o1", 2, 210)] });
+    addGuestDiner("g14", { prefs: "Kids' high chair", allergies: "", tags: ["Family"], visits: [] });
+    addGuestDiner("g18", { prefs: "Champagne on arrival", allergies: "Dairy", tags: ["VIP", "Birthday"], visits: [visit(3, "o2", 2, 1420), visit(1, "o3", 2, 380)] });
+    const outside = [
+      ["d-x1", "Leo Marchetti", "1101", "Chef's counter", "", ["Local", "Regular"], [visit(7, "o2", 2, 980), visit(21, "o2", 4, 1750)]],
+      ["d-x2", "Aisha Rahman", "1102", "Non-alcoholic pairing", "Tree nuts", ["Local"], [visit(14, "o1", 4, 600)]],
+      ["d-x3", "Ben Hartley", "1103", "", "", ["Corporate"], []],
+      ["d-x4", "Mira Novak", "1104", "Outdoor seating", "Lactose", ["Influencer"], [visit(30, "o3", 3, 450)]],
+      ["d-x5", "Karim Saleh", "1105", "Medium-rare steaks", "", ["Regular", "Big spender"], [visit(5, "o2", 6, 3200), visit(12, "o2", 2, 1100), visit(40, "o2", 4, 2100)]]
+    ];
+    for (const o of outside) diners.push({ id: o[0], guestId: null, name: o[1], phone: "+971 50 010 " + o[2], email: o[1].toLowerCase().replace(/[^a-z]+/g, ".") + "@example.com", prefs: o[3], allergies: o[4], tags: o[5], visits: o[6] });
+
+    const R = (id, outletId, shiftId, time, dinerId, party, tableId, status, notes, tags) => ({
+      id, outletId, shiftId, date: today, time, dinerId, partySize: party, tableId, status, notes: notes || "", tags: tags || [], createdAt: new Date().toISOString()
+    });
+    const reservations = [
+      R("R-501", "o1", "breakfast", "08:30", "d-g1", 2, "o1-T1", "completed", "", []),
+      R("R-502", "o1", "lunch", "13:00", "d-g10", 2, "o1-T3", "seated", "Vegetarian menu requested", ["Allergy"]),
+      R("R-503", "o1", "lunch", "13:30", "d-x2", 4, "o1-T7", "seated", "", []),
+      R("R-504", "o1", "lunch", "14:00", "d-g12", 2, "o1-T2", "confirmed", "Gluten-free bread", ["Allergy", "VIP"]),
+      R("R-505", "o1", "dinner", "19:00", "d-g14", 4, "o1-T8", "booked", "High chair", ["Family"]),
+      R("R-506", "o1", "dinner", "19:30", "d-x3", 6, "o1-T12", "confirmed", "Client dinner", []),
+      R("R-507", "o1", "dinner", "20:30", "d-g3", 3, "o1-T4", "booked", "Shellfish allergy — flag to kitchen", ["Allergy", "VIP"]),
+      R("R-508", "o2", "dinner", "19:30", "d-g8", 2, "o2-G1", "confirmed", "Anniversary — dessert plate with candle", ["Celebration", "VIP"]),
+      R("R-509", "o2", "dinner", "20:00", "d-x5", 6, "o2-G4", "confirmed", "Usual wine on the table", ["Big spender"]),
+      R("R-510", "o2", "dinner", "20:30", "d-g18", 2, "o2-G2", "booked", "Birthday — champagne on arrival, dairy-free", ["Birthday", "Allergy"]),
+      R("R-511", "o2", "dinner", "21:00", "d-x1", 2, null, "booked", "Chef's counter if free", []),
+      R("R-512", "o3", "evening", "18:00", "d-x4", 3, "o3-L3", "seated", "", []),
+      R("R-513", "o3", "evening", "21:30", "d-g1", 2, "o3-L1", "booked", "", ["VIP"]),
+      R("R-514", "o1", "lunch", "12:45", "d-x2", 2, null, "noshow", "", [])
+    ];
+    const now = Date.now();
+    const waitlist = [
+      { id: "W-1", outletId: "o1", name: "Walk-in — Ortiz", phone: "+971 50 010 1106", partySize: 2, quotedMins: 15, addedAt: new Date(now - 6 * 60000).toISOString(), status: "waiting", notes: "Terrace if possible" },
+      { id: "W-2", outletId: "o1", name: "Walk-in — Duarte", phone: "+971 50 010 1107", partySize: 4, quotedMins: 30, addedAt: new Date(now - 12 * 60000).toISOString(), status: "waiting", notes: "" },
+      { id: "W-3", outletId: "o3", name: "Walk-in — Fischer", phone: "+971 50 010 1108", partySize: 2, quotedMins: 10, addedAt: new Date(now - 3 * 60000).toISOString(), status: "notified", notes: "Bar seats ok" }
+    ];
+    tables.find((t) => t.id === "o1-T5").state = "dirty";
+    tables.find((t) => t.id === "o2-G7").state = "blocked";
+    return { outlets, tables, reservations, waitlist, diners };
+  }
+
+  function seed() {
+    const staff = [
+      { id: "s1", name: "Jude Dabarera", role: "Bell Captain", department: "bell", punchedIn: true },
+      { id: "s2", name: "Maya Chen", role: "Front Office Supervisor", department: "fo", punchedIn: true },
+      { id: "s3", name: "Omar Haddad", role: "Concierge", department: "concierge", punchedIn: true },
+      { id: "s4", name: "Priya Sharma", role: "Housekeeping Supervisor", department: "hk", punchedIn: true },
+      { id: "s5", name: "Luca Rossi", role: "Duty Engineer", department: "eng", punchedIn: true },
+      { id: "s6", name: "Noor Al Mazrouei", role: "F&B Supervisor", department: "fb", punchedIn: false },
+      { id: "s7", name: "Samir Khan", role: "Bell Attendant", department: "bell", punchedIn: true },
+      { id: "s8", name: "Hannah Cole", role: "Receptionist", department: "fo", punchedIn: false }
+    ];
+    const guestRows = [
+      ["g1","1204","CF-884201","Elena","Vasquez","1001","2026-11-12","2026-11-18",1],
+      ["g2","804","CF-884202","Hiroshi","Tanaka","1002","2026-11-14","2026-11-16",0],
+      ["g3","1502","CF-884203","Amira","El-Sayed","1003","2026-11-13","2026-11-20",1],
+      ["g4","612","CF-884204","Thomas","Brennan","1004","2026-11-10","2026-11-15",0],
+      ["g5","918","CF-884205","Ingrid","Solberg","1005","2026-11-14","2026-11-19",0],
+      ["g6","1106","CF-884206","Rajesh","Patel","1006","2026-11-15","2026-11-22",0],
+      ["g7","401","CF-884207","Camille","Dubois","1007","2026-11-11","2026-11-17",0],
+      ["g8","2201","CF-884208","Wei","Lin","1008","2026-11-15","2026-11-18",1],
+      ["g9","707","CF-884209","Marcus","Adeyemi","1009","2026-11-12","2026-11-16",0],
+      ["g10","1408","CF-884210","Sofia","Ricci","1010","2026-11-13","2026-11-17",0],
+      ["g11","305","CF-884211","Daniel","Kowalski","1011","2026-11-09","2026-11-16",0],
+      ["g12","1902","CF-884212","Fatima","Al-Najjar","1012","2026-11-14","2026-11-21",1],
+      ["g13","516","CF-884213","Oliver","Grant","1013","2026-11-15","2026-11-15",0],
+      ["g14","1001","CF-884214","Yuna","Park","1014","2026-11-14","2026-11-18",0],
+      ["g15","812","CF-884215","Alejandro","Ruiz","1015","2026-11-11","2026-11-19",0],
+      ["g16","603","CF-884216","Hannah","Bergstrom","1016","2026-11-13","2026-11-16",0],
+      ["g17","1705","CF-884217","Kenji","Watanabe","1017","2026-11-15","2026-11-20",0],
+      ["g18","210","CF-884218","Lila","Moreau","1018","2026-11-12","2026-11-22",1],
+      ["g19","1303","CF-884219","Samuel","Okoye","1019","2026-11-14","2026-11-17",0],
+      ["g20","909","CF-884220","Natalia","Popov","1020","2026-11-10","2026-11-16",0]
+    ];
+    const guests = guestRows.map((r) => ({
+      id: r[0], room: r[1], confirmation: r[2], first: r[3], last: r[4],
+      phone: "+971 50 010 " + r[5],
+      email: (r[3] + "." + r[4]).toLowerCase().replace(/[^a-z.]/g, "") + "@example.com",
+      start: shiftDate(r[6]), end: shiftDate(r[7]), vip: !!r[8]
+    }));
+
+    const cl = (tplId, doneCount) => TPL_MAP[tplId].checklist.map((text, i) => ({
+      id: "c-" + tplId + "-" + i, text, done: i < (doneCount || 0)
+    }));
+    const T = (o) => ({ notes: "", checklist: null, guestId: null, room: "", ...o });
+    const d = (day, h, m) => dubaiISO(shiftDate("2026-11-" + day), h, m);
+    const tickets = [
+      T({ id: "T-2401", type: "internal", department: "bell", summary: "AM Bell Desk Checklist", assigneeId: "s1", createdById: "s1", status: "in_progress", dueAt: d("15", 6, 0), createdAt: d("15", 5, 42), checklist: cl("bell-am", 6) }),
+      T({ id: "T-2402", type: "internal", department: "fo", summary: "AM Front Desk Checklist", assigneeId: "s2", createdById: "s2", status: "closed", dueAt: d("15", 6, 30), createdAt: d("15", 5, 50), checklist: cl("fo-am", 7) }),
+      T({ id: "T-2403", type: "guest", department: "bell", room: "1204", guestId: "g1", summary: "Collect luggage — 3 pieces, early departure prep", assigneeId: "s7", createdById: "s1", status: "open", dueAt: d("15", 8, 0), createdAt: d("14", 21, 10), checklist: cl("collect", 0), notes: "Guest asked for a 08:00 collection. Tags ready at Bell Desk." }),
+      T({ id: "T-2404", type: "guest", department: "bell", room: "2201", guestId: "g8", summary: "Deliver luggage to suite on arrival", assigneeId: "s1", createdById: "s2", status: "in_progress", dueAt: d("15", 8, 45), createdAt: d("15", 7, 55), checklist: cl("deliver", 2), notes: "VIP arrival. Two trunks plus carry-on. Escort if guest is in lobby." }),
+      T({ id: "T-2405", type: "guest", department: "bell", room: "1502", guestId: "g3", summary: "Buggy request — spa to villa path", assigneeId: "s7", createdById: "s3", status: "open", dueAt: d("15", 9, 15), createdAt: d("15", 8, 40), checklist: cl("buggy", 0) }),
+      T({ id: "T-2406", type: "guest", department: "bell", room: "804", guestId: "g2", summary: "Vehicle request — DXB Terminal 3, 11:00 flight", assigneeId: "s7", createdById: "s3", status: "open", dueAt: d("15", 10, 0), createdAt: d("14", 18, 22), checklist: cl("vehicle", 2), notes: "Sedan. 2 pax. Pickup at porte-cochere 10:00 for 11:00 flight." }),
+      T({ id: "T-2407", type: "guest", department: "hk", room: "918", guestId: "g5", summary: "Extra pillows and a foam pillow", assigneeId: "s4", createdById: "s8", status: "open", dueAt: d("15", 10, 30), createdAt: d("15", 9, 12) }),
+      T({ id: "T-2408", type: "guest", department: "eng", room: "707", guestId: "g9", summary: "Air-conditioning not cooling", assigneeId: "s5", createdById: "s2", status: "in_progress", dueAt: d("15", 11, 0), createdAt: d("15", 9, 48), notes: "Guest reported warm air since last night. Room occupied." }),
+      T({ id: "T-2409", type: "guest", department: "bell", room: "401", guestId: "g7", summary: "Packing assistance", assigneeId: "s1", createdById: "s3", status: "open", dueAt: d("15", 11, 30), createdAt: d("15", 10, 5) }),
+      T({ id: "T-2410", type: "guest", department: "concierge", room: "1408", guestId: "g10", summary: "Confirm lunch reservation at the terrace", assigneeId: "s3", createdById: "s3", status: "open", dueAt: d("15", 12, 0), createdAt: d("15", 9, 30), notes: "Table for 2 at 13:00. Window if possible." }),
+      T({ id: "T-2411", type: "internal", department: "bell", summary: "PM Bell Desk Checklist", assigneeId: "s1", createdById: "s1", status: "open", dueAt: d("15", 14, 0), createdAt: d("15", 6, 5), checklist: cl("bell-pm", 0) }),
+      T({ id: "T-2412", type: "internal", department: "fo", summary: "PM Front Desk Checklist", assigneeId: "s2", createdById: "s2", status: "open", dueAt: d("15", 14, 30), createdAt: d("15", 6, 10), checklist: cl("fo-pm", 0) }),
+      T({ id: "T-2413", type: "guest", department: "bell", room: "516", guestId: "g13", summary: "Collect luggage — day-use departure 15:00", assigneeId: "s7", createdById: "s1", status: "open", dueAt: d("15", 14, 0), createdAt: d("15", 8, 20), checklist: cl("collect", 0) }),
+      T({ id: "T-2414", type: "guest", department: "hk", room: "1902", guestId: "g12", summary: "Deliver welcome amenity and fruit", assigneeId: "s4", createdById: "s3", status: "open", dueAt: d("15", 15, 30), createdAt: d("15", 11, 2) }),
+      T({ id: "T-2415", type: "guest", department: "bell", room: "1106", guestId: "g6", summary: "Vehicle request — Downtown, 16:30", assigneeId: "s7", createdById: "s3", status: "open", dueAt: d("15", 16, 0), createdAt: d("15", 10, 44), checklist: cl("vehicle", 0), notes: "SUV, 3 pax, return expected 21:00." }),
+      T({ id: "T-2416", type: "guest", department: "hk", room: "210", guestId: "g18", summary: "Turndown — extra roses and a handwritten note", assigneeId: "s4", createdById: "s3", status: "open", dueAt: d("15", 17, 0), createdAt: d("15", 11, 40), notes: "Anniversary. Note card at Concierge." }),
+      T({ id: "T-2417", type: "guest", department: "fb", room: "1001", guestId: "g14", summary: "Dinner booking follow-up, 19:30, 4 pax", assigneeId: "s6", createdById: "s3", status: "open", dueAt: d("15", 18, 0), createdAt: d("15", 11, 15) }),
+      T({ id: "T-2418", type: "internal", department: "bell", summary: "Night Bell Desk Checklist", assigneeId: "s1", createdById: "s1", status: "open", dueAt: d("15", 21, 0), createdAt: d("15", 6, 8), checklist: cl("bell-night", 0) }),
+      T({ id: "T-2419", type: "guest", department: "fo", room: "909", guestId: "g20", summary: "Late check-out request until 14:00 tomorrow", assigneeId: "s2", createdById: "s8", status: "open", dueAt: d("15", 22, 0), createdAt: d("15", 11, 55) }),
+      T({ id: "T-2420", type: "internal", department: "eng", room: "305", summary: "Preventive check — noisy minibar", assigneeId: "s5", createdById: "s4", status: "open", dueAt: d("15", 13, 30), createdAt: d("15", 8, 0), notes: "Guest may be out for lunch. Coordinate with Housekeeping." }),
+      T({ id: "T-2388", type: "internal", department: "bell", summary: "AM Bell Desk Checklist", assigneeId: "s1", createdById: "s1", status: "closed", dueAt: d("14", 6, 0), createdAt: d("14", 5, 40), checklist: cl("bell-am", 8) }),
+      T({ id: "T-2390", type: "guest", department: "concierge", room: "612", guestId: "g4", summary: "Desert safari booking confirmation", assigneeId: "s3", createdById: "s3", status: "closed", dueAt: d("14", 15, 0), createdAt: d("13", 11, 0) }),
+      T({ id: "T-2395", type: "guest", department: "hk", room: "812", guestId: "g15", summary: "Crib setup", assigneeId: "s4", createdById: "s2", status: "closed", dueAt: d("14", 16, 0), createdAt: d("14", 9, 20) }),
+      T({ id: "T-2399", type: "guest", department: "fo", room: "603", guestId: "g16", summary: "Print boarding passes", assigneeId: "s8", createdById: "s2", status: "open", dueAt: d("14", 20, 0), createdAt: d("14", 17, 30), notes: "Left open from last night — still needed before morning departure." }),
+      T({ id: "T-2421", type: "guest", department: "bell", room: "1705", guestId: "g17", summary: "Deliver luggage on arrival tomorrow morning", assigneeId: "s7", createdById: "s1", status: "open", dueAt: d("16", 9, 30), createdAt: d("15", 11, 50), checklist: cl("deliver", 0) }),
+      T({ id: "T-2422", type: "guest", department: "concierge", room: "1303", guestId: "g19", summary: "Museum tickets for 16 Nov, 11:00", assigneeId: "s3", createdById: "s3", status: "open", dueAt: d("16", 8, 0), createdAt: d("15", 10, 10) })
+    ];
+
+    const savedFilters = [
+      { id: "sf-my", name: "My open tasks", filters: { status: "open", range: "all", assignee: "CURRENT", overdueOnly: false, type: "", department: "" } },
+      { id: "sf-overdue", name: "Overdue", filters: { status: "open", range: "all", overdueOnly: true, type: "", department: "", assignee: "" } },
+      { id: "sf-bell", name: "Bell Desk", filters: { status: "open", range: "today", department: "bell", type: "", assignee: "", overdueOnly: false } },
+      { id: "sf-guest", name: "Guest requests", filters: { status: "open", range: "today", type: "guest", department: "", assignee: "", overdueOnly: false } },
+      { id: "sf-check", name: "Internal checklists", filters: { status: "all", range: "today", type: "internal", department: "", assignee: "", overdueOnly: false } }
+    ];
+
+    return Object.assign({ schema: 2, staff, guests, tickets, savedFilters }, seedDining(guests));
+  }
+
+  // Second demo tenant with a different property, team, outlets and floor layout (all fictional).
+  function seedHarbor() {
+    const base = seed();
+    const staffNames = [["Ava Mendes","Front Office Manager","fo"],["Rui Costa","Bell Captain","bell"],["Ines Duarte","Concierge","concierge"],["Tom Hale","Housekeeping Lead","hk"],["Marta Lopes","Duty Engineer","eng"],["Joel Pinto","Bar Manager","fb"],["Sara Reis","Bell Attendant","bell"],["Nuno Alves","Receptionist","fo"]];
+    base.staff = base.staff.map((s, i) => Object.assign({}, s, { name: staffNames[i][0], role: staffNames[i][1], department: staffNames[i][2] }));
+    const gn = ["Oscar Lind","Petra Novak","Hugo Brandt","Clara Weiss","Mateo Silva","Freya Holm","Jonas Berg","Lucia Moretti","Emil Strand","Greta Vogel","Felix Aho","Nina Kraus","Arjun Mehta","Tess Murphy","Kai Nakamura","Elsa Lund","Diego Ramos","Maja Kowal","Owen Price","Iris Baker"];
+    base.guests = base.guests.map((g, i) => { const [f, l] = gn[i].split(" "); return Object.assign({}, g, { first: f, last: l, room: "H" + (100 + i * 7), confirmation: "HL-" + (5100 + i), phone: "+971 50 010 12" + String(i).padStart(2, "0"), email: (f + "." + l).toLowerCase() + "@example.com" }); });
+    base.tickets = base.tickets.map((t) => Object.assign({}, t, { id: t.id.replace("T-", "H-"), room: t.room ? "H" + t.room.slice(-3) : "" }));
+    const today = dubaiToday();
+    base.outlets = [
+      { id: "h1", name: "Pier 9 Seafood", kind: "Seafood grill", color: "#2f6f8f", sections: [{ id: "hall", name: "Harbour hall" }, { id: "patio", name: "Patio" }], shifts: [{ id: "lunch", name: "Lunch", start: "12:00", end: "15:00" }, { id: "dinner", name: "Dinner", start: "18:00", end: "22:30" }] },
+      { id: "h2", name: "Lighthouse Bar", kind: "Cocktails", color: "#9a6a2a", sections: [{ id: "bar", name: "Bar" }], shifts: [{ id: "evening", name: "Evening", start: "17:00", end: "00:00" }] }
+    ];
+    const T = (id, o, sec, name, seats, shape, x, y, w, h) => ({ id, outletId: o, sectionId: sec, name, minSeats: Math.max(1, Math.floor(seats / 2)), seats, shape, x, y, w, h, combinable: [], state: "" });
+    base.tables = [
+      T("h1-P1", "h1", "hall", "P1", 4, "rect", 20, 25, 120, 60), T("h1-P2", "h1", "hall", "P2", 4, "rect", 50, 25, 120, 60), T("h1-P3", "h1", "hall", "P3", 10, "rect", 80, 25, 170, 70),
+      T("h1-P4", "h1", "hall", "P4", 2, "round", 20, 70, 64, 64), T("h1-P5", "h1", "hall", "P5", 2, "round", 40, 70, 64, 64), T("h1-P6", "h1", "hall", "P6", 6, "round", 70, 70, 96, 96),
+      T("h1-D1", "h1", "patio", "D1", 4, "square", 25, 50, 72, 72), T("h1-D2", "h1", "patio", "D2", 4, "square", 50, 50, 72, 72), T("h1-D3", "h1", "patio", "D3", 4, "square", 75, 50, 72, 72),
+      T("h2-S1", "h2", "bar", "S1", 2, "round", 20, 40, 56, 56), T("h2-S2", "h2", "bar", "S2", 2, "round", 40, 40, 56, 56), T("h2-S3", "h2", "bar", "S3", 6, "rect", 70, 60, 140, 66)
+    ];
+    base.tables[0].combinable = ["h1-P2"]; base.tables[1].combinable = ["h1-P1"];
+    base.diners = [
+      { id: "hd-1", guestId: "g1", name: "Oscar Lind", phone: "+971 50 010 1200", email: "oscar.lind@example.com", prefs: "Oysters to start", allergies: "", tags: ["Member"], visits: [{ date: addDays(today, -3), outletId: "h1", covers: 2, spend: 820 }] },
+      { id: "hd-2", guestId: null, name: "Wren Calder", phone: "+971 50 010 1250", email: "wren.calder@example.com", prefs: "Patio", allergies: "Shellfish", tags: ["Local"], visits: [] }
+    ];
+    const R = (id, o, sh, time, din, n, t, st) => ({ id, outletId: o, shiftId: sh, date: today, time, dinerId: din, partySize: n, tableId: t, tableIds: t ? [t] : [], status: st, notes: "", tags: [], createdAt: new Date().toISOString() });
+    base.reservations = [R("R-801", "h1", "dinner", "19:00", "hd-1", 2, "h1-P4", "confirmed"), R("R-802", "h1", "dinner", "20:00", "hd-2", 4, "h1-D1", "booked"), R("R-803", "h2", "evening", "18:30", "hd-1", 2, "h2-S1", "seated")];
+    base.waitlist = [];
+    return base;
+  }
+
+  const DINING_COLLECTIONS = ["outlets", "tables", "reservations", "waitlist", "diners"];
+  const COLLECTIONS = ["staff", "guests", "tickets", "savedFilters", "outlets", "tables", "reservations", "waitlist", "diners"];
+  const api = { DEPTS, DEPT_MAP, TEMPLATES, TPL_MAP, COLLECTIONS, DINING_COLLECTIONS, seed, seedHarbor, seedDining, dubaiToday, addDays };
+  if (typeof module !== "undefined" && module.exports) module.exports = api; else root.COS_SHARED = api;
+})(typeof window !== "undefined" ? window : globalThis);
+
+;
+window.COS_EXT = { views: {} };
+;
+/* Concierge OS v2 — Dining: outlets, shifts, reservations, live floor plan, waitlist, diner profiles. */
+(function () {
+  const EXT = window.COS_EXT, SH = window.COS_SHARED;
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const $ = (s) => document.querySelector(s);
+  const ACTIVE = ["booked", "confirmed", "seated"];
+  const STATUS_LABEL = { booked: "Booked", confirmed: "Confirmed", seated: "Seated", completed: "Completed", cancelled: "Cancelled", noshow: "No-show" };
+  const d = { tab: "floor", outlet: "o1", date: null, shift: "all", q: "", section: "" };
+  const tids = (r) => r.tableIds && r.tableIds.length ? r.tableIds : (r.tableId ? [r.tableId] : []);
+  const tnames = (r) => tids(r).map((id) => (tbl(id) || { name: "?" }).name).join("+");
+  let core, st;
+  const nowHM = () => new Date(Date.now() + 4 * 3600e3).toISOString().slice(11, 16);
+  const toMin = (hm) => { const [h, m] = hm.split(":").map(Number); return h * 60 + m; };
+  const outlet = (id) => st.outlets.find((o) => o.id === id) || st.outlets[0];
+  const diner = (id) => st.diners.find((x) => x.id === id);
+  const tbl = (id) => st.tables.find((t) => t.id === id);
+  const resFor = (oid, date) => st.reservations.filter((r) => r.outletId === oid && r.date === date);
+  function nextId(prefix, list) { let m = 500; for (const r of list) { const n = parseInt(String(r.id).replace(/\D/g, ""), 10); if (n > m) m = n; } return prefix + (m + 1); }
+  function save() { core.persist(); core.render(); }
+  function inShift(r) { return d.shift === "all" || r.shiftId === d.shift; }
+  function shiftFor(o, time) { const t = toMin(time); const s = o.shifts.find((s) => { const a = toMin(s.start), b = toMin(s.end) < a ? toMin(s.end) + 1440 : toMin(s.end); return (t >= a && t < b) || (t + 1440 >= a && t + 1440 < b); }); return (s || o.shifts[0]).id; }
+
+  function tableStatus(t) {
+    const rs = st.reservations.filter((r) => tids(r).includes(t.id) && r.date === d.date);
+    const seated = rs.find((r) => r.status === "seated");
+    if (seated) return { s: "seated", r: seated };
+    if (t.state === "dirty") return { s: "dirty" };
+    if (t.state === "blocked") return { s: "blocked" };
+    const up = rs.filter((r) => r.status === "booked" || r.status === "confirmed").sort((a, b) => a.time.localeCompare(b.time))[0];
+    if (up) return { s: "reserved", r: up };
+    return { s: "available" };
+  }
+  function covers(date, oid) {
+    const rs = st.reservations.filter((r) => r.date === date && (!oid || r.outletId === oid));
+    const sum = (f) => rs.filter(f).reduce((n, r) => n + Number(r.partySize || 0), 0);
+    return { booked: sum((r) => r.status !== "cancelled" && r.status !== "noshow"), seated: sum((r) => r.status === "seated"), done: sum((r) => r.status === "completed"), upcoming: sum((r) => r.status === "booked" || r.status === "confirmed"), noshow: sum((r) => r.status === "noshow"), count: rs.filter((r) => r.status !== "cancelled").length };
+  }
+
+  // ---------- render ----------
+  EXT.views.dining = function (c) {
+    core = c; st = c.getState(); if (!d.date) d.date = SH.dubaiToday();
+    const o = outlet(d.outlet); d.outlet = o.id;
+    const cv = covers(d.date, o.id);
+    const wl = st.waitlist.filter((w) => w.outletId === o.id && (w.status === "waiting" || w.status === "notified"));
+    const head =
+      "<div class=\"view-head\"><div><h1>Dining</h1><p class=\"lede\">Reservations, floor and waitlist · " + esc(o.name) + " · " + esc(o.kind) + "</p></div>" +
+      "<div class=\"create-cluster\"><button type=\"button\" class=\"btn btn-primary\" data-action=\"res-new\">+ Reservation</button><button type=\"button\" class=\"btn\" data-action=\"wl-new\">+ Waitlist</button></div></div>" +
+      "<div class=\"toolbar dine-bar\"><div class=\"seg\">" + st.outlets.map((x) => "<button type=\"button\" class=\"" + (x.id === o.id ? "active" : "") + "\" data-action=\"dine-outlet\" data-id=\"" + x.id + "\">" + esc(x.name) + "</button>").join("") + "</div>" +
+      "<input type=\"date\" id=\"dine-date\" value=\"" + d.date + "\" />" +
+      "<div class=\"seg\"><button type=\"button\" class=\"" + (d.shift === "all" ? "active" : "") + "\" data-action=\"dine-shift\" data-id=\"all\">All shifts</button>" + o.shifts.map((s) => "<button type=\"button\" class=\"" + (d.shift === s.id ? "active" : "") + "\" data-action=\"dine-shift\" data-id=\"" + s.id + "\">" + esc(s.name) + " <small>" + s.start + "–" + s.end + "</small></button>").join("") + "</div></div>" +
+      "<div class=\"stat-grid\">" +
+        "<div class=\"stat-card\"><div class=\"label\">Covers booked</div><div class=\"num\">" + cv.booked + "</div><div class=\"muted\">" + cv.count + " parties</div></div>" +
+        "<div class=\"stat-card open\"><div class=\"label\">Seated now</div><div class=\"num\">" + cv.seated + "</div><div class=\"muted\">" + cv.done + " covers completed</div></div>" +
+        "<div class=\"stat-card\"><div class=\"label\">Still to arrive</div><div class=\"num\">" + cv.upcoming + "</div><div class=\"muted\">" + cv.noshow + " no-show covers</div></div>" +
+        "<button type=\"button\" class=\"stat-card overdue\" data-action=\"dine-tab\" data-id=\"waitlist\"><div class=\"label\">Waitlist</div><div class=\"num\">" + wl.length + "</div><div class=\"muted\">" + wl.reduce((n, w) => n + w.partySize, 0) + " covers waiting</div></button></div>" +
+      "<div class=\"tabs\">" + [["floor", "Floor & bookings"], ["waitlist", "Waitlist"], ["profiles", "Guest profiles"]].map(([id, n]) => "<button type=\"button\" class=\"" + (d.tab === id ? "active" : "") + "\" data-action=\"dine-tab\" data-id=\"" + id + "\">" + n + "</button>").join("") + "</div>";
+    let body = "";
+    if (d.tab === "floor") body = renderFloor(o);
+    if (d.tab === "waitlist") body = renderWaitlist(o, wl);
+    if (d.tab === "profiles") body = renderProfiles();
+    $("#view-dining").innerHTML = head + body;
+  };
+
+  function resRow(r) {
+    const g = diner(r.dinerId) || { name: r.name || "Walk-in", tags: [], allergies: "" };
+    const t = tids(r).length ? { name: tnames(r) } : null;
+    const act = r.status === "booked" || r.status === "confirmed"
+      ? "<button type=\"button\" class=\"btn btn-sm btn-primary\" data-action=\"res-seat\" data-id=\"" + r.id + "\">Seat</button>"
+      : r.status === "seated" ? "<button type=\"button\" class=\"btn btn-sm\" data-action=\"res-complete\" data-id=\"" + r.id + "\">Complete</button>" : "";
+    return "<div class=\"res-row s-" + r.status + "\"><div class=\"res-time\">" + esc(r.time) + "</div>" +
+      "<div class=\"res-main\" data-action=\"res-edit\" data-id=\"" + r.id + "\"><div><strong>" + esc(g.name) + "</strong> · " + r.partySize + " pax" + (t ? " · " + esc(t.name) : " · <i>no table</i>") + "</div>" +
+      "<div class=\"muted\">" + [...new Set([...(r.tags || []), ...(g.tags || [])])].slice(0, 4).map((x) => "<span class=\"tag\">" + esc(x) + "</span>").join(" ") + (g.allergies ? " <span class=\"tag allergy\">⚠ " + esc(g.allergies) + "</span>" : "") + (r.notes ? " " + esc(r.notes) : "") + "</div></div>" +
+      "<div class=\"res-actions\"><span class=\"pill res-" + r.status + "\">" + STATUS_LABEL[r.status] + "</span>" + act + "</div></div>";
+  }
+  function renderFloor(o) {
+    const list = resFor(o.id, d.date).filter(inShift).sort((a, b) => a.time.localeCompare(b.time));
+    const secs = o.sections || [];
+    if (secs.length && !secs.find((x) => x.id === d.section)) d.section = secs[0].id;
+    const tables = st.tables.filter((t) => t.outletId === o.id && (!secs.length || t.sectionId === d.section));
+    const secBar = secs.length > 1 ? "<div class=\"seg\" style=\"margin-bottom:10px\">" + secs.map((x) => "<button type=\"button\" class=\"" + (x.id === d.section ? "active" : "") + "\" data-action=\"dine-section\" data-id=\"" + x.id + "\">" + esc(x.name) + "</button>").join("") + "</div>" : "";
+    const counts = {};
+    const tablesHtml = tables.map((t) => {
+      const ts = tableStatus(t); counts[ts.s] = (counts[ts.s] || 0) + 1;
+      const who = ts.r ? (diner(ts.r.dinerId) || { name: ts.r.name || "Walk-in" }).name.split(" ").slice(-1)[0] : "";
+      return "<button type=\"button\" class=\"ftable " + t.shape + " st-" + ts.s + " seats-" + Math.min(t.seats, 8) + "\" style=\"left:" + t.x + "%;top:" + t.y + "%" + (t.w ? ";width:" + t.w + "px;height:" + t.h + "px" : "") + "\" data-action=\"table-open\" data-id=\"" + t.id + "\" title=\"" + esc(t.name + " · " + t.seats + " seats · " + ts.s) + "\">" +
+        "<b>" + esc(t.name) + "</b><small>" + (ts.r ? esc(who) + " · " + (ts.s === "reserved" ? ts.r.time : ts.r.partySize + "p") : t.seats + " seats") + "</small></button>";
+    }).join("");
+    const legend = ["available", "reserved", "seated", "dirty", "blocked"].map((s) => "<span class=\"lg st-" + s + "\"><i></i>" + s[0].toUpperCase() + s.slice(1) + " " + (counts[s] || 0) + "</span>").join("");
+    return "<div class=\"dine-grid\"><div class=\"panel res-list\"><h2>Reservations <span class=\"muted\">" + list.length + "</span></h2>" +
+      (list.length ? list.map(resRow).join("") : "<p class=\"empty\">No reservations for this shift.</p>") + "</div>" +
+      "<div class=\"panel\"><h2>Live floor plan</h2>" + secBar + "<div class=\"floor-scroll\"><div class=\"floor\">" + tablesHtml + "</div></div><div class=\"legend\">" + legend + "</div><p class=\"muted\" style=\"margin-top:6px\">Tap a table to seat a walk-in, finish a table or mark it clean.</p></div></div>";
+  }
+  function mins(iso) { return Math.max(0, Math.round((Date.now() - new Date(iso)) / 60000)); }
+  function renderWaitlist(o, wl) {
+    return "<div class=\"panel\"><h2>Waitlist · " + esc(o.name) + "</h2>" + (wl.length ? wl.sort((a, b) => new Date(a.addedAt) - new Date(b.addedAt)).map((w) => {
+      const m = mins(w.addedAt), late = m > w.quotedMins;
+      return "<div class=\"res-row\"><div class=\"res-time" + (late ? " late" : "") + "\">" + m + "m<small>/" + w.quotedMins + "m</small></div><div class=\"res-main\"><strong>" + esc(w.name) + "</strong> · " + w.partySize + " pax<div class=\"muted\">" + esc(w.phone) + (w.notes ? " · " + esc(w.notes) : "") + "</div></div>" +
+        "<div class=\"res-actions\"><span class=\"pill " + (w.status === "notified" ? "in_progress" : "open") + "\">" + (w.status === "notified" ? "Notified" : "Waiting") + "</span>" +
+        (w.status === "waiting" ? "<button type=\"button\" class=\"btn btn-sm\" data-action=\"wl-notify\" data-id=\"" + w.id + "\">Table ready</button>" : "") +
+        "<button type=\"button\" class=\"btn btn-sm btn-primary\" data-action=\"wl-seat\" data-id=\"" + w.id + "\">Seat</button><button type=\"button\" class=\"btn btn-sm btn-ghost\" data-action=\"wl-remove\" data-id=\"" + w.id + "\">Remove</button></div></div>";
+    }).join("") : "<p class=\"empty\">Nobody waiting.</p>") + "</div>";
+  }
+  function dinerStats(x) {
+    const v = x.visits || [], spend = v.reduce((s, y) => s + Number(y.spend || 0), 0);
+    const L = (EXT.tenant && EXT.tenant.loyalty) || { name: "Points", pointsPerAED: 1, welcomeBonus: 0, tiers: [{ name: "Member", min: 0 }] };
+    const points = Math.round(L.welcomeBonus + spend * L.pointsPerAED);
+    const tier = L.tiers.filter((t) => points >= t.min).slice(-1)[0] || L.tiers[0];
+    return { n: v.length, spend, last: v.map((y) => y.date).sort().slice(-1)[0], points, tier: tier.name, program: L.name };
+  }
+  function renderProfiles() {
+    const q = d.q.toLowerCase();
+    const list = st.diners.filter((x) => !q || [x.name, x.phone, x.email, (x.tags || []).join(" "), x.allergies, x.prefs].join(" ").toLowerCase().includes(q));
+    return "<div class=\"panel\"><div class=\"view-head\" style=\"margin-bottom:10px\"><h2>Guest dining profiles</h2><div style=\"display:flex;gap:8px\"><input type=\"search\" id=\"diner-search\" placeholder=\"Search name, tag, allergy…\" value=\"" + esc(d.q) + "\" /><button type=\"button\" class=\"btn\" data-action=\"diner-new\">+ Profile</button></div></div>" +
+      "<table class=\"data-table\"><thead><tr><th>Guest</th><th>Tags</th><th>Allergies</th><th>Visits</th><th>Spend (AED)</th><th>Loyalty</th><th>Last visit</th></tr></thead><tbody>" +
+      list.map((x) => { const s = dinerStats(x); const g = x.guestId && st.guests.find((y) => y.id === x.guestId);
+        return "<tr data-action=\"diner-open\" data-id=\"" + x.id + "\" class=\"click\"><td><strong>" + esc(x.name) + "</strong><div class=\"muted\">" + (g ? "In-house · Room " + esc(g.room) : "Outside guest") + "</div></td><td>" + (x.tags || []).map((t) => "<span class=\"tag\">" + esc(t) + "</span>").join(" ") + "</td><td>" + (x.allergies ? "<span class=\"tag allergy\">" + esc(x.allergies) + "</span>" : "—") + "</td><td>" + s.n + "</td><td>" + s.spend.toLocaleString() + "</td><td>" + s.points.toLocaleString() + " pts · " + esc(s.tier) + "</td><td>" + (s.last ? esc(s.last) : "—") + "</td></tr>"; }).join("") +
+      "</tbody></table></div>";
+  }
+
+  // ---------- dashboard ----------
+  EXT.afterDashboard = function (el, c) {
+    core = c; st = c.getState(); const today = SH.dubaiToday(); const all = covers(today);
+    const max = Math.max(1, ...st.outlets.map((o) => covers(today, o.id).booked));
+    const wl = st.waitlist.filter((w) => w.status === "waiting" || w.status === "notified").length;
+    const html = "<div class=\"panel\" style=\"grid-column:1/-1\"><div class=\"view-head\" style=\"margin-bottom:8px\"><h2 style=\"margin:0\">Dining covers today</h2><button type=\"button\" class=\"btn btn-sm\" data-action=\"open-dining\">Open dining app ↗</button></div>" +
+      "<div class=\"cover-sum\"><div><b>" + all.booked + "</b><span>booked</span></div><div><b>" + all.seated + "</b><span>seated now</span></div><div><b>" + all.upcoming + "</b><span>to arrive</span></div><div><b>" + wl + "</b><span>parties waiting</span></div></div>" +
+      st.outlets.map((o) => { const cv = covers(today, o.id); return "<button type=\"button\" class=\"dept-row\" data-action=\"open-dining\" style=\"width:100%;border:0;background:transparent;padding:0;margin-bottom:8px\"><span>" + esc(o.name) + "</span><span class=\"bar\"><span style=\"width:" + (cv.booked / max * 100) + "%;background:" + o.color + "\"></span></span><span>" + cv.booked + "</span></button>"; }).join("") + "</div>";
+    const grid = el.querySelector(".dash-grid"); if (grid) grid.insertAdjacentHTML("afterbegin", html);
+  };
+
+  // ---------- modals ----------
+  function resModal(r) {
+    const o = outlet(r ? r.outletId : d.outlet);
+    const time = r ? r.time : (d.date === SH.dubaiToday() ? (() => { const m = Math.ceil((toMin(nowHM()) + 30) / 15) * 15; return String(Math.floor(m / 60) % 24).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); })() : "19:30");
+    const opt = (v, l, sel) => "<option value=\"" + esc(v) + "\"" + (sel ? " selected" : "") + ">" + esc(l) + "</option>";
+    const body = "<form id=\"res-form\"><input type=\"hidden\" name=\"id\" value=\"" + (r ? r.id : "") + "\" /><div class=\"form-grid\">" +
+      "<div class=\"field span-2\"><label>Guest profile</label><select name=\"dinerId\" id=\"res-diner\">" + opt("", "＋ New guest…", !r) + st.diners.map((x) => opt(x.id, x.name + (x.tags && x.tags.length ? " · " + x.tags.join(", ") : ""), r && r.dinerId === x.id)).join("") + "</select></div>" +
+      "<div class=\"field new-diner\"" + (r ? " hidden" : "") + "><label>New guest name</label><input name=\"newName\" placeholder=\"Full name\" /></div>" +
+      "<div class=\"field new-diner\"" + (r ? " hidden" : "") + "><label>Mobile</label><input name=\"newPhone\" placeholder=\"+971 50 010 …\" /></div>" +
+      "<div class=\"field span-2 new-diner\"" + (r ? " hidden" : "") + "><label>Or link an in-house guest</label><select name=\"guestId\">" + opt("", "Not staying with us", true) + st.guests.map((g) => opt(g.id, g.room + " — " + g.first + " " + g.last, false)).join("") + "</select></div>" +
+      "<div class=\"field\"><label>Outlet</label><select name=\"outletId\">" + st.outlets.map((x) => opt(x.id, x.name, x.id === o.id)).join("") + "</select></div>" +
+      "<div class=\"field\"><label>Party size</label><input type=\"number\" min=\"1\" max=\"40\" name=\"partySize\" value=\"" + (r ? r.partySize : 2) + "\" required /></div>" +
+      "<div class=\"field\"><label>Date</label><input type=\"date\" name=\"date\" value=\"" + (r ? r.date : d.date) + "\" required /></div>" +
+      "<div class=\"field\"><label>Time</label><input type=\"time\" name=\"time\" step=\"900\" value=\"" + time + "\" required /></div>" +
+      "<div class=\"field\"><label>Table</label><select name=\"tableId\">" + opt("", "Assign later", !r || !r.tableId) + st.tables.filter((t) => t.outletId === o.id).map((t) => opt(t.id, t.name + " · " + t.seats + " seats", r && r.tableId === t.id)).join("") + "</select></div>" +
+      "<div class=\"field\"><label>Status</label><select name=\"status\">" + Object.entries(STATUS_LABEL).map(([k, l]) => opt(k, l, (r ? r.status : "booked") === k)).join("") + "</select></div>" +
+      "<div class=\"field span-2\"><label>Tags (comma separated)</label><input name=\"tags\" value=\"" + esc(r ? (r.tags || []).join(", ") : "") + "\" placeholder=\"Birthday, VIP, Allergy\" /></div>" +
+      "<div class=\"field span-2\"><label>Notes</label><textarea name=\"notes\" placeholder=\"Occasion, seating, dietary notes…\">" + esc(r ? r.notes : "") + "</textarea></div>" +
+      "</div></form>";
+    const foot = "<button type=\"submit\" form=\"res-form\" class=\"btn btn-primary\">" + (r ? "Save" : "Book table") + "</button>" +
+      (r && ACTIVE.includes(r.status) ? "<button type=\"button\" class=\"btn btn-danger\" data-action=\"res-cancel\" data-id=\"" + r.id + "\">Cancel booking</button><button type=\"button\" class=\"btn\" data-action=\"res-noshow\" data-id=\"" + r.id + "\">No-show</button>" : "") +
+      "<button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Close</button>";
+    core.openModal(r ? "Reservation " + r.id : "New reservation · " + o.name, body, foot);
+  }
+  function tableModal(t) {
+    const ts = tableStatus(t); const g = ts.r && (diner(ts.r.dinerId) || { name: ts.r.name || "Walk-in" });
+    let info = "<p><b>" + (t.minSeats && t.minSeats < t.seats ? t.minSeats + "–" : "") + t.seats + "</b> seats · " + t.shape + ((t.combinable || []).length ? " · combines with " + t.combinable.map((x) => (tbl(x) || { name: x }).name).join(", ") : "") + " · status <span class=\"pill st-" + ts.s + "\">" + ts.s + "</span></p>";
+    if (ts.r) info += "<p style=\"margin-top:8px\">" + (ts.s === "seated" ? "Seated: " : "Next booking: ") + "<b>" + esc(g.name) + "</b> · " + ts.r.partySize + " pax · " + esc(ts.r.time) + (g.allergies ? " · <span class=\"tag allergy\">⚠ " + esc(g.allergies) + "</span>" : "") + "</p>";
+    const waiting = st.waitlist.filter((w) => w.outletId === t.outletId && w.status !== "seated" && w.status !== "removed" && w.partySize <= t.seats);
+    let foot = "";
+    if (ts.s === "seated") foot += "<button type=\"button\" class=\"btn btn-primary\" data-action=\"res-complete\" data-id=\"" + ts.r.id + "\">Guests left · finish</button>";
+    if (ts.s === "dirty") foot += "<button type=\"button\" class=\"btn btn-primary\" data-action=\"table-state\" data-id=\"" + t.id + "\" data-state=\"\">Mark clean</button>";
+    if (ts.s === "reserved") foot += "<button type=\"button\" class=\"btn btn-primary\" data-action=\"res-seat\" data-id=\"" + ts.r.id + "\">Seat " + esc(g.name.split(" ")[0]) + "</button>";
+    if (ts.s === "available" || ts.s === "reserved") {
+      foot += "<button type=\"button\" class=\"btn\" data-action=\"table-walkin\" data-id=\"" + t.id + "\">Seat walk-in</button>";
+      if (waiting.length) foot += "<button type=\"button\" class=\"btn\" data-action=\"wl-seat\" data-id=\"" + waiting[0].id + "\" data-table=\"" + t.id + "\">Seat " + esc(waiting[0].name) + " (waitlist)</button>";
+    }
+    if (ts.s !== "seated") foot += "<button type=\"button\" class=\"btn btn-ghost\" data-action=\"table-state\" data-id=\"" + t.id + "\" data-state=\"" + (t.state === "blocked" ? "" : "blocked") + "\">" + (t.state === "blocked" ? "Unblock" : "Block table") + "</button>";
+    core.openModal("Table " + t.name + " · " + outlet(t.outletId).name, info, foot);
+  }
+  function dinerDrawer(x) {
+    const s = dinerStats(x); const g = x.guestId && st.guests.find((y) => y.id === x.guestId);
+    const upcoming = st.reservations.filter((r) => r.dinerId === x.id && ACTIVE.includes(r.status)).sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+    $("#drawer-root").innerHTML = "<div class=\"drawer-backdrop\" data-action=\"close-drawer\"></div><aside class=\"drawer\" role=\"dialog\"><div class=\"drawer-head\"><div><div class=\"muted\">" + (g ? "In-house · Room " + esc(g.room) + " · " + esc(g.confirmation) : "Outside guest") + "</div><h2 style=\"font-size:1.35rem;margin-top:4px\">" + esc(x.name) + "</h2><div style=\"margin-top:8px\">" + (x.tags || []).map((t) => "<span class=\"tag\">" + esc(t) + "</span>").join(" ") + "</div></div><button type=\"button\" class=\"icon-btn\" data-action=\"close-drawer\">×</button></div>" +
+      "<div class=\"drawer-body\"><dl class=\"detail-kv\"><dt>Mobile</dt><dd>" + esc(x.phone || "—") + "</dd><dt>Email</dt><dd>" + esc(x.email || "—") + "</dd><dt>Preferences</dt><dd>" + esc(x.prefs || "—") + "</dd><dt>Allergies</dt><dd>" + (x.allergies ? "<span class=\"tag allergy\">⚠ " + esc(x.allergies) + "</span>" : "None noted") + "</dd><dt>Visits</dt><dd>" + s.n + " · AED " + s.spend.toLocaleString() + " total</dd><dt>" + esc(s.program) + "</dt><dd>" + s.points.toLocaleString() + " points · <span class=\"tag\">" + esc(s.tier) + "</span></dd></dl>" +
+      "<h3 style=\"margin:14px 0 6px\">Upcoming</h3>" + (upcoming.length ? upcoming.map((r) => "<div class=\"list-row\" data-action=\"res-edit\" data-id=\"" + r.id + "\">" + esc(r.date + " " + r.time) + " · " + esc(outlet(r.outletId).name) + " · " + r.partySize + " pax</div>").join("") : "<p class=\"muted\">No upcoming bookings.</p>") +
+      "<h3 style=\"margin:14px 0 6px\">Visit history</h3>" + ((x.visits || []).length ? x.visits.slice().sort((a, b) => b.date.localeCompare(a.date)).map((v) => "<div class=\"list-row\">" + esc(v.date) + " · " + esc(outlet(v.outletId).name) + " · " + v.covers + " covers" + (v.spend ? " · AED " + Number(v.spend).toLocaleString() : "") + "</div>").join("") : "<p class=\"muted\">First visit coming up.</p>") + "</div>" +
+      "<div class=\"drawer-actions\"><button type=\"button\" class=\"btn btn-primary\" data-action=\"diner-edit\" data-id=\"" + x.id + "\">Edit profile</button><button type=\"button\" class=\"btn\" data-action=\"res-new\" data-diner=\"" + x.id + "\">Book a table</button></div></aside>";
+  }
+  function dinerModal(x) {
+    const body = "<form id=\"diner-form\"><input type=\"hidden\" name=\"id\" value=\"" + (x ? x.id : "") + "\" /><div class=\"form-grid\">" +
+      "<div class=\"field span-2\"><label>Name</label><input name=\"name\" required value=\"" + esc(x ? x.name : "") + "\" /></div>" +
+      "<div class=\"field\"><label>Mobile</label><input name=\"phone\" value=\"" + esc(x ? x.phone : "") + "\" /></div><div class=\"field\"><label>Email</label><input name=\"email\" type=\"email\" value=\"" + esc(x ? x.email : "") + "\" /></div>" +
+      "<div class=\"field span-2\"><label>Preferences</label><input name=\"prefs\" value=\"" + esc(x ? x.prefs : "") + "\" placeholder=\"Seating, drinks, menu…\" /></div>" +
+      "<div class=\"field span-2\"><label>Allergies</label><input name=\"allergies\" value=\"" + esc(x ? x.allergies : "") + "\" placeholder=\"Shellfish, nuts…\" /></div>" +
+      "<div class=\"field span-2\"><label>Tags (comma separated)</label><input name=\"tags\" value=\"" + esc(x ? (x.tags || []).join(", ") : "") + "\" placeholder=\"VIP, Regular, Birthday\" /></div></div></form>";
+    core.openModal(x ? "Edit profile" : "New dining profile", body, "<button type=\"submit\" form=\"diner-form\" class=\"btn btn-primary\">Save</button><button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Cancel</button>");
+  }
+  const splitTags = (s) => String(s || "").split(",").map((x) => x.trim()).filter(Boolean);
+
+  // ---------- actions ----------
+  const free = (t) => tableStatus(t).s === "available";
+  function bestFit(oid, party) {
+    const fits = st.tables.filter((t) => t.outletId === oid && t.seats >= party && (t.minSeats || 1) <= party && free(t)).sort((a, b) => a.seats - b.seats)[0];
+    if (fits) return [fits];
+    const loose = st.tables.filter((t) => t.outletId === oid && t.seats >= party && free(t)).sort((a, b) => a.seats - b.seats)[0];
+    if (loose) return [loose];
+    for (const t of st.tables.filter((t) => t.outletId === oid && free(t))) for (const pid of t.combinable || []) {
+      const p = tbl(pid); if (p && free(p) && t.seats + p.seats >= party) return [t, p];
+    }
+    return null;
+  }
+  function seat(r, tableId) {
+    let ts = tableId ? [tbl(tableId)] : tids(r).map(tbl).filter(Boolean);
+    if (!ts.length || ts.some((t) => ["seated", "dirty", "blocked"].includes(tableStatus(t).s)) || ts.reduce((n, t) => n + t.seats, 0) < r.partySize) ts = bestFit(r.outletId, r.partySize);
+    if (!ts) { core.toast("No free table (or combination) fits " + r.partySize + " — add to waitlist"); return false; }
+    r.tableId = ts[0].id; r.tableIds = ts.map((t) => t.id); r.status = "seated"; r.seatedAt = new Date().toISOString();
+    core.toast("Seated at " + ts.map((t) => t.name).join(" + ")); return true;
+  }
+  EXT.onClickDining = function (a, el) {
+    core = EXT.core; st = core.getState(); const id = el.dataset.id;
+    if (a === "dine-outlet") { d.outlet = id; d.shift = "all"; core.render(); }
+    else if (a === "dine-goto") { d.outlet = id; d.tab = "floor"; core.go("dining"); }
+    else if (a === "dine-section") { d.section = id; core.render(); }
+    else if (a === "dine-shift") { d.shift = id; core.render(); }
+    else if (a === "dine-tab") { d.tab = id; core.render(); }
+    else if (a === "res-new") { core.closeDrawer(); resModal(null); if (el.dataset.diner) { const s = $("#res-diner"); s.value = el.dataset.diner; s.dispatchEvent(new Event("change", { bubbles: true })); } }
+    else if (a === "res-edit") { core.closeDrawer(); resModal(st.reservations.find((r) => r.id === id)); }
+    else if (a === "res-seat") { const r = st.reservations.find((x) => x.id === id); if (seat(r)) { core.closeModal(); save(); } }
+    else if (a === "res-complete") {
+      const r = st.reservations.find((x) => x.id === id); r.status = "completed"; r.completedAt = new Date().toISOString();
+      const ts = tids(r).map(tbl).filter(Boolean); ts.forEach((t) => { t.state = "dirty"; }); const t = ts.length ? { name: ts.map((x) => x.name).join("+") } : null;
+      const x = diner(r.dinerId); if (x) { x.visits = x.visits || []; x.visits.push({ date: r.date, outletId: r.outletId, covers: r.partySize, spend: 0 }); }
+      core.closeModal(); save(); core.toast("Table " + (t ? t.name : "") + " marked for clearing");
+    }
+    else if (a === "res-cancel" || a === "res-noshow") { const r = st.reservations.find((x) => x.id === id); r.status = a === "res-cancel" ? "cancelled" : "noshow"; core.closeModal(); save(); core.toast(STATUS_LABEL[r.status]); }
+    else if (a === "table-open") tableModal(tbl(id));
+    else if (a === "table-state") { tbl(id).state = el.dataset.state; core.closeModal(); save(); }
+    else if (a === "table-walkin") {
+      const t = tbl(id); const n = parseInt(prompt("Party size for walk-in at " + t.name + "?", String(Math.min(2, t.seats))) || "0", 10); if (!n) return true;
+      st.reservations.push({ id: nextId("R-", st.reservations), outletId: t.outletId, shiftId: shiftFor(outlet(t.outletId), nowHM()), date: d.date, time: nowHM(), dinerId: null, name: "Walk-in", partySize: n, tableId: t.id, status: "seated", notes: "Walk-in", tags: ["Walk-in"], createdAt: new Date().toISOString() });
+      core.closeModal(); save(); core.toast("Walk-in seated at " + t.name);
+    }
+    else if (a === "wl-new") {
+      core.openModal("Add to waitlist · " + outlet(d.outlet).name, "<form id=\"wl-form\"><div class=\"form-grid\"><div class=\"field span-2\"><label>Name</label><input name=\"name\" required /></div><div class=\"field\"><label>Mobile</label><input name=\"phone\" placeholder=\"+971 50 010 …\" /></div><div class=\"field\"><label>Party size</label><input type=\"number\" name=\"partySize\" min=\"1\" value=\"2\" required /></div><div class=\"field\"><label>Quoted wait (min)</label><input type=\"number\" name=\"quotedMins\" min=\"0\" value=\"15\" /></div><div class=\"field\"><label>Notes</label><input name=\"notes\" /></div></div></form>",
+        "<button type=\"submit\" form=\"wl-form\" class=\"btn btn-primary\">Add</button><button type=\"button\" class=\"btn btn-ghost\" data-action=\"close-modal\">Cancel</button>");
+    }
+    else if (a === "wl-notify") { const w = st.waitlist.find((x) => x.id === id); w.status = "notified"; w.notifiedAt = new Date().toISOString(); save(); core.toast("Marked notified — text " + w.phone + " (SMS needs a provider)"); }
+    else if (a === "wl-remove") { const w = st.waitlist.find((x) => x.id === id); w.status = "removed"; save(); }
+    else if (a === "wl-seat") {
+      const w = st.waitlist.find((x) => x.id === id);
+      const r = { id: nextId("R-", st.reservations), outletId: w.outletId, shiftId: shiftFor(outlet(w.outletId), nowHM()), date: SH.dubaiToday(), time: nowHM(), dinerId: null, name: w.name, partySize: w.partySize, tableId: el.dataset.table || null, status: "booked", notes: w.notes || "From waitlist", tags: ["Waitlist"], createdAt: new Date().toISOString() };
+      if (!seat(r, el.dataset.table)) return true;
+      st.reservations.push(r); w.status = "seated"; core.closeModal(); save();
+    }
+    else if (a === "diner-open") dinerDrawer(diner(id));
+    else if (a === "diner-edit") dinerModal(diner(id));
+    else if (a === "diner-new") dinerModal(null);
+    else return false;
+    return true;
+  };
+  EXT.onSubmitDining = function (e) {
+    const f = e.target, fid = f.getAttribute("id"); if (!["res-form", "wl-form", "diner-form"].includes(fid)) return false;
+    core = EXT.core; st = core.getState();
+    e.preventDefault(); const fd = Object.fromEntries(new FormData(f));
+    if (fid === "res-form") {
+      let dinerId = fd.dinerId;
+      if (!dinerId) {
+        const g = fd.guestId && st.guests.find((x) => x.id === fd.guestId);
+        const existing = g && st.diners.find((x) => x.guestId === g.id);
+        if (existing) dinerId = existing.id;
+        else {
+          const name = g ? g.first + " " + g.last : String(fd.newName || "").trim();
+          if (!name) { core.toast("Pick a guest profile or enter a name"); return true; }
+          dinerId = "d-" + Math.random().toString(36).slice(2, 8);
+          st.diners.push({ id: dinerId, guestId: g ? g.id : null, name, phone: g ? g.phone : fd.newPhone || "", email: g ? g.email : "", prefs: "", allergies: "", tags: g && g.vip ? ["VIP"] : [], visits: [] });
+        }
+      }
+      const o = outlet(fd.outletId);
+      const rec = { outletId: o.id, shiftId: shiftFor(o, fd.time), date: fd.date, time: fd.time, dinerId, partySize: Number(fd.partySize), tableId: fd.tableId && tbl(fd.tableId) && tbl(fd.tableId).outletId === o.id ? fd.tableId : null, status: fd.status, notes: fd.notes || "", tags: splitTags(fd.tags) };
+      const ex = fd.id && st.reservations.find((r) => r.id === fd.id);
+      rec.tableIds = rec.tableId ? [rec.tableId] : [];
+      if (ex) Object.assign(ex, rec); else st.reservations.push(Object.assign({ id: nextId("R-", st.reservations), createdAt: new Date().toISOString() }, rec));
+      d.outlet = o.id; d.date = fd.date; core.closeModal(); save(); core.toast(ex ? "Reservation updated" : "Table booked");
+    } else if (fid === "wl-form") {
+      st.waitlist.push({ id: "W-" + Math.random().toString(36).slice(2, 7), outletId: d.outlet, name: fd.name, phone: fd.phone || "", partySize: Number(fd.partySize), quotedMins: Number(fd.quotedMins || 15), addedAt: new Date().toISOString(), status: "waiting", notes: fd.notes || "" });
+      d.tab = "waitlist"; core.closeModal(); save(); core.toast("Added to waitlist");
+    } else {
+      const rec = { name: fd.name, phone: fd.phone, email: fd.email, prefs: fd.prefs, allergies: fd.allergies, tags: splitTags(fd.tags) };
+      let x = fd.id && diner(fd.id);
+      if (x) Object.assign(x, rec); else { x = Object.assign({ id: "d-" + Math.random().toString(36).slice(2, 8), guestId: null, visits: [] }, rec); st.diners.push(x); }
+      core.closeModal(); save(); dinerDrawer(x);
+    }
+    return true;
+  };
+  EXT.onChangeDining = function (e) {
+    if (e.target.id === "res-diner") { document.querySelectorAll(".new-diner").forEach((n) => { n.hidden = !!e.target.value; }); return true; }
+    if (e.target.id === "dine-date") { d.date = e.target.value || SH.dubaiToday(); core.render(); return true; }
+    return false;
+  };
+  EXT.onInputDining = function (e) {
+    if (e.target.id === "diner-search") { d.q = e.target.value; const pos = e.target.selectionStart; core.render(); const n = $("#diner-search"); n.focus(); n.setSelectionRange(pos, pos); return true; }
+    return false;
+  };
+})();
+
+;
+/* Concierge Dining — separate app: company-issued logins, roles, floor editor, team admin, audit. */
+(function () {
+  const SH = window.COS_SHARED, EXT = window.COS_EXT, COLLS = SH.DINING_COLLECTIONS;
+  const LOCAL = location.protocol === "file:" || window.COS_FORCE_LOCAL;
+  const LS_TOKEN = "cos-dining-token", LS_DATA = "concierge-os-v2-data", LS_ACC = "cos-dining-accounts", LS_AUDIT = "cos-dining-audit", LS_SESS = "cos-dining-session";
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const $ = (s, r) => (r || document).querySelector(s);
+  const ROLE_LABEL = { dining_admin: "Dining admin", host: "Host", server: "Server" };
+  let state = null, me = null, view = "dining", snapshot = {}, idleMin = 30, lastAct = Date.now(), live = "offline";
+  const ed = { outlet: null, section: null, sel: null };
+  const strongPw = (pw) => String(pw || "").length >= 8 && /[A-Za-z]/.test(pw) && /\d/.test(pw);
+  const genPw = () => "Tmp-" + Math.random().toString(36).slice(2, 6) + (100 + Math.floor(Math.random() * 900));
+
+  // ---------------- backends ----------------
+  function Server() {
+    const tok = () => localStorage.getItem(LS_TOKEN) || "";
+    async function call(p, method, b) {
+      const r = await fetch("/api/dining/" + p, { method: method || "GET", headers: { "Content-Type": "application/json", "X-Client-Tz": Intl.DateTimeFormat().resolvedOptions().timeZone || "", Authorization: "Bearer " + tok() }, body: b ? JSON.stringify(b) : undefined });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) { const e = new Error(j.error || "Request failed"); e.status = r.status; e.mustChange = j.mustChange; e.timeout = j.timeout; throw e; }
+      return j;
+    }
+    return {
+      login: (b) => call("login", "POST", b), me: () => call("me"), logout: () => call("logout", "POST", {}), password: (b) => call("password", "POST", b),
+      state: () => call("state"), sync: (b) => call("sync", "POST", b), feedback: (b) => call("feedback", "POST", b),
+      accounts: () => call("accounts"), create: (b) => call("accounts", "POST", b), patch: (id, b) => call("accounts/" + id, "PATCH", b),
+      reset: (id, b) => call("accounts/" + id + "/reset", "POST", b), unlock: (id) => call("accounts/" + id + "/unlock", "POST", {}), del: (id) => call("accounts/" + id, "DELETE"), audit: () => call("audit"),
+      listen(cb) {
+        try {
+          const es = new EventSource("/api/dining/events?token=" + encodeURIComponent(tok()));
+          es.onopen = () => { live = "live"; chrome(); };
+          es.onmessage = (m) => { try { cb(JSON.parse(m.data)); } catch (e) {} };
+          es.onerror = () => { live = "reconnecting"; chrome(); };
+        } catch (e) { setInterval(() => cb({ type: "poll" }), 15000); }
+      }
+    };
+  }
+  function Local() { // offline demo: same rules, stored in this browser
+    const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } };
+    const write = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+    const fail = (m, extra) => { const e = new Error(m); Object.assign(e, extra || {}); throw e; };
+    async function sha(s) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, "0")).join(""); }
+    const pub = (a) => { const o = Object.assign({}, a); delete o.pass; return o; };
+    async function accs() {
+      let a = read(LS_ACC, null);
+      if (!a) { a = []; for (const [n, e, r, p, m] of [["Reem Haddad", "dining.admin@aurora.example.com", "dining_admin", "Dining#2026", false], ["Lina Farah", "lina.host@aurora.example.com", "host", "Dining#2026", false], ["Theo Grant", "theo.server@aurora.example.com", "server", "Dining#2026", false], ["Nadia Park", "new.hire@aurora.example.com", "host", "Temp#1234", true]]) a.push({ id: "da-" + Math.random().toString(36).slice(2, 8), name: n, email: e, role: r, pass: await sha(p), mustChange: m, failed: 0, locked: false, disabled: false, createdAt: new Date().toISOString(), createdBy: "system", lastLogin: null }); write(LS_ACC, a); }
+      return a;
+    }
+    const log = (actor, action, detail) => { const l = read(LS_AUDIT, []); l.push({ at: new Date().toISOString(), actor, app: "dining", action, detail: detail || "", ip: "this device" }); write(LS_AUDIT, l.slice(-1000)); };
+    function data() {
+      let d = read(LS_DATA, null);
+      if (!d || !d.outlets || d.outlets.some((o) => !o.sections)) { const s = SH.seed(); d = d || {}; for (const c of SH.COLLECTIONS) if (!d[c] || COLLS.includes(c)) d[c] = s[c] || []; write(LS_DATA, d); }
+      return d;
+    }
+    async function sess() {
+      const s = read(LS_SESS, null), a = (await accs()).find((x) => s && x.id === s.id);
+      if (!s || !a) fail("Sign in required", { status: 401 });
+      if (Date.now() - s.last > idleMin * 60000) { localStorage.removeItem(LS_SESS); fail("Session timed out — please sign in again", { status: 401, timeout: true }); }
+      s.last = Date.now(); write(LS_SESS, s); return a;
+    }
+    const mustOk = (a) => { if (a.mustChange) fail("Change your temporary password first", { status: 403, mustChange: true }); };
+    const admin = async () => { const a = await sess(); mustOk(a); if (a.role !== "dining_admin") fail("Dining admins only", { status: 403 }); return a; };
+    const seatsUsed = (list) => list.filter((x) => x.role === "dining_admin" && !x.disabled).length + 1; // + hotel admin
+    const save = (list) => write(LS_ACC, list);
+    return {
+      local: true,
+      async login(b) {
+        const list = await accs(), email = String(b.email || "").trim().toLowerCase(), a = list.find((x) => x.email === email);
+        if (!a) { log(email, "login_failed", "unknown account"); fail("Wrong email or password"); }
+        if (a.disabled) fail("This account is disabled — contact your dining admin");
+        if (a.locked) { log(email, "login_blocked", "locked"); fail("Account locked after 5 failed attempts — ask a dining admin to unlock it"); }
+        if (a.pass !== await sha(b.password)) { a.failed++; if (a.failed >= 5) { a.locked = true; log(email, "account_locked", "5 failed attempts"); save(list); fail("Account locked after 5 failed attempts — ask a dining admin to unlock it"); } log(email, "login_failed", "attempt " + a.failed + "/5"); save(list); fail("Wrong email or password · " + (5 - a.failed) + " attempt(s) left"); }
+        a.failed = 0; a.lastLogin = new Date().toISOString(); save(list); write(LS_SESS, { id: a.id, last: Date.now() }); log(email, "login", a.mustChange ? "temporary password — change required" : "");
+        return { token: a.id, account: pub(a), tenant: { name: "Aurora House", city: "Dubai", branding: { accent: "#3a2c4a", tagline: "Aurora House · Dubai (offline demo)" }, loyalty: { name: "Aurora Circle", pointsPerAED: 1, welcomeBonus: 100, tiers: [{ name: "Silver", min: 0 }, { name: "Gold", min: 1500 }, { name: "Platinum", min: 5000 }] }, adminSeatLimit: 3 }, idleMinutes: 30 };
+      },
+      async me() { const a = await sess(); return { account: pub(a), idleMinutes: 30 }; },
+      async logout() { const a = await sess().catch(() => null); if (a) log(a.email, "logout", ""); localStorage.removeItem(LS_SESS); return {}; },
+      async password(b) { const list = await accs(), s = await sess(), a = list.find((x) => x.id === s.id); if (a.pass !== await sha(b.current)) fail("Current password is wrong"); if (!strongPw(b.next)) fail("Use at least 8 characters with letters and numbers"); if (b.next === b.current) fail("Choose a different password"); a.pass = await sha(b.next); a.mustChange = false; save(list); log(a.email, "password_changed", ""); return { account: pub(a) }; },
+      async state() { mustOk(await sess()); const d = data(), o = {}; for (const c of COLLS) o[c] = d[c]; return { version: 1, data: o }; },
+      async sync(b) {
+        const a = await sess(); mustOk(a); const d = data(), changed = [];
+        for (const c of COLLS) { for (const r of (b.upserts[c] || [])) { const i = d[c].findIndex((x) => x.id === r.id); if (i === -1) d[c].push(r); else d[c][i] = r; changed.push(c + ":" + r.id); } for (const id of (b.deletes[c] || [])) { d[c] = d[c].filter((x) => x.id !== id); changed.push(c + ":" + id + "(deleted)"); } }
+        write(LS_DATA, d); if (changed.length) log(a.email, "data_changed", changed.slice(0, 12).join(", ")); return { version: 1, denied: [] };
+      },
+      async feedback() { fail("Feedback needs the online version"); },
+      async accounts() { await admin(); const l = await accs(); return { accounts: l.map(pub), seats: { used: seatsUsed(l), limit: 3 } }; },
+      async create(b) {
+        const by = await admin(), list = await accs(), email = String(b.email || "").trim().toLowerCase();
+        if (!/@aurora\.example\.com$/.test(email)) fail("Use a company email (@aurora.example.com)");
+        if (list.some((x) => x.email === email)) fail("That email already has an account");
+        if (b.role === "dining_admin" && seatsUsed(list) >= 3) fail("Admin seat limit reached (3/3)");
+        if (!strongPw(b.tempPassword)) fail("Temporary password: 8+ characters with letters and numbers");
+        const a = { id: "da-" + Math.random().toString(36).slice(2, 8), name: b.name || email, email, role: b.role, pass: await sha(b.tempPassword), mustChange: true, failed: 0, locked: false, disabled: false, createdAt: new Date().toISOString(), createdBy: by.email, lastLogin: null };
+        list.push(a); save(list); log(by.email, "account_created", email + " as " + b.role); return { account: pub(a) };
+      },
+      async patch(id, b) { const by = await admin(), list = await accs(), a = list.find((x) => x.id === id); if (b.role === "dining_admin" && a.role !== "dining_admin" && seatsUsed(list) >= 3) fail("Admin seat limit reached (3/3)"); if (b.role) a.role = b.role; if (typeof b.disabled === "boolean") a.disabled = b.disabled; save(list); log(by.email, "account_updated", a.email + " → " + JSON.stringify(b)); return {}; },
+      async reset(id, b) { const by = await admin(), list = await accs(), a = list.find((x) => x.id === id); if (!strongPw(b.tempPassword)) fail("Temporary password: 8+ characters with letters and numbers"); a.pass = await sha(b.tempPassword); a.mustChange = true; a.locked = false; a.failed = 0; save(list); log(by.email, "password_reset", a.email); return {}; },
+      async unlock(id) { const by = await admin(), list = await accs(), a = list.find((x) => x.id === id); a.locked = false; a.failed = 0; save(list); log(by.email, "account_unlocked", a.email); return {}; },
+      async del(id) { const by = await admin(), list = await accs(), a = list.find((x) => x.id === id); if (a.id === by.id) fail("You can't delete yourself"); save(list.filter((x) => x.id !== id)); log(by.email, "account_deleted", a.email); return {}; },
+      async audit() { await admin(); return { entries: read(LS_AUDIT, []).slice().reverse() }; },
+      listen() {}
+    };
+  }
+  const api = LOCAL ? Local() : Server();
+
+  // ---------------- core for the shared dining views ----------------
+  function toast(msg) { const el = document.createElement("div"); el.className = "toast"; el.textContent = msg; $("#toast-root").appendChild(el); setTimeout(() => el.remove(), 2600); }
+  function openModal(title, body, foot) { $("#modal-root").innerHTML = "<div class=\"modal-backdrop\"><div class=\"modal\" role=\"dialog\"><div class=\"modal-head\"><h2 style=\"font-size:1.25rem\">" + esc(title) + "</h2><button type=\"button\" class=\"icon-btn\" data-action=\"close-modal\" aria-label=\"Close\">×</button></div><div class=\"modal-body\">" + body + "</div>" + (foot ? "<div class=\"modal-foot\">" + foot + "</div>" : "") + "</div></div>"; }
+  const closeModal = () => { $("#modal-root").innerHTML = ""; }, closeDrawer = () => { $("#drawer-root").innerHTML = ""; };
+  const core = { getState: () => state, persist, render, renderChrome: chrome, toast, openModal, closeModal, closeDrawer, go: (v) => { view = v === "dining" ? "dining" : v; render(); } };
+  EXT.core = core;
+
+  // ---------------- sync ----------------
+  function snap() { snapshot = {}; for (const c of COLLS) { snapshot[c] = {}; for (const r of state[c] || []) snapshot[c][r.id] = JSON.stringify(r); } }
+  let q = Promise.resolve();
+  function persist() {
+    const upserts = {}, deletes = {}; let n = 0;
+    for (const c of COLLS) { const prev = snapshot[c] || {}, seen = new Set(); for (const r of state[c] || []) { seen.add(r.id); const j = JSON.stringify(r); if (prev[r.id] !== j) { (upserts[c] = upserts[c] || []).push(r); n++; } } for (const id of Object.keys(prev)) if (!seen.has(id)) { (deletes[c] = deletes[c] || []).push(id); n++; } }
+    if (!n) return; snap();
+    q = q.then(() => api.sync({ upserts, deletes })).then((r) => { if (r.denied && r.denied.length) { toast("Your role can't make that change — reloading"); refresh(); } }).catch(handleErr);
+  }
+  async function refresh() { const s = await api.state(); for (const c of COLLS) state[c] = s.data[c] || []; if (s.tenant) setTenant(s.tenant); if (s.announcements) showAnnouncements(s.announcements); snap(); render(); }
+  function handleErr(e) { if (e.status === 401) { localStorage.removeItem(LS_TOKEN); loginScreen(e.message); } else if (e.mustChange) changeScreen(); else toast(e.message); }
+
+  // ---------------- tenant / announcements ----------------
+  function setTenant(t) { EXT.tenant = t; $("#dn-tenant").textContent = (t.branding && t.branding.tagline) || t.name; document.title = "Dining · " + t.name; }
+  function showAnnouncements(list) {
+    const seen = JSON.parse(localStorage.getItem("cos-ann-dismissed") || "[]");
+    $("#announce-bar").innerHTML = list.filter((a) => !seen.includes(a.id)).slice(0, 2).map((a) => "<div class=\"announce\"><b>" + (a.kind === "release" ? "What's new · " : "") + esc(a.title) + "</b> <span>" + esc(a.body) + "</span><button type=\"button\" class=\"icon-btn\" data-ann=\"" + esc(a.id) + "\">×</button></div>").join("");
+    EXT.announcements = list;
+  }
+
+  // ---------------- auth screens ----------------
+  function authShell(inner) {
+    document.body.classList.add("auth-open");
+    let r = $("#auth-root"); if (!r) { r = document.createElement("div"); r.id = "auth-root"; document.body.appendChild(r); }
+    r.hidden = false;
+    r.innerHTML = "<div class=\"auth-wrap\"><div class=\"auth-brand\"><img src=\"" + (window.COS_EXT_ICON || "../favicon.svg") + "\" width=\"40\" height=\"40\" alt=\"\" /><div><strong>Concierge Dining</strong><span>Restaurant team access" + (LOCAL ? " · offline demo" : "") + "</span></div></div><div class=\"auth-card\">" + inner + "</div><p class=\"auth-foot\"><button type=\"button\" class=\"text-btn\" data-action=\"install\">Install the dining app</button></p></div>";
+    const f = r.querySelector("input"); if (f) setTimeout(() => f.focus(), 30);
+  }
+  function loginScreen(msg) {
+    authShell("<h1>Team sign in</h1><p class=\"lede\">Use the email and password issued by your company.</p>" + (msg ? "<div class=\"auth-error\">" + esc(msg) + "</div>" : "") +
+      "<form id=\"dn-login\"><label>Company email<input name=\"email\" type=\"email\" required autocomplete=\"username\" /></label><label>Password<input name=\"password\" type=\"password\" required autocomplete=\"current-password\" /></label><button class=\"btn btn-primary wide\" type=\"submit\">Sign in</button></form>" +
+      "<p class=\"lock-note\">There is no public sign-up. Accounts are created by your dining admin. After 5 wrong passwords the account locks; sessions end after " + idleMin + " minutes without activity.</p>" +
+      "<p class=\"auth-demo\">Demo (fictional): <b>dining.admin@aurora.example.com</b>, <b>lina.host@aurora.example.com</b> or <b>theo.server@aurora.example.com</b>, password <b>Dining#2026</b>. First-login example: <b>new.hire@aurora.example.com</b> / <b>Temp#1234</b>." + (LOCAL ? "" : " Second hotel: <b>dining.admin@harbor.example.com</b>.") + "</p>");
+  }
+  function changeScreen(msg) {
+    authShell("<h1>Set your own password</h1><p class=\"lede\">You signed in with a temporary password. Choose a new one to continue.</p>" + (msg ? "<div class=\"auth-error\">" + esc(msg) + "</div>" : "") +
+      "<form id=\"dn-change\"><label>Temporary password<input name=\"current\" type=\"password\" required autocomplete=\"current-password\" /></label><label>New password<input name=\"next\" type=\"password\" minlength=\"8\" required autocomplete=\"new-password\" /></label><label>Repeat new password<input name=\"again\" type=\"password\" minlength=\"8\" required autocomplete=\"new-password\" /></label><button class=\"btn btn-primary wide\" type=\"submit\">Save &amp; continue</button></form><p class=\"lock-note\">At least 8 characters, with letters and numbers.</p>");
+  }
+  async function enter(r) {
+    me = r.account; if (r.idleMinutes) idleMin = r.idleMinutes; if (r.tenant) setTenant(r.tenant);
+    if (me.mustChange) return changeScreen();
+    const s = await api.state(); state = {}; for (const c of COLLS) state[c] = s.data[c] || []; if (s.tenant) setTenant(s.tenant); if (s.announcements) showAnnouncements(s.announcements); snap();
+    const ar = $("#auth-root"); if (ar) ar.hidden = true; document.body.classList.remove("auth-open"); document.body.classList.add("ready");
+    document.body.classList.toggle("role-server", me.role === "server");
+    if (!api.local) { live = "connecting"; api.listen(async (ev) => {
+      if (ev.type === "announcement") { showAnnouncements([ev.announcement].concat(EXT.announcements || [])); return toast(ev.announcement.title); }
+      if (ev.type === "changed" && ev.by === me.id) return;
+      if (ev.type === "changed" || ev.type === "poll") { (ev.events || []).forEach((x) => x.kind === "reservation-new" && toast("New reservation " + x.id + " · " + x.partySize + " at " + x.time + " · by " + x.by)); try { await refresh(); } catch (e) { handleErr(e); } }
+    }); }
+    render();
+  }
+  document.addEventListener("submit", async (e) => {
+    const id = e.target.getAttribute("id");
+    if (id === "dn-login" || id === "dn-change" || id === "dn-create" || id === "dn-pw" || id === "dn-feedback") e.preventDefault(); else return;
+    const fd = Object.fromEntries(new FormData(e.target)); const btn = e.target.querySelector("[type=submit]"); if (btn) btn.disabled = true;
+    try {
+      if (id === "dn-login") { const r = await api.login(fd); localStorage.setItem(LS_TOKEN, r.token); await enter(r); }
+      else if (id === "dn-change" || id === "dn-pw") {
+        if (fd.next !== fd.again) throw new Error("New passwords don't match");
+        const r = await api.password({ current: fd.current, next: fd.next }); toast("Password updated");
+        if (id === "dn-change") await enter({ account: r.account }); else e.target.reset();
+      } else if (id === "dn-create") {
+        await api.create(fd); openModal("Account created", "<p>Give these details to <b>" + esc(fd.name || fd.email) + "</b> in person or by a secure channel:</p><p style=\"margin-top:10px\">Email: <b>" + esc(fd.email) + "</b><br />Temporary password: <b style=\"font-family:ui-monospace,monospace\">" + esc(fd.tempPassword) + "</b></p><p class=\"muted\" style=\"margin-top:10px\">They must choose their own password at first sign-in.</p>", "<button type=\"button\" class=\"btn btn-primary\" data-action=\"close-modal\">Done</button>");
+        render();
+      } else if (id === "dn-feedback") { await api.feedback(fd); e.target.reset(); toast("Thanks — sent to the developer"); }
+    } catch (err) {
+      if (id === "dn-login") loginScreen(err.message); else if (id === "dn-change") changeScreen(err.message); else if (err.status === 401) handleErr(err); else toast(err.message);
+    } finally { if (btn) btn.disabled = false; }
+  });
+
+  // ---------------- idle timeout ----------------
+  ["pointerdown", "keydown", "scroll"].forEach((ev) => document.addEventListener(ev, () => { lastAct = Date.now(); }, { passive: true }));
+  setInterval(() => { if (me && state && Date.now() - lastAct > idleMin * 60000) { api.logout().catch(() => {}); localStorage.removeItem(LS_TOKEN); me = null; state = null; loginScreen("Signed out after " + idleMin + " minutes without activity"); } }, 30000);
+
+  // ---------------- chrome & nav ----------------
+  function navItems() { const a = me && me.role === "dining_admin"; return [["dining", "Service"]].concat(a ? [["editor", "Floor editor"], ["team", "Team"], ["audit", "Audit log"]] : []).concat([["me", "Me"]]); }
+  function chrome() {
+    if (!me) return;
+    const items = navItems().map(([v, n]) => "<button type=\"button\" data-action=\"dn-nav\" data-view=\"" + v + "\" class=\"" + (v === view ? "active" : "") + "\">" + n + "</button>").join("");
+    $("#dn-nav").innerHTML = items; $("#dn-bottom").innerHTML = items;
+    $("#account-btn").innerHTML = "<span class=\"acct-avatar\">" + esc(me.name.split(" ").map((w) => w[0]).slice(0, 2).join("")) + "</span><span class=\"acct-meta\"><b>" + esc(me.name.split(" ")[0]) + "</b><small>" + esc(ROLE_LABEL[me.role]) + "</small></span>";
+    const ls = $("#live-status"); ls.className = "live-dot " + (api.local ? "offline" : live); ls.title = api.local ? "Offline demo — this browser only" : "Sync: " + live;
+    $("#install-btn").hidden = matchMedia("(display-mode: standalone)").matches;
+  }
+  function render() {
+    if (!me || !state) return;
+    if (!navItems().some(([v]) => v === view)) view = "dining";
+    chrome();
+    document.querySelectorAll("#main .view").forEach((el) => { el.hidden = el.id !== "view-" + view; });
+    if (view === "dining") EXT.views.dining(core);
+    if (view === "editor") renderEditor();
+    if (view === "team") renderTeam();
+    if (view === "audit") renderAudit();
+    if (view === "me") renderMe();
+  }
+
+  // ---------------- floor editor ----------------
+  const outlet = () => state.outlets.find((o) => o.id === ed.outlet) || state.outlets[0];
+  const rnd = () => Math.random().toString(36).slice(2, 7);
+  function renderEditor() {
+    const o = outlet();
+    if (!o) { $("#view-editor").innerHTML = "<div class=\"view-head\"><h1>Floor editor</h1><button type=\"button\" class=\"btn btn-primary\" data-action=\"ed-add-outlet\">+ Outlet</button></div><p class=\"empty\">No outlets yet.</p>"; return; }
+    ed.outlet = o.id; o.sections = o.sections && o.sections.length ? o.sections : [{ id: "main", name: "Main room" }];
+    if (!o.sections.find((s) => s.id === ed.section)) ed.section = o.sections[0].id;
+    const tables = state.tables.filter((t) => t.outletId === o.id && t.sectionId === ed.section);
+    const t = state.tables.find((x) => x.id === ed.sel && x.outletId === o.id);
+    const canvas = tables.map((x) => "<div class=\"ftable " + x.shape + " st-" + (x.state === "blocked" ? "blocked" : "available") + (x.state === "blocked" ? " blocked-t" : "") + (x.id === ed.sel ? " sel" : "") + "\" data-tid=\"" + x.id + "\" style=\"left:" + x.x + "%;top:" + x.y + "%;width:" + (x.w || 72) + "px;height:" + (x.h || 64) + "px\"><b>" + esc(x.name) + "</b><small>" + (x.minSeats && x.minSeats < x.seats ? x.minSeats + "–" : "") + x.seats + " seats</small>" + (x.id === ed.sel ? "<span class=\"rs\" data-rs=\"" + x.id + "\"></span>" : "") + "</div>").join("");
+    const others = state.tables.filter((x) => x.outletId === o.id && t && x.id !== t.id);
+    const props = t ? "<form id=\"ed-props\" class=\"props\"><h2>Table " + esc(t.name) + "</h2>" +
+      "<div class=\"field\"><label>Table number / name</label><input name=\"name\" value=\"" + esc(t.name) + "\" required /></div>" +
+      "<div class=\"form-grid\"><div class=\"field\"><label>Min seats</label><input type=\"number\" name=\"minSeats\" min=\"1\" max=\"40\" value=\"" + (t.minSeats || 1) + "\" /></div><div class=\"field\"><label>Max seats</label><input type=\"number\" name=\"seats\" min=\"1\" max=\"40\" value=\"" + t.seats + "\" /></div>" +
+      "<div class=\"field\"><label>Shape</label><select name=\"shape\">" + ["round", "square", "rect"].map((s) => "<option value=\"" + s + "\"" + (t.shape === s ? " selected" : "") + ">" + (s === "rect" ? "rectangle" : s) + "</option>").join("") + "</select></div>" +
+      "<div class=\"field\"><label>Section</label><select name=\"sectionId\">" + o.sections.map((s) => "<option value=\"" + s.id + "\"" + (t.sectionId === s.id ? " selected" : "") + ">" + esc(s.name) + "</option>").join("") + "</select></div>" +
+      "<div class=\"field\"><label>Width (px)</label><input type=\"number\" name=\"w\" min=\"40\" max=\"260\" value=\"" + (t.w || 72) + "\" /></div><div class=\"field\"><label>Height (px)</label><input type=\"number\" name=\"h\" min=\"40\" max=\"200\" value=\"" + (t.h || 64) + "\" /></div></div>" +
+      "<div class=\"field\"><label>Combinable with</label><div class=\"combo-list\">" + (others.length ? others.map((x) => "<label><input type=\"checkbox\" name=\"combo\" value=\"" + x.id + "\"" + ((t.combinable || []).includes(x.id) ? " checked" : "") + " /> " + esc(x.name) + "</label>").join("") : "<span class=\"muted\">No other tables</span>") + "</div></div>" +
+      "<div class=\"field\"><label><input type=\"checkbox\" name=\"blocked\"" + (t.state === "blocked" ? " checked" : "") + " /> Blocked (not bookable)</label></div>" +
+      "<button type=\"button\" class=\"btn btn-danger\" data-action=\"ed-del-table\">Delete table</button></form>"
+      : "<div class=\"props\"><h2>Table properties</h2><p class=\"muted\">Select a table to edit it. Drag tables to move them; drag the corner handle to resize. Changes save and sync live.</p></div>";
+    $("#view-editor").innerHTML =
+      "<div class=\"view-head\"><div><h1>Floor editor</h1><p class=\"lede\">Outlets, floors/sections and tables for " + esc(EXT.tenant ? EXT.tenant.name : "your hotel") + ".</p></div><button type=\"button\" class=\"btn btn-primary\" data-action=\"ed-add-table\">+ Table</button></div>" +
+      "<div class=\"ed-bar\"><label class=\"sr-only\" for=\"ed-outlet\">Outlet</label><select id=\"ed-outlet\">" + state.outlets.map((x) => "<option value=\"" + x.id + "\"" + (x.id === o.id ? " selected" : "") + ">" + esc(x.name) + "</option>").join("") + "</select>" +
+      "<button type=\"button\" class=\"btn btn-sm\" data-action=\"ed-add-outlet\">+ Outlet</button><button type=\"button\" class=\"btn btn-sm\" data-action=\"ed-ren-outlet\">Rename</button><button type=\"button\" class=\"btn btn-sm btn-ghost\" data-action=\"ed-del-outlet\">Delete outlet</button></div>" +
+      "<div class=\"ed-bar\"><span class=\"muted\">Floors / sections:</span><div class=\"chip-row\">" + o.sections.map((s) => "<button type=\"button\" class=\"chip" + (s.id === ed.section ? " active" : "") + "\" data-action=\"ed-section\" data-id=\"" + s.id + "\">" + esc(s.name) + " · " + state.tables.filter((x) => x.outletId === o.id && x.sectionId === s.id).length + "</button>").join("") + "</div>" +
+      "<button type=\"button\" class=\"btn btn-sm\" data-action=\"ed-add-section\">+ Section</button><button type=\"button\" class=\"btn btn-sm\" data-action=\"ed-ren-section\">Rename</button><button type=\"button\" class=\"btn btn-sm btn-ghost\" data-action=\"ed-del-section\">Delete section</button></div>" +
+      "<div class=\"ed-grid\"><div class=\"panel\"><div class=\"floor-scroll\"><div class=\"floor editor\" id=\"ed-canvas\">" + canvas + "</div></div><p class=\"muted\" style=\"margin-top:8px\">" + tables.length + " tables · " + tables.reduce((n, x) => n + x.seats, 0) + " seats in this section</p></div><div class=\"panel\">" + props + "</div></div>";
+  }
+  function edAction(a) {
+    const o = outlet(); const t = state.tables.find((x) => x.id === ed.sel);
+    if (a === "ed-add-outlet") { const n = prompt("New outlet name"); if (!n) return; const id = "o-" + rnd(); state.outlets.push({ id, name: n.trim(), kind: "Restaurant", color: "#6b4c8a", sections: [{ id: "main", name: "Main room" }], shifts: [{ id: "dinner", name: "Dinner", start: "18:30", end: "23:00" }] }); ed.outlet = id; ed.sel = null; }
+    else if (a === "ed-ren-outlet") { const n = prompt("Rename outlet", o.name); if (!n) return; o.name = n.trim(); }
+    else if (a === "ed-del-outlet") {
+      const active = state.reservations.filter((r) => r.outletId === o.id && ["booked", "confirmed", "seated"].includes(r.status)).length;
+      if (active) return toast("Move or cancel " + active + " active reservation(s) first");
+      if (!confirm("Delete " + o.name + " and all its tables?")) return;
+      state.tables = state.tables.filter((x) => x.outletId !== o.id); state.outlets = state.outlets.filter((x) => x.id !== o.id); ed.outlet = null; ed.sel = null;
+    }
+    else if (a === "ed-add-section") { const n = prompt("New floor / section name (e.g. Terrace, Mezzanine)"); if (!n) return; const id = "sec-" + rnd(); o.sections.push({ id, name: n.trim() }); ed.section = id; ed.sel = null; }
+    else if (a === "ed-ren-section") { const s = o.sections.find((x) => x.id === ed.section); const n = prompt("Rename section", s.name); if (!n) return; s.name = n.trim(); }
+    else if (a === "ed-del-section") {
+      if (o.sections.length < 2) return toast("An outlet needs at least one section");
+      const n = state.tables.filter((x) => x.outletId === o.id && x.sectionId === ed.section).length;
+      if (!confirm("Delete this section" + (n ? " and its " + n + " table(s)" : "") + "?")) return;
+      state.tables = state.tables.filter((x) => !(x.outletId === o.id && x.sectionId === ed.section)); o.sections = o.sections.filter((x) => x.id !== ed.section); ed.section = o.sections[0].id; ed.sel = null;
+    }
+    else if (a === "ed-add-table") {
+      const used = new Set(state.tables.filter((x) => x.outletId === o.id).map((x) => x.name)); let i = 1; while (used.has("T" + i)) i++;
+      const id = o.id + "-" + rnd(); state.tables.push({ id, outletId: o.id, sectionId: ed.section, name: "T" + i, minSeats: 2, seats: 4, shape: "square", x: 50, y: 50, w: 72, h: 64, combinable: [], state: "" }); ed.sel = id;
+    }
+    else if (a === "ed-del-table") {
+      if (!t || !confirm("Delete table " + t.name + "?")) return;
+      state.tables = state.tables.filter((x) => x.id !== t.id); state.tables.forEach((x) => { x.combinable = (x.combinable || []).filter((c) => c !== t.id); });
+      state.reservations.forEach((r) => { if (r.tableId === t.id || (r.tableIds || []).includes(t.id)) { r.tableIds = (r.tableIds || []).filter((c) => c !== t.id); r.tableId = r.tableIds[0] || null; } }); ed.sel = null;
+    } else return false;
+    persist(); render(); return true;
+  }
+  function applyProps(form) {
+    const t = state.tables.find((x) => x.id === ed.sel); if (!t) return;
+    const fd = new FormData(form), num = (k, d) => Math.max(1, parseInt(fd.get(k), 10) || d);
+    t.name = String(fd.get("name") || t.name).trim() || t.name; t.seats = num("seats", t.seats); t.minSeats = Math.min(num("minSeats", 1), t.seats);
+    const shape = fd.get("shape"); if (shape !== t.shape) { const sz = { round: [70, 70], square: [72, 64], rect: [116, 64] }[shape]; t.w = sz[0]; t.h = sz[1]; t.shape = shape; } else { t.w = Math.min(260, Math.max(40, num("w", 72))); t.h = Math.min(200, Math.max(40, num("h", 64))); if (t.shape === "round") t.h = t.w; }
+    t.sectionId = fd.get("sectionId"); if (t.sectionId !== ed.section) ed.section = t.sectionId;
+    const combo = fd.getAll("combo"); const old = t.combinable || []; t.combinable = combo;
+    for (const x of state.tables) if (x.id !== t.id && x.outletId === t.outletId) { const has = (x.combinable || []).includes(t.id), want = combo.includes(x.id); if (want && !has) x.combinable = (x.combinable || []).concat(t.id); if (!want && has && old.includes(x.id)) x.combinable = x.combinable.filter((c) => c !== t.id); }
+    const blocked = fd.get("blocked") === "on"; if (blocked) t.state = "blocked"; else if (t.state === "blocked") t.state = "";
+    persist(); render();
+  }
+  // drag / resize
+  let drag = null;
+  document.addEventListener("pointerdown", (e) => {
+    const cv = e.target.closest("#ed-canvas"); if (!cv) return;
+    const rs = e.target.closest("[data-rs]"), el = e.target.closest("[data-tid]");
+    if (!el) { if (ed.sel) { ed.sel = null; render(); } return; }
+    const t = state.tables.find((x) => x.id === el.dataset.tid);
+    drag = { t, el, cv: cv.getBoundingClientRect(), sx: e.clientX, sy: e.clientY, x: t.x, y: t.y, w: t.w || 72, h: t.h || 64, resize: !!rs, moved: false };
+    el.setPointerCapture(e.pointerId); e.preventDefault();
+  });
+  document.addEventListener("pointermove", (e) => {
+    if (!drag) return; const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy; if (Math.abs(dx) + Math.abs(dy) > 3) drag.moved = true;
+    if (drag.resize) { drag.nw = Math.min(260, Math.max(40, drag.w + dx * 2)); drag.nh = drag.t.shape === "round" ? drag.nw : Math.min(200, Math.max(40, drag.h + dy * 2)); drag.el.style.width = drag.nw + "px"; drag.el.style.height = drag.nh + "px"; }
+    else { drag.nx = Math.min(97, Math.max(3, drag.x + dx / drag.cv.width * 100)); drag.ny = Math.min(95, Math.max(5, drag.y + dy / drag.cv.height * 100)); drag.el.style.left = drag.nx + "%"; drag.el.style.top = drag.ny + "%"; }
+  });
+  document.addEventListener("pointerup", () => {
+    if (!drag) return; const d = drag; drag = null;
+    if (d.moved) { if (d.resize) { d.t.w = Math.round(d.nw); d.t.h = Math.round(d.nh); } else { d.t.x = Math.round(d.nx * 10) / 10; d.t.y = Math.round(d.ny * 10) / 10; } persist(); }
+    ed.sel = d.t.id; render();
+  });
+
+  // ---------------- team (admin) ----------------
+  async function renderTeam() {
+    const el = $("#view-team");
+    el.innerHTML = "<div class=\"view-head\"><div><h1>Team &amp; access</h1><p class=\"lede\">Only accounts created here can sign in to the dining app.</p></div></div><p class=\"muted\">Loading…</p>";
+    let r; try { r = await api.accounts(); } catch (e) { return handleErr(e); }
+    const st = (a) => a.disabled ? "<span class=\"status-pill disabled\">Disabled</span>" : a.locked ? "<span class=\"status-pill locked\">Locked</span>" : a.mustChange ? "<span class=\"status-pill must\">Must change password</span>" : "<span class=\"status-pill\">Active</span>";
+    el.innerHTML = "<div class=\"view-head\"><div><h1>Team &amp; access</h1><p class=\"lede\">Only accounts created here can sign in to the dining app. <span class=\"seat-meter\">Admin seats: <b>" + r.seats.used + " / " + r.seats.limit + "</b> (shared with hotel admins)</span></p></div></div>" +
+      "<div class=\"panel\" style=\"margin-bottom:16px\"><h2>Issue a new account</h2><form id=\"dn-create\" class=\"form-grid\" style=\"grid-template-columns:repeat(4,1fr)\"><div class=\"field\"><label>Full name</label><input name=\"name\" required /></div><div class=\"field\"><label>Company email</label><input name=\"email\" type=\"email\" required placeholder=\"name@" + (EXT.tenant && EXT.tenant.id === "t-harbor" ? "harbor" : "aurora") + ".example.com\" /></div>" +
+      "<div class=\"field\"><label>Role</label><select name=\"role\"><option value=\"server\">Server</option><option value=\"host\">Host</option><option value=\"dining_admin\">Dining admin</option></select></div><div class=\"field\"><label>Temporary password</label><div style=\"display:flex;gap:6px\"><input name=\"tempPassword\" required value=\"" + genPw() + "\" style=\"flex:1\" /><button type=\"button\" class=\"btn btn-sm\" data-action=\"dn-gen\">↻</button></div></div><div><button type=\"submit\" class=\"btn btn-primary\">Create account</button></div></form></div>" +
+      "<div class=\"panel\"><table class=\"data-table\"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Last sign-in</th><th>Actions</th></tr></thead><tbody>" +
+      r.accounts.map((a) => "<tr><td><strong>" + esc(a.name) + "</strong>" + (a.id === me.id ? " <span class=\"muted\">(you)</span>" : "") + "</td><td>" + esc(a.email) + "</td><td><select data-role-of=\"" + a.id + "\">" + Object.keys(ROLE_LABEL).map((k) => "<option value=\"" + k + "\"" + (a.role === k ? " selected" : "") + ">" + ROLE_LABEL[k] + "</option>").join("") + "</select></td><td>" + st(a) + (a.failed && !a.locked ? " <span class=\"muted\">" + a.failed + " failed</span>" : "") + "</td><td>" + (a.lastLogin ? esc(new Date(a.lastLogin).toLocaleString("en-GB", { timeZone: "Asia/Dubai", dateStyle: "medium", timeStyle: "short" })) : "Never") + "</td>" +
+        "<td style=\"white-space:nowrap\"><button type=\"button\" class=\"btn btn-sm\" data-action=\"dn-reset\" data-id=\"" + a.id + "\" data-email=\"" + esc(a.email) + "\">Reset password</button> " + (a.locked ? "<button type=\"button\" class=\"btn btn-sm btn-primary\" data-action=\"dn-unlock\" data-id=\"" + a.id + "\">Unlock</button> " : "") +
+        "<button type=\"button\" class=\"btn btn-sm\" data-action=\"dn-toggle\" data-id=\"" + a.id + "\" data-dis=\"" + (a.disabled ? "0" : "1") + "\">" + (a.disabled ? "Enable" : "Disable") + "</button> " + (a.id !== me.id ? "<button type=\"button\" class=\"btn btn-sm btn-ghost\" data-action=\"dn-del\" data-id=\"" + a.id + "\">Delete</button>" : "") + "</td></tr>").join("") + "</tbody></table></div>";
+  }
+  async function renderAudit() {
+    const el = $("#view-audit"); let r; try { r = await api.audit(); } catch (e) { return handleErr(e); }
+    el.innerHTML = "<div class=\"view-head\"><div><h1>Audit log</h1><p class=\"lede\">Sign-ins, failed attempts, lockouts, account and data changes for " + esc(EXT.tenant ? EXT.tenant.name : "this hotel") + ".</p></div><input type=\"search\" id=\"audit-q\" placeholder=\"Filter…\" style=\"padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink)\" /></div>" +
+      "<div class=\"panel\"><table class=\"data-table audit-table\"><thead><tr><th>Time (Dubai)</th><th>Who</th><th>App</th><th>Action</th><th>Detail</th><th>IP</th></tr></thead><tbody>" +
+      r.entries.map((x) => "<tr><td>" + esc(new Date(x.at).toLocaleString("en-GB", { timeZone: "Asia/Dubai", dateStyle: "short", timeStyle: "medium" })) + "</td><td>" + esc(x.actor) + "</td><td>" + esc(x.app) + "</td><td><b>" + esc(x.action.replace(/_/g, " ")) + "</b></td><td>" + esc(x.detail) + "</td><td>" + esc(x.ip) + "</td></tr>").join("") + "</tbody></table></div>";
+  }
+  function renderMe() {
+    const os = /iPhone|iPad/.test(navigator.userAgent) ? "Safari → Share → Add to Home Screen" : /Android/.test(navigator.userAgent) ? "Chrome → ⋮ → Install app" : "Chrome/Edge → install icon in the address bar · Mac Safari → File → Add to Dock";
+    $("#view-me").innerHTML = "<div class=\"view-head\"><div><h1>" + esc(me.name) + "</h1><p class=\"lede\">" + esc(me.email) + " · <span class=\"pill open\">" + esc(ROLE_LABEL[me.role]) + "</span></p></div><button type=\"button\" class=\"btn\" data-action=\"dn-signout\">Sign out</button></div>" +
+      "<div class=\"dash-grid\"><div class=\"panel\"><h2>Change password</h2><form id=\"dn-pw\" class=\"props\"><div class=\"field\"><label>Current password</label><input type=\"password\" name=\"current\" required /></div><div class=\"field\"><label>New password</label><input type=\"password\" name=\"next\" minlength=\"8\" required /></div><div class=\"field\"><label>Repeat</label><input type=\"password\" name=\"again\" minlength=\"8\" required /></div><button class=\"btn btn-primary\" type=\"submit\">Update password</button></form></div>" +
+      "<div class=\"panel\"><h2>Install this app</h2><p>The dining app installs separately from the hotel app, in its own window.</p><p class=\"muted\" style=\"margin:8px 0\">On this device: " + esc(os) + "</p><button type=\"button\" class=\"btn btn-primary\" data-action=\"install\">Install Concierge Dining</button><p class=\"muted\" style=\"margin-top:10px\">Security: sessions end after " + idleMin + " minutes idle (12 hours max); 5 wrong passwords lock the account.</p></div>" +
+      (api.local ? "" : "<div class=\"panel\" style=\"grid-column:1/-1\"><h2>Report an issue or idea</h2><form id=\"dn-feedback\" class=\"form-grid\"><div class=\"field\"><label>Type</label><select name=\"kind\"><option value=\"bug\">Problem / bug</option><option value=\"idea\">Idea</option><option value=\"question\">Question</option></select></div><div class=\"field\"><label>Where</label><input name=\"page\" placeholder=\"e.g. Floor editor\" /></div><div class=\"field span-2\"><label>Details</label><textarea name=\"message\" required></textarea></div><div><button class=\"btn btn-primary\" type=\"submit\">Send to developer</button></div></form></div>") + "</div>";
+  }
+
+  // ---------------- events ----------------
+  let deferred = null;
+  window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferred = e; });
+  document.addEventListener("click", async (e) => {
+    const ann = e.target.closest("[data-ann]"); if (ann) { const s = JSON.parse(localStorage.getItem("cos-ann-dismissed") || "[]"); s.push(ann.dataset.ann); localStorage.setItem("cos-ann-dismissed", JSON.stringify(s)); return showAnnouncements(EXT.announcements || []); }
+    if (e.target.classList.contains("modal-backdrop")) return closeModal();
+    const el = e.target.closest("[data-action]"); if (!el) return;
+    const a = el.dataset.action, id = el.dataset.id;
+    try {
+      if (a === "close-modal") closeModal();
+      else if (a === "close-drawer") closeDrawer();
+      else if (a === "install") { if (deferred) { deferred.prompt(); deferred = null; } else openModal("Install Concierge Dining", LOCAL ? "<p class=\"notice\">This is the offline file. To install, open the hosted address /dining/ in your browser.</p>" : "<p><b>iPhone/iPad:</b> Safari → Share → Add to Home Screen.<br /><b>Android:</b> Chrome → ⋮ → Install app.<br /><b>Windows/Linux:</b> Chrome or Edge → install icon in the address bar.<br /><b>Mac:</b> Chrome/Edge install icon, or Safari → File → Add to Dock.</p><p class=\"muted\" style=\"margin-top:8px\">It installs as its own app, separate from the hotel app.</p>", ""); }
+      else if (a === "dn-nav") { view = el.dataset.view; closeDrawer(); render(); window.scrollTo(0, 0); }
+      else if (a === "dn-signout") { await api.logout().catch(() => {}); localStorage.removeItem(LS_TOKEN); location.reload(); }
+      else if (a === "ed-section") { ed.section = id; ed.sel = null; render(); }
+      else if (a.startsWith("ed-")) edAction(a);
+      else if (a === "dn-gen") { const i = el.parentNode.querySelector("input"); i.value = genPw(); }
+      else if (a === "dn-reset") { const pw = genPw(); if (!confirm("Reset password for " + el.dataset.email + "? New temporary password: " + pw)) return; await api.reset(id, { tempPassword: pw }); openModal("Temporary password", "<p>New temporary password for <b>" + esc(el.dataset.email) + "</b>:</p><p style=\"font-family:ui-monospace,monospace;font-size:1.2rem;margin-top:8px\">" + esc(pw) + "</p><p class=\"muted\">They must change it at next sign-in. Their other sessions were signed out.</p>", "<button type=\"button\" class=\"btn btn-primary\" data-action=\"close-modal\">Done</button>"); renderTeam(); }
+      else if (a === "dn-unlock") { await api.unlock(id); toast("Account unlocked"); renderTeam(); }
+      else if (a === "dn-toggle") { await api.patch(id, { disabled: el.dataset.dis === "1" }); toast(el.dataset.dis === "1" ? "Account disabled" : "Account enabled"); renderTeam(); }
+      else if (a === "dn-del") { if (!confirm("Delete this account permanently?")) return; await api.del(id); toast("Account deleted"); renderTeam(); }
+      else if (EXT.onClickDining) EXT.onClickDining(a, el, e);
+    } catch (err) { handleErr(err); }
+  });
+  document.addEventListener("change", async (e) => {
+    if (e.target.id === "ed-outlet") { ed.outlet = e.target.value; ed.section = null; ed.sel = null; return render(); }
+    if (e.target.closest("#ed-props")) return applyProps(e.target.closest("#ed-props"));
+    if (e.target.matches("[data-role-of]")) { try { await api.patch(e.target.dataset.roleOf, { role: e.target.value }); toast("Role updated"); } catch (err) { toast(err.message); } return renderTeam(); }
+    if (EXT.onChangeDining) EXT.onChangeDining(e);
+  });
+  document.addEventListener("input", (e) => {
+    if (e.target.id === "audit-q") { const q = e.target.value.toLowerCase(); document.querySelectorAll(".audit-table tbody tr").forEach((r) => { r.hidden = q && !r.textContent.toLowerCase().includes(q); }); return; }
+    if (EXT.onInputDining) EXT.onInputDining(e);
+  });
+  document.addEventListener("submit", (e) => { if (EXT.onSubmitDining) EXT.onSubmitDining(e); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeModal(); closeDrawer(); } });
+  if (!LOCAL) {
+    let n = 0; const rep = (m, s) => { if (++n > 20) return; fetch("/api/errors", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + (localStorage.getItem(LS_TOKEN) || "") }, body: JSON.stringify({ app: "dining", message: m, stack: s, url: location.pathname }) }).catch(() => {}); };
+    window.addEventListener("error", (e) => rep(e.message, e.error && e.error.stack));
+    window.addEventListener("unhandledrejection", (e) => rep("Unhandled: " + (e.reason && e.reason.message || e.reason), e.reason && e.reason.stack));
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("/dining/sw.js", { scope: "/dining/" }).catch(() => {});
+  }
+
+  // ---------------- boot ----------------
+  (async function () {
+    document.body.classList.add("ready");
+    try { const r = await api.me(); await enter(r); } catch (e) { if (e.mustChange) changeScreen(); else loginScreen(e.timeout ? e.message : null); }
+  })();
+})();
+
+</script>
+</body>
+</html>
